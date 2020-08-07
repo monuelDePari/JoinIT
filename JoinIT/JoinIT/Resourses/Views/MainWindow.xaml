@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ribbon:Ribbon x:Name="Ribbon" Title="Main Courses Operations">
+        <ribbon:Ribbon x:Name="Ribbon" Grid.Row="0">
             <ribbon:Ribbon.HelpPaneContent>
                 <ribbon:RibbonButton/>
             </ribbon:Ribbon.HelpPaneContent>
@@ -68,5 +68,6 @@
                 </ribbon:RibbonGroup>
             </ribbon:RibbonTab>
         </ribbon:Ribbon>
+        <TabControl x:Name="CourseInformationTab" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="1"></TabControl>
     </Grid>
 </Window>
