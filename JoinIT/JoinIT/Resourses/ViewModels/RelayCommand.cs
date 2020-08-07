@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace JoinIT.Resourses.ViewModels
 {
-    class Relative_Command : ICommand
+    class RelayCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

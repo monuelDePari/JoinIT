@@ -107,8 +107,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resourses\Assets\" />
     <Folder Include="Resourses\Convertors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\CreateNewGroupOfSudentsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\DeleteStudentsImage.png" />
+    <Resource Include="Resourses\Assets\LanguageImage.png" />
+    <Resource Include="Resourses\Assets\ReadInformationAboutStudentsImage.png" />
+    <Resource Include="Resourses\Assets\UpdateStudentsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\FontSizeImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
