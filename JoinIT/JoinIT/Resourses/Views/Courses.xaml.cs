@@ -1,15 +1,15 @@
-﻿namespace JoinIT.Resourses.Views
+﻿namespace JoinIT
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for CoursesWindow.xaml
+    /// Interaction logic for Courses.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CoursesWindow : Window
+    public partial class Courses : Window
     {
-        public CoursesWindow()
+        public Courses()
         {
             InitializeComponent();
         }

@@ -4,12 +4,12 @@
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for CoursesWindow.xaml
+    /// Interaction logic for Startup.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CoursesWindow : Window
+    public partial class Startup : Window
     {
-        public CoursesWindow()
+        public Startup()
         {
             InitializeComponent();
         }

@@ -6,10 +6,10 @@
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    public class Repository<TEntity> : IAsyncRepository<TEntity> where TEntity : class
+    public class AsyncRepository<TEntity> : IAsyncRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext dBcontext;
-        public Repository(DbContext context)
+        public AsyncRepository(DbContext context)
         {
             dBcontext = context;
         }
@@ -31,7 +31,10 @@
             return (Task<IEnumerable<TEntity>>)dBcontext.Set<TEntity>().Where(predicate);
         }
 
-        public Task<TEntity> GetById(int id) => dBcontext.Set<TEntity>().FindAsync(id);
+        public Task<TEntity> GetById(int id)
+        {
+            return dBcontext.Set<TEntity>().FindAsync(id);
+        }
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
