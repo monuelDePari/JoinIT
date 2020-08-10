@@ -12,13 +12,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ribbon:Ribbon x:Name="Ribbon" Grid.Row="0">
-            <ribbon:Ribbon.HelpPaneContent>
-                <ribbon:RibbonButton/>
-            </ribbon:Ribbon.HelpPaneContent>
             <ribbon:Ribbon.ApplicationMenu>
-                <ribbon:RibbonApplicationMenu>
-                    <ribbon:RibbonApplicationMenuItem Header="Home" x:Name="HomeMenu"/>
-                </ribbon:RibbonApplicationMenu>
+                <ribbon:RibbonApplicationMenu Visibility="Collapsed"/>
             </ribbon:Ribbon.ApplicationMenu>
             <ribbon:RibbonTab x:Name="CoursesTab" Header="Courses Tab">
                 <ribbon:RibbonGroup x:Name="CrudOperations" Header="CRUD Operations">
