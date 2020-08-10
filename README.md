@@ -20,3 +20,10 @@ The solution must include unit tests and loggers. All test should pass. Make sur
 Detailed instructions on how to set up a solution including dependencies and how to make it running must be provided as a markdown read.me file in the root of repo.
 Xaml code should be written without any designer code and using extension “Kill the WPF designer”
 Application must use MVVM architecture pattern.
+
+
+
+1. Created Template
+2. Created 2 windows
+3. Created Model
+4. Created Repository
