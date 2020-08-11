@@ -1,5 +1,6 @@
 ﻿namespace JoinIT.Resourses.Views
 {
+    using JoinIT.Resourses.ViewModels;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
 
@@ -12,6 +13,8 @@
         public Startup()
         {
             InitializeComponent();
+
+            DataContext = new StartupViewModel();
         }
     }
 }

@@ -52,13 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncRepository.cs" />
-    <Compile Include="IAsyncRepository.cs" />
+    <Compile Include="Instructions\IRepositoryCoursesAsync.cs" />
+    <Compile Include="Repository\RepositoryAsync.cs" />
+    <Compile Include="Instructions\IRepositoryAsync.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RepositoryCoursesAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ac3d750b-c7cc-476b-adae-0631fb285779}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

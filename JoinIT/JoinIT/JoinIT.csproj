@@ -68,6 +68,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resourses\ViewModels\Instructions\ICoursesTab.cs" />
+    <Compile Include="Resourses\ViewModels\RelativeCommand.cs" />
+    <Compile Include="Resourses\ViewModels\StartupViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\Tabs\CoursesTab.cs" />
+    <Compile Include="Resourses\ViewModels\Tabs\CourseTab.cs" />
     <Compile Include="Resourses\Views\Startup.xaml.cs">
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
@@ -116,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\Convertors\" />
-    <Folder Include="Resourses\ViewModels\" />
+    <Folder Include="Resourses\RibbonTabs\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />

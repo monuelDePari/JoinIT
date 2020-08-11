@@ -6,14 +6,8 @@
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    public class AsyncRepository<TEntity> : IAsyncRepository<TEntity> where TEntity : class
+    public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity> where TEntity : class
     {
-        protected readonly DbContext DBcontext;
-        public AsyncRepository(DbContext context)
-        {
-            DBcontext = context;
-        }
-
         public Task AddAsync(TEntity entity)
         {
             DBcontext.Set<TEntity>().Add(entity);
@@ -58,5 +52,10 @@
             DBcontext.Entry(entity).State = EntityState.Modified;
             return DBcontext.SaveChangesAsync();
         }
+        public RepositoryAsync(DbContext context)
+        {
+            DBcontext = context;
+        }
+        protected readonly DbContext DBcontext;
     }
 }
