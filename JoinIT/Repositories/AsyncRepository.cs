@@ -14,16 +14,16 @@
             DBcontext = context;
         }
 
-        public async Task AddAsync(TEntity entity)
+        public Task AddAsync(TEntity entity)
         {
             DBcontext.Set<TEntity>().Add(entity);
-            await DBcontext.SaveChangesAsync();
+            return DBcontext.SaveChangesAsync();
         }
 
-        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        public Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
             DBcontext.Set<TEntity>().AddRange(entities);
-            await DBcontext.SaveChangesAsync();
+            return DBcontext.SaveChangesAsync();
         }
 
         public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
@@ -36,24 +36,24 @@
             return DBcontext.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await DBcontext.Set<TEntity>().ToListAsync();
+            return Task.FromResult(((IEnumerable<TEntity>)DBcontext.Set<TEntity>().ToListAsync()));
         }
 
-        public async Task RemoveAsync(TEntity entity)
+        public Task RemoveAsync(TEntity entity)
         {
             DBcontext.Set<TEntity>().Remove(entity);
-            await DBcontext.SaveChangesAsync();
+            return DBcontext.SaveChangesAsync();
         }
 
-        public async Task RemoveRangeAsync(IEnumerable<TEntity> entities)
+        public Task RemoveRangeAsync(IEnumerable<TEntity> entities)
         {
             DBcontext.Set<TEntity>().RemoveRange(entities);
-            await DBcontext.SaveChangesAsync();
+            return DBcontext.SaveChangesAsync();
         }
 
-        Task IAsyncRepository<TEntity>.UpdateAsync(TEntity entity)
+        public Task UpdateAsync(TEntity entity)
         {
             DBcontext.Entry(entity).State = EntityState.Modified;
             return DBcontext.SaveChangesAsync();
