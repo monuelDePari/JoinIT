@@ -78,7 +78,6 @@
             <TabControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type instructions:ICoursesTab}">
                     <TextBlock>
-                        <Run Text="{Binding TabName}"/>
                         <Hyperlink Command="{Binding CloseCommand}"/>
                     </TextBlock>
                 </DataTemplate>

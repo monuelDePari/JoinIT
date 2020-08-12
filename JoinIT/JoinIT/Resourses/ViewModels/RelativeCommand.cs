@@ -5,7 +5,7 @@
     class RelativeCommand : ICommand
     {
         private Action<object> action;
-        private readonly Predicate<Object> predicate;
+        private Predicate<Object> predicate;
 
         public RelativeCommand(Action<Object> action) : this(action, null) { }
 
@@ -17,28 +17,13 @@
 
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public bool CanExecute(object parameter)
         {
-            if (this.predicate == null)
-            {
-                return true;
-            }
-            return this.predicate(parameter);
-        }
-
-        public void Execute()
-        {
-            Execute(null);
+            return this.predicate == null || this.predicate(parameter);
         }
 
         public void Execute(object parameter)
