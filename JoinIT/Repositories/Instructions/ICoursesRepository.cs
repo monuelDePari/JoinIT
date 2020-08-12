@@ -3,7 +3,7 @@
     using Models;
     using System.Threading.Tasks;
 
-    interface IRepositoryCoursesAsync : IRepositoryAsync<CourseInfoModel>
+    interface ICoursesRepository : IBaseRepository<CourseInfoModel>
     {
 
     }

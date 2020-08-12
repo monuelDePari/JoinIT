@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         public Task AddAsync(TEntity entity)
         {
@@ -52,7 +52,7 @@
             DBcontext.Entry(entity).State = EntityState.Modified;
             return DBcontext.SaveChangesAsync();
         }
-        public RepositoryAsync(DbContext context)
+        public BaseRepository(DbContext context)
         {
             DBcontext = context;
         }

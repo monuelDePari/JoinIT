@@ -4,15 +4,15 @@
     using System.Windows.Input;
     class RelativeCommand : ICommand
     {
-        private Action<object> action;
-        private Predicate<Object> predicate;
+        private readonly Action<object> actionCommand;
+        private readonly Predicate<object> predicateCommand;
 
-        public RelativeCommand(Action<Object> action) : this(action, null) { }
+        public RelativeCommand(Action<object> action) : this(action, null) { }
 
-        public RelativeCommand(Action<Object> action, Predicate<Object> predicate)
+        public RelativeCommand(Action<object> action, Predicate<Object> predicate)
         {
-            this.action = action ?? throw new ArgumentNullException(nameof(action), @"You must specify an Action<T>.");
-            this.predicate = predicate;
+            actionCommand = action;
+            predicateCommand = predicate;
         }
 
         public event EventHandler CanExecuteChanged
@@ -23,12 +23,12 @@
 
         public bool CanExecute(object parameter)
         {
-            return this.predicate == null || this.predicate(parameter);
+            return predicateCommand == null || predicateCommand(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.action(parameter);
+            actionCommand(parameter);
         }
     }
 }

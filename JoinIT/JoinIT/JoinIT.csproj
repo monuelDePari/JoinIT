@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>5.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -131,6 +134,9 @@
     <Resource Include="Resourses\Assets\LanguageImage.png" />
     <Resource Include="Resourses\Assets\ReadInformationAboutStudentsImage.png" />
     <Resource Include="Resourses\Assets\UpdateStudentsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\CloseButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,12 +8,21 @@
     {
         public string TabName { get; set; }
 
-        public ICommand CloseCommand { get; }
+        public ICommand CloseCommand { get; private set; }
 
         public event EventHandler CloseRequested;
         public CoursesTab()
         {
-            CloseCommand = new RelativeCommand(p => CloseRequested?.Invoke(this, EventArgs.Empty));
+            CloseCommand = new RelativeCommand(p => OnCloseExecuted());
+        }
+
+        private void OnCloseExecuted()
+        {
+            var handler = CloseRequested;
+            if (handler != null)
+            {
+                handler.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

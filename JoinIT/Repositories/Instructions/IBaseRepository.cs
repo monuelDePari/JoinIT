@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    public interface IRepositoryAsync<TEntity> where TEntity : class
+    public interface IBaseRepository<TEntity> where TEntity : class
     {
         Task<TEntity> GetByIdAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
