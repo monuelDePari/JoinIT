@@ -1,13 +1,19 @@
 ﻿namespace Repositories
 {
+    using Repositories.Repository;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
+
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
+        public BaseRepository(ITContext context)
+        {
+            DBcontext = context;
+        }
         public Task AddAsync(TEntity entity)
         {
             DBcontext.Set<TEntity>().Add(entity);
@@ -32,7 +38,7 @@
 
         public Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return Task.FromResult(((IEnumerable<TEntity>)DBcontext.Set<TEntity>().ToListAsync()));
+            return Task.FromResult((IEnumerable<TEntity>)DBcontext.Set<TEntity>().ToListAsync());
         }
 
         public Task RemoveAsync(TEntity entity)
@@ -52,10 +58,6 @@
             DBcontext.Entry(entity).State = EntityState.Modified;
             return DBcontext.SaveChangesAsync();
         }
-        public BaseRepository(DbContext context)
-        {
-            DBcontext = context;
-        }
-        protected readonly DbContext DBcontext;
+        protected DbContext DBcontext;
     }
 }

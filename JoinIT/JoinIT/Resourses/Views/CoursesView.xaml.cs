@@ -1,5 +1,7 @@
 ﻿namespace JoinIT
 {
+    using JoinIT.Resourses.Utilities;
+    using JoinIT.Resourses.ViewModels.Tabs;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using System.Windows.Controls;

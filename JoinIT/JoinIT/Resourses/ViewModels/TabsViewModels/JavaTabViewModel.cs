@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace JoinIT.Resourses.ViewModels.Tabs
 {
-    class CourseTab : CoursesTab
+    class JavaTabViewModel
     {
-        public CourseTab()
-        {
-            TabName = "Course Tab";
-        }
     }
 }

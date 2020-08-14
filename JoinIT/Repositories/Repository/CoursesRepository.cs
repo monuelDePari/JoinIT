@@ -2,11 +2,17 @@
 {
     using Models;
     using Repositories.Instructions;
+    using Repositories.Repository;
     using System.Data.Entity;
-    using System.Threading.Tasks;
+    using Unity;
 
     public class CoursesRepository : BaseRepository<CourseInfoModel>, ICoursesRepository
-    {  
-        public CoursesRepository(DbContext dbContext) : base(dbContext) { }
+    { 
+        public CoursesRepository(ITContext context) : base(context)
+        {
+            DBcontext = context;
+        }
+
+        public DbSet<CourseInfoModel> CourseInfoModels { get; set; }
     }
 }

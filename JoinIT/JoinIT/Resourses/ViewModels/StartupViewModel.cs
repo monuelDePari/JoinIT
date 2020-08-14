@@ -1,9 +1,8 @@
 ﻿namespace JoinIT.Resourses.ViewModels
 {
     using JoinIT.Resourses.ViewModels.Instructions;
-    using JoinIT.Resourses.ViewModels.Tabs;
+    using JoinIT.Resourses.ViewModels.TabsViewModels;
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Windows.Input;
@@ -12,15 +11,15 @@
         public StartupViewModel()
         {
             NewCoursesTabCommand = new RelativeCommand(p => NewCoursesTab());
-            CoursesTabs = new ObservableCollection<ICoursesTab>();
+            CoursesTabs = new ObservableCollection<CoursesTabViewModel>();
 
             CoursesTabs.CollectionChanged += CoursesTabsCollectionChanged;
         }
         public ICommand NewCoursesTabCommand { get; private set; }
-        public ObservableCollection<ICoursesTab> CoursesTabs { get; private set; }
+        public ObservableCollection<CoursesTabViewModel> CoursesTabs { get; private set; }
         private void NewCoursesTab()
         {
-            CoursesTabs.Add(new CourseTab());
+            CoursesTabs.Add(new CoursesTabViewModel());
         }
 
         private void CoursesTabsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -42,7 +41,7 @@
 
         private void OnTabCloseRequested(object sender, EventArgs e)
         {
-            CoursesTabs.Remove((ICoursesTab)sender);
+            CoursesTabs.Remove((CoursesTabViewModel)sender);
         }
     }
 }
