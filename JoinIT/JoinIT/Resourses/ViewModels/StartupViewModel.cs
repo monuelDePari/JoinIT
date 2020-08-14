@@ -6,7 +6,7 @@
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Windows.Input;
-    class StartupViewModel
+    public class StartupViewModel
     {
         public StartupViewModel()
         {

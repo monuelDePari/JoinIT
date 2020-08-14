@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Input;
-    class RelativeCommand : ICommand
+    public class RelativeCommand : ICommand
     {
         private readonly Action<object> actionCommand;
         private readonly Predicate<object> predicateCommand;

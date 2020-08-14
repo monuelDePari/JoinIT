@@ -1,28 +1,26 @@
-﻿using JoinIT.Resourses.Enums;
-using Models;
-using Repositories;
-using Repositories.Instructions;
-using Repositories.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
-namespace JoinIT.Resourses.ViewModels.Tabs
+﻿namespace JoinIT.Resourses.ViewModels.Tabs
 {
+    using JoinIT.Resourses.Enums;
+    using Models;
+    using Repositories.Instructions;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Threading.Tasks;
+
     public class CPlusPlusTabViewModel : BaseTabViewModel, INotifyPropertyChanged
     {
-        IEnumerable<CourseInfoModel> courseInfoModels;
-        public IEnumerable<CourseInfoModel> CourseInfoModels
+        private List<CourseInfoModel> _courseInfoModels;
+
+        public List<CourseInfoModel> CourseInfoModels
         {
             get
             {
-                return courseInfoModels;
+                return _courseInfoModels;
             }
             set
             {
-                courseInfoModels = value;
+                _courseInfoModels = value;
                 OnPropertyChanged("CourseInfoModels");
             }
         }
@@ -34,10 +32,11 @@ namespace JoinIT.Resourses.ViewModels.Tabs
 
         public async Task LoadCPlusPlusDataAsync()
         {
-            courseInfoModels =  await _coursesRepository.FindAsync(p => p.CourseName == CourceNames.CPlusPlus.ToString());
+            CourseInfoModels = await _coursesRepository.FindAsync(p => p.CourseName == CourceNames.CPlusPlus.ToString());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged([CallerMemberName] string info = "")
         {
             if (PropertyChanged != null)

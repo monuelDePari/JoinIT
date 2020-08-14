@@ -2,7 +2,7 @@
 
 namespace JoinIT.Resourses.Utilities
 {
-    class ITUnityContainer
+    public class ITUnityContainer
     {
         private static IUnityContainer _instance;
 
