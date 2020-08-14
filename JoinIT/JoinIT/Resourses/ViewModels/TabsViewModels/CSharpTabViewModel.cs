@@ -1,4 +1,5 @@
-﻿using Repositories.Instructions;
+﻿using Repositories;
+using Repositories.Instructions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace JoinIT.Resourses.ViewModels.Tabs
 {
     public class CSharpTabViewModel : BaseTabViewModel
     {
-        public CSharpTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
+        public CSharpTabViewModel(CoursesRepository coursesRepository) : base(coursesRepository)
         {
         }
     }

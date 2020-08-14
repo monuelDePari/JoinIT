@@ -10,54 +10,56 @@
 
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        public BaseRepository(ITContext context)
+        public BaseRepository(DbContext context)
         {
-            DBcontext = context;
+            DbContext = context;
+            DbSet = DbContext.Set<TEntity>();
         }
         public Task AddAsync(TEntity entity)
         {
-            DBcontext.Set<TEntity>().Add(entity);
-            return DBcontext.SaveChangesAsync();
+            DbContext.Set<TEntity>().Add(entity);
+            return DbContext.SaveChangesAsync();
         }
 
         public Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            DBcontext.Set<TEntity>().AddRange(entities);
-            return DBcontext.SaveChangesAsync();
+            DbContext.Set<TEntity>().AddRange(entities);
+            return DbContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public Task<List<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return (Task<IEnumerable<TEntity>>)DBcontext.Set<TEntity>().Where(predicate);
+            return DbContext.Set<TEntity>().Where(predicate).ToListAsync<TEntity>();
         }
 
         public Task<TEntity> GetByIdAsync(int id)
         {
-            return DBcontext.Set<TEntity>().FindAsync(id);
+            return DbContext.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public Task<List<TEntity>> GetAllAsync()
         {
-            return Task.FromResult((IEnumerable<TEntity>)DBcontext.Set<TEntity>().ToListAsync());
+            return DbContext.Set<TEntity>().ToListAsync();
         }
 
         public Task RemoveAsync(TEntity entity)
         {
-            DBcontext.Set<TEntity>().Remove(entity);
-            return DBcontext.SaveChangesAsync();
+            DbContext.Set<TEntity>().Remove(entity);
+            return DbContext.SaveChangesAsync();
         }
 
         public Task RemoveRangeAsync(IEnumerable<TEntity> entities)
         {
-            DBcontext.Set<TEntity>().RemoveRange(entities);
-            return DBcontext.SaveChangesAsync();
+            DbContext.Set<TEntity>().RemoveRange(entities);
+            return DbContext.SaveChangesAsync();
         }
 
         public Task UpdateAsync(TEntity entity)
         {
-            DBcontext.Entry(entity).State = EntityState.Modified;
-            return DBcontext.SaveChangesAsync();
+            DbContext.Entry(entity).State = EntityState.Modified;
+            return DbContext.SaveChangesAsync();
         }
-        protected DbContext DBcontext;
+        public DbContext DbContext;
+        public DbSet<TEntity> DbSet;
     }
 }

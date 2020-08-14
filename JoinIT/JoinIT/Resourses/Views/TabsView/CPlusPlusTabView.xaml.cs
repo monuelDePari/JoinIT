@@ -24,20 +24,19 @@ namespace JoinIT.Resourses.Views.TabsView
         {
             InitializeComponent();
 
-            //ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new TransientLifetimeManager(), new InjectionConstructor(new ITContext("DefaultConnection")));
-
-            //ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
-
-            //ITUnityContainer.GetInstance.RegisterType(typeof(ICoursesRepository), typeof(CoursesRepository), new HierarchicalLifetimeManager());
-
-            // ITUnityContainer.GetInstance.AddExtension(new Diagnostic());
-
             ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
-            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(
-                 new InjectionConstructor(new ITContext()));
+            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
 
             DataContext = ITUnityContainer.GetInstance.Resolve<CPlusPlusTabViewModel>();
+
+            Loaded += CPlusPlusTab_Loaded;
+        }
+
+        private async void CPlusPlusTab_Loaded(object sender, RoutedEventArgs e)
+        {
+            var cPlusPlusViewModel = (CPlusPlusTabViewModel)DataContext;
+            await cPlusPlusViewModel.LoadCPlusPlusDataAsync();
         }
     }
 }

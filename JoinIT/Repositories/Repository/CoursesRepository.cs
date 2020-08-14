@@ -8,11 +8,6 @@
 
     public class CoursesRepository : BaseRepository<CourseInfoModel>, ICoursesRepository
     { 
-        public CoursesRepository(ITContext context) : base(context)
-        {
-            DBcontext = context;
-        }
-
-        public DbSet<CourseInfoModel> CourseInfoModels { get; set; }
+        public CoursesRepository(ITContext context) : base(context) { }
     }
 }

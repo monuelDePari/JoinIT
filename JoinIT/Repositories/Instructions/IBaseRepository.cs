@@ -7,8 +7,8 @@
     public interface IBaseRepository<TEntity> where TEntity : class
     {
         Task<TEntity> GetByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<List<TEntity>> GetAllAsync();
+        Task<List<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(IEnumerable<TEntity> entities);
         Task UpdateAsync(TEntity entity);
