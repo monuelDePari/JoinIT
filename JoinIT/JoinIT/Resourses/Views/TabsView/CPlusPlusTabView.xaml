@@ -29,13 +29,7 @@
                           RowBackground="LightGray"
                           AlternatingRowBackground="White"
                           ItemsSource="{Binding CourseInfoModels}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="CourseName" Binding="{Binding CourseName}"/>
-                        <DataGridTextColumn Header="AuthorName" Binding="{Binding AuthorName}"/>
-                        <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}"/>
-                        <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}"/>
-                    </DataGrid.Columns>
+
                 </DataGrid>
             </StackPanel>
         </StackPanel>
