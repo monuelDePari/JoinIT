@@ -41,7 +41,8 @@
 
         private void OnTabCloseRequested(object sender, EventArgs e)
         {
-            CoursesTabs.Remove((CoursesTabViewModel)sender);
+            if(sender.GetType() == typeof(ICoursesTab))
+                CoursesTabs.Remove((CoursesTabViewModel)sender);
         }
     }
 }

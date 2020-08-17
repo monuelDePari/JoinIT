@@ -1,4 +1,4 @@
-﻿namespace JoinIT.Resourses.ViewModels.Tabs
+﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
     using JoinIT.Resourses.Enums;
     using Models;
@@ -8,41 +8,13 @@
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
-    public class CPlusPlusTabViewModel : BaseTabViewModel, INotifyPropertyChanged
+    public class CPlusPlusTabViewModel : BaseTabViewModel
     {
-        private List<CourseInfoModel> _courseInfoModels;
-
-        public List<CourseInfoModel> CourseInfoModels
-        {
-            get
-            {
-                return _courseInfoModels;
-            }
-            set
-            {
-                _courseInfoModels = value;
-                OnPropertyChanged("CourseInfoModels");
-            }
-        }
-
+        #region constructors
         public CPlusPlusTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
             _coursesRepository = coursesRepository;
         }
-
-        public async Task LoadCPlusPlusDataAsync()
-        {
-            CourseInfoModels = await _coursesRepository.FindAsync(p => p.CourseName == CourceNames.CPlusPlus.ToString());
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string info = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
+        #endregion
     }
 }

@@ -3,6 +3,7 @@
     using ServiceStack.DataAnnotations;
     using System;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
     public class CourseInfoModel : INotifyPropertyChanged
@@ -13,8 +14,8 @@
         private DateTime endDate;
         [Unique]
         public int Id { get; set; }
-        [Required]
-        [StringLength(30, MinimumLength = 2)]
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.StringLength(30, MinimumLength = 2)]
         public string CourseName
         {
             get
@@ -40,7 +41,7 @@
                 OnPropertyChanged("AuthorName");
             }
         }
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public DateTime StartDate
         {
             get

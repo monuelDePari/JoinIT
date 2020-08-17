@@ -10,17 +10,23 @@
 
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
+        #region fields
+        public DbContext DbContext;
+        public DbSet<TEntity> DbSet;
+        #endregion
+        #region constructors
         public BaseRepository(DbContext context)
         {
             DbContext = context;
             DbSet = DbContext.Set<TEntity>();
         }
+        #endregion
+        #region methods
         public Task AddAsync(TEntity entity)
         {
             DbContext.Set<TEntity>().Add(entity);
             return DbContext.SaveChangesAsync();
         }
-
         public Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
             DbContext.Set<TEntity>().AddRange(entities);
@@ -59,7 +65,6 @@
             DbContext.Entry(entity).State = EntityState.Modified;
             return DbContext.SaveChangesAsync();
         }
-        public DbContext DbContext;
-        public DbSet<TEntity> DbSet;
+        #endregion
     }
 }

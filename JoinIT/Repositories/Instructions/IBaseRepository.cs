@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     public interface IBaseRepository<TEntity> where TEntity : class
     {
+        #region methods
         Task<TEntity> GetByIdAsync(int id);
         Task<List<TEntity>> GetAllAsync();
         Task<List<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
@@ -14,5 +15,6 @@
         Task UpdateAsync(TEntity entity);
         Task RemoveAsync(TEntity entity);
         Task RemoveRangeAsync(IEnumerable<TEntity> entities);
+        #endregion
     }
 }

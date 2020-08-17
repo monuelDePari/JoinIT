@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
-    class JavaTabViewModel
+    class ITBaseTabViewModel
     {
+        // This Tab must containt definition for all other kind of tabs
     }
 }

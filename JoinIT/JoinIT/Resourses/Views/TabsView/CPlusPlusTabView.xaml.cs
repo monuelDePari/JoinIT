@@ -1,6 +1,6 @@
 ﻿using JoinIT.Resourses.Enums;
 using JoinIT.Resourses.Utilities;
-using JoinIT.Resourses.ViewModels.Tabs;
+using JoinIT.Resourses.ViewModels.TabsViewModels;
 using Models;
 using Repositories;
 using Repositories.Instructions;
@@ -36,7 +36,7 @@ namespace JoinIT.Resourses.Views.TabsView
         private async void CPlusPlusTab_Loaded(object sender, RoutedEventArgs e)
         {
             var cPlusPlusViewModel = (CPlusPlusTabViewModel)DataContext;
-            await cPlusPlusViewModel.LoadCPlusPlusDataAsync();
+            await cPlusPlusViewModel.LoadDataAsync(CourseNames.CPlusPlus.ToString());
         }
     }
 }

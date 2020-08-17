@@ -1,6 +1,6 @@
 ﻿using JoinIT.Resourses.Enums;
 using JoinIT.Resourses.Utilities;
-using JoinIT.Resourses.ViewModels.Tabs;
+using JoinIT.Resourses.ViewModels.TabsViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -40,7 +40,7 @@ namespace JoinIT.Resourses.Views.TabsView
             var cSharpTabViewModel = DataContext as CSharpTabViewModel;
             if (cSharpTabViewModel != null)
             {
-                await cSharpTabViewModel.LoadDataAsync(CourceNames.CSharp.ToString());
+                await cSharpTabViewModel.LoadDataAsync(CourseNames.CSharp.ToString());
             }
         }
     }

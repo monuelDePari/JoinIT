@@ -2,7 +2,7 @@
 
 namespace JoinIT.Resourses.Enums
 {
-    public enum CourceNames
+    public enum CourseNames
     {
         CSharp,
         CPlusPlus,
