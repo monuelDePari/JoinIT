@@ -1,4 +1,4 @@
-﻿namespace JoinIT
+﻿namespace JoinIT.Resourses.Views
 {
     using JoinIT.Resourses.Utilities;
     using JoinIT.Resourses.ViewModels.TabsViewModels;
@@ -7,12 +7,12 @@
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for Courses.xaml
+    /// Interaction logic for CoursesView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class Courses : UserControl
+    public partial class CoursesView : UserControl
     {
-        public Courses()
+        public CoursesView()
         {
             InitializeComponent();
         }

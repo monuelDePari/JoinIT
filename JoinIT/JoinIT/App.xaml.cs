@@ -20,7 +20,7 @@
             IUnityContainer unityContainer = ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>();
 
             var startupViewModel = ITUnityContainer.GetInstance.Resolve<StartupViewModel>();
-            var window = new Startup { DataContext = startupViewModel };
+            var window = new StartupView { DataContext = startupViewModel };
             window.Show();
         }
     }

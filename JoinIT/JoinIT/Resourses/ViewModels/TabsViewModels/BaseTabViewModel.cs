@@ -9,13 +9,13 @@ namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
     public class BaseTabViewModel : INotifyPropertyChanged
     {
-        #region fields
+        #region Fields
         protected ICoursesRepository _coursesRepository;
 
         private IEnumerable<CourseInfoModel> _courseInfoModels;
         #endregion
 
-        #region properties
+        #region Properties
         public IEnumerable<CourseInfoModel> CourseInfoModels
         {
             get
@@ -30,21 +30,21 @@ namespace JoinIT.Resourses.ViewModels.TabsViewModels
         }
         #endregion
 
-        #region constructors
+        #region Constructors
         public BaseTabViewModel(ICoursesRepository coursesRepository)
         {
             _coursesRepository = coursesRepository;
         }
         #endregion
 
-        #region methods
+        #region Methods
         public async Task LoadDataAsync(string tabName)
         {
             CourseInfoModels = await _coursesRepository.FindAsync(t => t.CourseName == tabName);
         }
         #endregion
 
-        #region events
+        #region Events
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string info = "")

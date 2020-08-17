@@ -4,8 +4,11 @@ namespace JoinIT.Resourses.Utilities
 {
     public class ITUnityContainer
     {
+        #region Fields
         private static IUnityContainer _instance;
+        #endregion
 
+        #region Constructors
         public static IUnityContainer GetInstance
         {
             get
@@ -18,5 +21,6 @@ namespace JoinIT.Resourses.Utilities
                 return _instance;
             }
         }
+        #endregion
     }
 }
