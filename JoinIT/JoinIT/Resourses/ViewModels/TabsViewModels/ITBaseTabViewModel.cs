@@ -16,8 +16,6 @@
         #endregion
 
         #region Properties
-        public bool IsLoaded { get; private set; }
-
         public IEnumerable<CourseInfoModel> CourseInfoModels
         {
             get
@@ -27,7 +25,7 @@
             set
             {
                 _courseInfoModels = value;
-                OnPropertyChanged("CourseInfoModels");
+                OnPropertyChanged();
             }
         }
         #endregion
@@ -42,20 +40,11 @@
         #region Methods
         public async Task LoadDataAsync(string tabName)
         {
-            if (!IsLoaded)
+            if (CourseInfoModels == null)
             {
                 CourseInfoModels = await _coursesRepository.FindAsync(t => t.CourseName == tabName);
-                IsLoaded = true;
             }
-        }
-        public async Task LoadDataAsync()
-        {
-            if (!IsLoaded)
-            {
-                CourseInfoModels = await _coursesRepository.GetAllAsync();
-                IsLoaded = true;
-            }
-        }
+        } 
         #endregion
 
         #region Events
@@ -65,7 +54,6 @@
         {
             if (PropertyChanged != null)
             {
-                IsLoaded = false;
                 PropertyChanged(this, new PropertyChangedEventArgs(info));
             }
         }

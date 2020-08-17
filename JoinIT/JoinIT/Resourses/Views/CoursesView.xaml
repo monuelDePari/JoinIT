@@ -38,13 +38,13 @@
                     <DatePicker x:Name="StartDate"
                             FirstDayOfWeek="Monday" 
                             Margin="10"
-                            Text="{Binding StartDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                            Text="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </DatePicker>
                     <TextBlock Text="End Date"/>
                     <DatePicker x:Name="EndDate"
                             FirstDayOfWeek="Monday" 
                             Margin="10"
-                            Text="{Binding EndDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                            Text="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" 

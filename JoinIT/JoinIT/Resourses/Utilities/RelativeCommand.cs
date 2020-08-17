@@ -1,4 +1,4 @@
-﻿namespace JoinIT.Resourses.ViewModels
+﻿namespace JoinIT.Resourses.Utilities
 {
     using System;
     using System.Windows.Input;

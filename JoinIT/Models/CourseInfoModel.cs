@@ -24,7 +24,7 @@
             set
             {
                 courseName = value;
-                OnPropertyChanged("CourseName");
+                OnPropertyChanged();
                 
             }
         }
@@ -37,7 +37,7 @@
             set
             {
                 authorName = value;
-                OnPropertyChanged("AuthorName");
+                OnPropertyChanged();
             }
         }
         [System.ComponentModel.DataAnnotations.Required]
@@ -50,7 +50,7 @@
             set
             {
                 startDate = value;
-                OnPropertyChanged("StartDate");
+                OnPropertyChanged();
             }
         }
         [System.ComponentModel.DataAnnotations.Required]
@@ -63,7 +63,7 @@
             set
             {
                 endDate = value;
-                OnPropertyChanged("EndDate");
+                OnPropertyChanged();
             }
         }
 
@@ -72,7 +72,9 @@
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
+            {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
         }
     }
 }

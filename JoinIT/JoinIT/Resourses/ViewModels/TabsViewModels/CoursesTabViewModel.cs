@@ -1,6 +1,6 @@
 ﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
-
+    using JoinIT.Resourses.Utilities;
     using Models;
     using Repositories.Instructions;
     using System;
@@ -18,7 +18,7 @@
             set
             {
                 courseInfoModel.CourseName = value;
-                OnPropertyChanged("CourseName");
+                OnPropertyChanged();
             }
         }
 
@@ -28,7 +28,7 @@
             set
             {
                 courseInfoModel.AuthorName = value;
-                OnPropertyChanged("AuthorName");
+                OnPropertyChanged();
             }
         }
 
@@ -38,7 +38,7 @@
             set
             {
                 courseInfoModel.StartDate = value;
-                OnPropertyChanged("StartDate");
+                OnPropertyChanged();
             }
         }
 
@@ -48,7 +48,7 @@
             set
             {
                 courseInfoModel.EndDate = value;
-                OnPropertyChanged("EndDate");
+                OnPropertyChanged();
             }
         }
         #endregion
@@ -58,6 +58,8 @@
         {
             _coursesRepository = coursesRepository;
             courseInfoModel = new CourseInfoModel();
+            courseInfoModel.StartDate = DateTime.Now;
+            courseInfoModel.EndDate = DateTime.Now;
         }
         #endregion
 

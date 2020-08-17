@@ -30,14 +30,6 @@
             ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
 
             DataContext = ITUnityContainer.GetInstance.Resolve<CoursesTabViewModel>();
-
-            Loaded += CoursesTab_Loaded;
-        }
-
-        private async void CoursesTab_Loaded(object sender, RoutedEventArgs e)
-        {
-            var coursesTabViewModel = (CoursesTabViewModel)DataContext;
-            await coursesTabViewModel.LoadDataAsync();
         }
     }
 }

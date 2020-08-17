@@ -81,8 +81,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Resourses\Enums\CourseNames.cs" />
+    <Compile Include="Resourses\Utilities\AsyncCommand.cs" />
     <Compile Include="Resourses\Utilities\ITUnityContainer.cs" />
-    <Compile Include="Resourses\ViewModels\RelativeCommand.cs" />
+    <Compile Include="Resourses\Utilities\RelativeCommand.cs" />
     <Compile Include="Resourses\ViewModels\StartupViewModel.cs" />
     <Compile Include="Resourses\ViewModels\TabsViewModels\BaseTabViewModel.cs" />
     <Compile Include="Resourses\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
