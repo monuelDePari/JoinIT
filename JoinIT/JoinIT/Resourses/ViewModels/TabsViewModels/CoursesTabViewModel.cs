@@ -1,11 +1,10 @@
-﻿using JoinIT.Resourses.ViewModels.Instructions;
-using Models;
-using Repositories.Instructions;
-using System;
-using System.Windows.Input;
-
-namespace JoinIT.Resourses.ViewModels.TabsViewModels
+﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
+
+    using Models;
+    using Repositories.Instructions;
+    using System;
+
     public class CoursesTabViewModel : BaseTabViewModel
     {
         #region Fields

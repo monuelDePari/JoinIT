@@ -1,12 +1,7 @@
-﻿using Models;
-using Repositories.Instructions;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
-namespace JoinIT.Resourses.ViewModels.TabsViewModels
+﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
+    using Repositories.Instructions;
+
     public class BaseTabViewModel : ITBaseTabViewModel
     {
 

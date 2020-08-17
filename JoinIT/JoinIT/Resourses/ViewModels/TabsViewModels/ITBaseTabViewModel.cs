@@ -1,15 +1,12 @@
-﻿using Models;
-using Repositories.Instructions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JoinIT.Resourses.ViewModels.TabsViewModels
+﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
+    using Models;
+    using Repositories.Instructions;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Threading.Tasks;
+
     public class ITBaseTabViewModel : INotifyPropertyChanged
     {
         #region Fields
