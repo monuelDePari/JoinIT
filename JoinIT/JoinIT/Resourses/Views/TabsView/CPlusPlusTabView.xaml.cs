@@ -15,12 +15,12 @@ using Unity.Lifetime;
 namespace JoinIT.Resourses.Views.TabsView
 {
     /// <summary>
-    /// Interaction logic for CPlusPlusTab.xaml
+    /// Interaction logic for CPlusPlusTabView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CPlusPlusTab
+    public partial class CPlusPlusTabView
     {
-        public CPlusPlusTab()
+        public CPlusPlusTabView()
         {
             InitializeComponent();
 

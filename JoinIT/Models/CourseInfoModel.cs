@@ -3,7 +3,6 @@
     using ServiceStack.DataAnnotations;
     using System;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
     public class CourseInfoModel : INotifyPropertyChanged
@@ -54,6 +53,7 @@
                 OnPropertyChanged("StartDate");
             }
         }
+        [System.ComponentModel.DataAnnotations.Required]
         public DateTime EndDate
         {
             get

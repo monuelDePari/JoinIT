@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tabs="clr-namespace:JoinIT.Resourses.ViewModels.TabsViewModels"
         xmlns:local="clr-namespace:JoinIT"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
         Height="450" Width="800">
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
@@ -22,38 +24,38 @@
             <StackPanel Orientation="Vertical" 
                         HorizontalAlignment="Center" 
                         Margin="10">
-                <TextBlock Text="Name"/>
-                <TextBox Margin="10" 
-                         VerticalAlignment="Center"/>
-                <TextBlock Text="Author Name"/>
-                <TextBox Margin="10"
-                         VerticalAlignment="Center"/>
-                <TextBlock Text="Start Date"/>
-                <DatePicker x:Name="StartDate"
+                <StackPanel>
+                    <TextBlock Text="Name"/>
+                    <TextBox Margin="10" 
+                         VerticalAlignment="Center"
+                         Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Author Name"/>
+                    <TextBox Margin="10"
+                         VerticalAlignment="Center"
+                         Text="{Binding AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Start Date"/>
+                    <DatePicker x:Name="StartDate"
                             FirstDayOfWeek="Monday" 
-                            Margin="10">
-                    <DatePicker.BlackoutDates>
-                        <CalendarDateRange Start="9/1/2020" End="12/31/2020"></CalendarDateRange>
-                    </DatePicker.BlackoutDates>
-                </DatePicker>
-                <TextBlock Text="End Date"/>
-                <DatePicker x:Name="EndDate"
+                            Margin="10"
+                            Text="{Binding StartDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                    </DatePicker>
+                    <TextBlock Text="End Date"/>
+                    <DatePicker x:Name="EndDate"
                             FirstDayOfWeek="Monday" 
-                            Margin="10">
-                    <DatePicker.BlackoutDates>
-                        <CalendarDateRange Start="5/1/2020" End="5/31/2020"></CalendarDateRange>
-                    </DatePicker.BlackoutDates>
-                </DatePicker>
-                <TextBlock Text="Teachers Password"/>
+                            Margin="10"
+                            Text="{Binding EndDate, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                    </DatePicker>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" 
                             Margin="10" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Button x:Name="Create"
-                            Content="Create"
+                    <Button x:Name="Register"
+                            Content="Register"
                             Margin="10"
                             VerticalAlignment="Bottom"
-                            MinWidth="90"/>
+                            MinWidth="90"
+                            Command="{Binding AddCommand}"/>
                     <Button x:Name="Update"
                             Content="Update" 
                             Margin="10" 

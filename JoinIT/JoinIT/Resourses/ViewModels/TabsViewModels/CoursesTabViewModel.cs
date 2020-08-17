@@ -1,24 +1,81 @@
 ﻿using JoinIT.Resourses.ViewModels.Instructions;
+using Models;
+using Repositories.Instructions;
 using System;
 using System.Windows.Input;
 
 namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
-    public class CoursesTabViewModel : ICoursesTab
+    public class CoursesTabViewModel : BaseTabViewModel
     {
-        #region Constructors
-        public CoursesTabViewModel()
+        #region Fields
+        private CourseInfoModel courseInfoModel;
+        #endregion
+
+        #region Properties
+        public string CourseName
         {
-            CloseCommand = new RelativeCommand(p => CloseRequested.Invoke(this, EventArgs.Empty));
+            get { return courseInfoModel.CourseName; }
+            set
+            {
+                courseInfoModel.CourseName = value;
+                OnPropertyChanged("CourseName");
+            }
+        }
+
+        public string AuthorName
+        {
+            get { return courseInfoModel.AuthorName; }
+            set
+            {
+                courseInfoModel.AuthorName = value;
+                OnPropertyChanged("AuthorName");
+            }
+        }
+
+        public DateTime StartDate
+        {
+            get { return courseInfoModel.StartDate; }
+            set
+            {
+                courseInfoModel.StartDate = value;
+                OnPropertyChanged("StartDate");
+            }
+        }
+
+        public DateTime EndDate
+        {
+            get { return courseInfoModel.EndDate.Date; }
+            set
+            {
+                courseInfoModel.EndDate = value;
+                OnPropertyChanged("EndDate");
+            }
+        }
+        #endregion
+
+        #region Constructors
+        public CoursesTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
+        {
+            _coursesRepository = coursesRepository;
+            courseInfoModel = new CourseInfoModel();
         }
         #endregion
 
         #region Commands
-        public ICommand CloseCommand { get; private set; }
-        #endregion
-
-        #region Events
-        public event EventHandler CloseRequested;
+        private RelativeCommand addCommand;
+        public RelativeCommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                  (addCommand = new RelativeCommand(obj =>
+                  {
+                       _coursesRepository.AddAsync(courseInfoModel);
+                  }));
+            }
+        }
         #endregion
     }
 }
+

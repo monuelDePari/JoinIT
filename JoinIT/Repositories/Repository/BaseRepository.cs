@@ -14,6 +14,7 @@
         public DbContext DbContext;
         public DbSet<TEntity> DbSet;
         #endregion
+
         #region constructors
         public BaseRepository(DbContext context)
         {
@@ -21,6 +22,7 @@
             DbSet = DbContext.Set<TEntity>();
         }
         #endregion
+
         #region methods
         public Task AddAsync(TEntity entity)
         {

@@ -85,7 +85,7 @@
                 <tabs:CoursesView/>
             </TabItem>
             <TabItem Header="CPlusPlusTab">
-                <tabsview:CPlusPlusTab/>
+                <tabsview:CPlusPlusTabView/>
             </TabItem>
         </TabControl>
     </Grid>

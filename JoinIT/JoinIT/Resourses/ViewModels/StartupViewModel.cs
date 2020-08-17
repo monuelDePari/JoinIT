@@ -11,10 +11,10 @@
         #region Constructors
         public StartupViewModel()
         {
-            NewCoursesTabCommand = new RelativeCommand(p => NewCoursesTab());
-            CoursesTabs = new ObservableCollection<CoursesTabViewModel>();
+            //NewCoursesTabCommand = new RelativeCommand(p => NewCoursesTab());
+            //CoursesTabs = new ObservableCollection<CoursesTabViewModel>();
 
-            CoursesTabs.CollectionChanged += CoursesTabsCollectionChanged;
+            //CoursesTabs.CollectionChanged += CoursesTabsCollectionChanged;
         }
         #endregion
 
@@ -27,10 +27,6 @@
         #endregion
 
         #region Methods
-        private void NewCoursesTab()
-        {
-            CoursesTabs.Add(new CoursesTabViewModel());
-        }
 
         private void CoursesTabsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

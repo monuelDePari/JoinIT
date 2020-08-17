@@ -21,12 +21,12 @@ using Unity;
 namespace JoinIT.Resourses.Views.TabsView
 {
     /// <summary>
-    /// Interaction logic for CSharpView.xaml
+    /// Interaction logic for CSharpTabView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CSharpView : UserControl
+    public partial class CSharpTabView : UserControl
     {
-        public CSharpView()
+        public CSharpTabView()
         {
             InitializeComponent();
 
