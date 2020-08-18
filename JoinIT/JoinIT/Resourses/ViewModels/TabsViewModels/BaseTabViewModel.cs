@@ -8,7 +8,7 @@
         #region Constructors
         public BaseTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
-            _coursesRepository = coursesRepository;
+            CoursesRepository = coursesRepository;
         }
         #endregion
     }

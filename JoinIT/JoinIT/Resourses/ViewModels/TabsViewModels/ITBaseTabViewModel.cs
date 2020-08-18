@@ -10,7 +10,7 @@
     public class ITBaseTabViewModel : INotifyPropertyChanged
     {
         #region Fields
-        protected ICoursesRepository _coursesRepository;
+        protected ICoursesRepository CoursesRepository;
 
         protected IEnumerable<CourseInfoModel> _courseInfoModels;
         #endregion
@@ -33,7 +33,7 @@
         #region Constructors
         public ITBaseTabViewModel(ICoursesRepository coursesRepository)
         {
-            _coursesRepository = coursesRepository;
+            CoursesRepository = coursesRepository;
         }
         #endregion
 
@@ -42,7 +42,7 @@
         {
             if (CourseInfoModels == null)
             {
-                CourseInfoModels = await _coursesRepository.FindAsync(t => t.CourseName == tabName);
+                CourseInfoModels = await CoursesRepository.FindAsync(t => t.CourseName == tabName);
             }
         } 
         #endregion

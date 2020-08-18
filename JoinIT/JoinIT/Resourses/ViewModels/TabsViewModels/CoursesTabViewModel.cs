@@ -8,46 +8,46 @@
     public class CoursesTabViewModel : BaseTabViewModel
     {
         #region Fields
-        private CourseInfoModel courseInfoModel;
+        private CourseInfoModel _courseInfoModel;
         #endregion
 
         #region Properties
         public string CourseName
         {
-            get { return courseInfoModel.CourseName; }
+            get { return _courseInfoModel.CourseName; }
             set
             {
-                courseInfoModel.CourseName = value;
+                _courseInfoModel.CourseName = value;
                 OnPropertyChanged();
             }
         }
 
         public string AuthorName
         {
-            get { return courseInfoModel.AuthorName; }
+            get { return _courseInfoModel.AuthorName; }
             set
             {
-                courseInfoModel.AuthorName = value;
+                _courseInfoModel.AuthorName = value;
                 OnPropertyChanged();
             }
         }
 
         public DateTime StartDate
         {
-            get { return courseInfoModel.StartDate; }
+            get { return _courseInfoModel.StartDate; }
             set
             {
-                courseInfoModel.StartDate = value;
+                _courseInfoModel.StartDate = value;
                 OnPropertyChanged();
             }
         }
 
         public DateTime EndDate
         {
-            get { return courseInfoModel.EndDate.Date; }
+            get { return _courseInfoModel.EndDate.Date; }
             set
             {
-                courseInfoModel.EndDate = value;
+                _courseInfoModel.EndDate = value;
                 OnPropertyChanged();
             }
         }
@@ -56,10 +56,10 @@
         #region Constructors
         public CoursesTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
-            _coursesRepository = coursesRepository;
-            courseInfoModel = new CourseInfoModel();
-            courseInfoModel.StartDate = DateTime.Now;
-            courseInfoModel.EndDate = DateTime.Now;
+            CoursesRepository = coursesRepository;
+            _courseInfoModel = new CourseInfoModel();
+            _courseInfoModel.StartDate = DateTime.Now;
+            _courseInfoModel.EndDate = DateTime.Now;
         }
         #endregion
 
@@ -72,7 +72,7 @@
                 return addCommand ??
                   (addCommand = new AsyncCommand(async () =>
                   {
-                       await _coursesRepository.AddAsync(courseInfoModel);
+                       await CoursesRepository.AddAsync(_courseInfoModel);
                   }));
             }
         }

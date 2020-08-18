@@ -5,8 +5,8 @@
     public class RelativeCommand : ICommand
     {
         #region Fields
-        private readonly Action<object> actionCommand;
-        private readonly Predicate<object> predicateCommand;
+        private readonly Action<object> _actionCommand;
+        private readonly Predicate<object> _predicateCommand;
         #endregion
 
         #region Constructors
@@ -14,8 +14,8 @@
 
         public RelativeCommand(Action<object> action, Predicate<Object> predicate)
         {
-            actionCommand = action;
-            predicateCommand = predicate;
+            _actionCommand = action;
+            _predicateCommand = predicate;
         }
         #endregion
 
@@ -30,12 +30,12 @@
         #region Methods
         public bool CanExecute(object parameter)
         {
-            return predicateCommand == null || predicateCommand(parameter);
+            return _predicateCommand == null || _predicateCommand(parameter);
         }
 
         public void Execute(object parameter)
         {
-            actionCommand(parameter);
+            _actionCommand(parameter);
         }
         #endregion
     }

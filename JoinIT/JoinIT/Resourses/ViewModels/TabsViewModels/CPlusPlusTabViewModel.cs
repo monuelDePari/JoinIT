@@ -7,7 +7,7 @@
         #region constructors
         public CPlusPlusTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
-            _coursesRepository = coursesRepository;
+            CoursesRepository = coursesRepository;
         }
         #endregion
     }
