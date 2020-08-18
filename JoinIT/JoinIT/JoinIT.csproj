@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Resourses\Enums\CourseNames.cs" />
     <Compile Include="Resourses\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resourses\Utilities\IAsyncCommand.cs" />
     <Compile Include="Resourses\Utilities\ITUnityContainer.cs" />
     <Compile Include="Resourses\Utilities\RelativeCommand.cs" />
     <Compile Include="Resourses\ViewModels\StartupViewModel.cs" />

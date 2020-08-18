@@ -64,15 +64,15 @@
         #endregion
 
         #region Commands
-        private RelativeCommand addCommand;
-        public RelativeCommand AddCommand
+        private AsyncCommand addCommand;
+        public AsyncCommand AddCommand
         {
             get
             {
                 return addCommand ??
-                  (addCommand = new RelativeCommand(obj =>
+                  (addCommand = new AsyncCommand(async () =>
                   {
-                       _coursesRepository.AddAsync(courseInfoModel);
+                       await _coursesRepository.AddAsync(courseInfoModel);
                   }));
             }
         }
