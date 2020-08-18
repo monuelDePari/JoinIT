@@ -21,7 +21,7 @@
         {
             base.OnStartup(e);
 
-            IUnityContainer unityContainer = ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>();
+            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>();
 
             ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
