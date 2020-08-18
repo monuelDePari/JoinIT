@@ -9,8 +9,12 @@ namespace JoinIT.Resourses.Utilities
 {
     public class AsyncCommand : IAsyncCommand
     {
+        #region Fields
         private readonly Func<Task> _command;
         private readonly Predicate<object> _predicate;
+        #endregion
+
+        #region Constructors
         public AsyncCommand(Func<Task> command)
         {
             _command = command;
@@ -20,6 +24,9 @@ namespace JoinIT.Resourses.Utilities
             _command = command;
             _predicate = predicate;
         }
+        #endregion
+
+        #region Methods
         public bool CanExecute(object parameter)
         {
             return _predicate == null || _predicate(parameter);
@@ -37,9 +44,6 @@ namespace JoinIT.Resourses.Utilities
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-        protected void RaiseCanExecuteChanged()
-        {
-            CommandManager.InvalidateRequerySuggested();
-        }
+        #endregion
     }
 }

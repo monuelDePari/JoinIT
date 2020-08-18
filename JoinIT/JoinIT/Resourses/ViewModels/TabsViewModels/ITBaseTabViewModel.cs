@@ -12,7 +12,7 @@
         #region Fields
         protected ICoursesRepository CoursesRepository;
 
-        protected IEnumerable<CourseInfoModel> _courseInfoModels;
+        private IEnumerable<CourseInfoModel> _courseInfoModels;
         #endregion
 
         #region Properties
