@@ -161,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\Convertors\" />
-    <Folder Include="Resourses\ViewModels\Instructions\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />
