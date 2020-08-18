@@ -9,7 +9,7 @@ namespace JoinIT.Resourses.Utilities
         #endregion
 
         #region Constructors
-        public static IUnityContainer GetInstance
+        public static IUnityContainer Instance
         {
             get
             {

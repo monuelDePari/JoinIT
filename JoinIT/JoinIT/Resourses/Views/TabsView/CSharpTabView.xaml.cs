@@ -30,7 +30,7 @@ namespace JoinIT.Resourses.Views.TabsView
         {
             InitializeComponent();
 
-            DataContext = ITUnityContainer.GetInstance.Resolve<CSharpTabViewModel>();
+            DataContext = ITUnityContainer.Instance.Resolve<CSharpTabViewModel>();
 
             Loaded += CSharpTab_Loaded;
         }

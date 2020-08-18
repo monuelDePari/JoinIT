@@ -24,7 +24,7 @@ namespace JoinIT.Resourses.Views.TabsView
         {
             InitializeComponent();
 
-            DataContext = ITUnityContainer.GetInstance.Resolve<CPlusPlusTabViewModel>();
+            DataContext = ITUnityContainer.Instance.Resolve<CPlusPlusTabViewModel>();
 
             Loaded += CPlusPlusTab_Loaded;
         }

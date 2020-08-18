@@ -21,13 +21,13 @@
         {
             base.OnStartup(e);
 
-            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>();
+            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>();
 
-            ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
+            ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
-            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
+            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
 
-            var startupViewModel = ITUnityContainer.GetInstance.Resolve<StartupViewModel>();
+            var startupViewModel = ITUnityContainer.Instance.Resolve<StartupViewModel>();
             var window = new StartupView { DataContext = startupViewModel };
             window.Show();
         }

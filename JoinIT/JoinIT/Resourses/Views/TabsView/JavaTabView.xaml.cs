@@ -18,7 +18,7 @@ namespace JoinIT.Resourses.Views.TabsView
         {
             InitializeComponent();
 
-            ITUnityContainer.GetInstance.Resolve<JavaTabViewModel>();
+            ITUnityContainer.Instance.Resolve<JavaTabViewModel>();
 
             Loaded += JavaTab_Loaded;
         }

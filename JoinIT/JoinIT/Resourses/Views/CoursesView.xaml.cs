@@ -25,7 +25,7 @@
         {
             InitializeComponent();
 
-            DataContext = ITUnityContainer.GetInstance.Resolve<CoursesTabViewModel>();
+            DataContext = ITUnityContainer.Instance.Resolve<CoursesTabViewModel>();
         }
     }
 }
