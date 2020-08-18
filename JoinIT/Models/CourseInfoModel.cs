@@ -2,16 +2,79 @@
 {
     using ServiceStack.DataAnnotations;
     using System;
-    public class CourseInfoModel
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public class CourseInfoModel : INotifyPropertyChanged
     {
+        private string courseName;
+        private string authorName;
+        private DateTime startDate;
+        private DateTime endDate;
         [Unique]
         public int Id { get; set; }
-        [Required]
-        [StringLength(30, MinimumLength = 2)]
-        public string CourseName { get; set; }
-        public string AuthorName { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.StringLength(30, MinimumLength = 2)]
+        public string CourseName
+        {
+            get
+            {
+                return courseName;
+            }
+            set
+            {
+                courseName = value;
+                OnPropertyChanged();
+                
+            }
+        }
+        public string AuthorName
+        {
+            get
+            {
+                return authorName;
+            }
+            set
+            {
+                authorName = value;
+                OnPropertyChanged();
+            }
+        }
+        [System.ComponentModel.DataAnnotations.Required]
+        public DateTime StartDate
+        {
+            get
+            {
+                return startDate;
+            }
+            set
+            {
+                startDate = value;
+                OnPropertyChanged();
+            }
+        }
+        [System.ComponentModel.DataAnnotations.Required]
+        public DateTime EndDate
+        {
+            get
+            {
+                return endDate;
+            }
+            set
+            {
+                endDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
     }
 }

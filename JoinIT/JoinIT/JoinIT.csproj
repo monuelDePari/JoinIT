@@ -34,15 +34,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>5.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,10 +80,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Resourses\Views\Startup.xaml.cs">
-      <DependentUpon>Startup.xaml</DependentUpon>
+    <Compile Include="Resourses\Enums\CourseNames.cs" />
+    <Compile Include="Resourses\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resourses\Utilities\IAsyncCommand.cs" />
+    <Compile Include="Resourses\Utilities\ITUnityContainer.cs" />
+    <Compile Include="Resourses\Utilities\RelativeCommand.cs" />
+    <Compile Include="Resourses\ViewModels\StartupViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\BaseTabViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\CPlusPlusTabViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
+    <Compile Include="Resourses\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
+    <Compile Include="Resourses\Views\StartupView.xaml.cs">
+      <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resourses\Views\Courses.xaml">
+    <Compile Include="Resourses\Views\TabsView\CPlusPlusTabView.xaml.cs">
+      <DependentUpon>CPlusPlusTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\Views\TabsView\CSharpTabView.xaml.cs">
+      <DependentUpon>CSharpTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\Views\TabsView\JavaTabView.xaml.cs">
+      <DependentUpon>JavaTabView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resourses\Views\CoursesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -79,10 +112,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resourses\Views\Courses.xaml.cs">
-      <DependentUpon>Courses.xaml</DependentUpon>
+    <Compile Include="Resourses\Views\CoursesView.xaml.cs">
+      <DependentUpon>CoursesView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resourses\Views\Startup.xaml">
+    <Page Include="Resourses\Views\StartupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\Views\TabsView\CPlusPlusTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\Views\TabsView\CSharpTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\Views\TabsView\JavaTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,7 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\Convertors\" />
-    <Folder Include="Resourses\ViewModels\" />
+    <Folder Include="Resourses\ViewModels\Instructions\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />
@@ -126,6 +171,19 @@
     <Resource Include="Resourses\Assets\LanguageImage.png" />
     <Resource Include="Resourses\Assets\ReadInformationAboutStudentsImage.png" />
     <Resource Include="Resourses\Assets\UpdateStudentsImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Assets\CloseButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ac3d750b-c7cc-476b-adae-0631fb285779}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{eae1be5e-40b5-4432-92f8-6ea6fdc5ba4d}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

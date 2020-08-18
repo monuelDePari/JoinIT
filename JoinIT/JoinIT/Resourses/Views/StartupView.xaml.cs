@@ -1,17 +1,20 @@
 ﻿namespace JoinIT.Resourses.Views
 {
+    using JoinIT.Resourses.ViewModels;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for Startup.xaml
+    /// Interaction logic for StartupView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class Startup : Window
+    public partial class StartupView : Window
     {
-        public Startup()
+        public StartupView()
         {
             InitializeComponent();
+
+            DataContext = new StartupViewModel();
         }
     }
 }
