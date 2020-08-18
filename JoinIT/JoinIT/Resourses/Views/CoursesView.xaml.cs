@@ -25,10 +25,6 @@
         {
             InitializeComponent();
 
-            ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
-
-            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
-
             DataContext = ITUnityContainer.GetInstance.Resolve<CoursesTabViewModel>();
         }
     }

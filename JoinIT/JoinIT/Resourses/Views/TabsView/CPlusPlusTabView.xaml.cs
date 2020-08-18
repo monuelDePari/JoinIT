@@ -24,10 +24,6 @@ namespace JoinIT.Resourses.Views.TabsView
         {
             InitializeComponent();
 
-            ITUnityContainer.GetInstance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
-
-            ITUnityContainer.GetInstance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
-
             DataContext = ITUnityContainer.GetInstance.Resolve<CPlusPlusTabViewModel>();
 
             Loaded += CPlusPlusTab_Loaded;

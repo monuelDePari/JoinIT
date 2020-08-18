@@ -15,6 +15,11 @@ namespace JoinIT.Resourses.Utilities
         {
             _command = command;
         }
+        public AsyncCommand(Func<Task> command, Predicate<object> predicate)
+        {
+            _command = command;
+            _predicate = predicate;
+        }
         public bool CanExecute(object parameter)
         {
             return _predicate == null || _predicate(parameter);
