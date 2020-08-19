@@ -1,9 +1,12 @@
 ﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
+    using JoinIT.Resourses.Converters;
     using Models;
     using Repositories.Instructions;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
@@ -13,6 +16,7 @@
         protected ICoursesRepository CoursesRepository;
 
         private IEnumerable<CourseInfoModel> _courseInfoModels;
+        private Dictionary<string, string> _courseInfoModelsDictionary;
         #endregion
 
         #region Properties
@@ -28,6 +32,18 @@
                 OnPropertyChanged();
             }
         }
+        public Dictionary<string, string> CourseInfoModelsDictionary
+        {
+            get
+            {
+                return _courseInfoModelsDictionary;
+            }
+            set
+            {
+                _courseInfoModelsDictionary = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Constructors
@@ -35,6 +51,7 @@
         {
             CoursesRepository = coursesRepository;
         }
+        public ITBaseTabViewModel() { }
         #endregion
 
         #region Methods
@@ -43,6 +60,7 @@
             if (CourseInfoModels == null)
             {
                 CourseInfoModels = await CoursesRepository.FindAsync(t => t.CourseName == tabName);
+                CourseInfoModelsDictionary = CoursesInfoModelsConverter.CourseInfoModelsListToDictionary(CourseInfoModels.ToList());
             }
         } 
         #endregion

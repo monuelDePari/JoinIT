@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JoinIT.Resourses.ViewModels.TabsViewModels"
+             xmlns:customControl="clr-namespace:JoinIT.Resourses.Views.Controls"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance local:CPlusPlusTabViewModel}"
              d:DesignHeight="450"
@@ -24,14 +25,8 @@
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="10">
-
-                <DataGrid x:Name="CPlusPlusDataGrid"
-                          HorizontalGridLinesBrush="DarkGray"
-                          RowBackground="LightGray"
-                          AlternatingRowBackground="White"
-                          ItemsSource="{Binding CourseInfoModels}">
-
-                </DataGrid>
+                <customControl:CoursesComboboxControl/>
+                <customControl:CoursesDataGridControl/>
             </StackPanel>
         </StackPanel>
     </Grid>

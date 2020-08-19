@@ -80,8 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resourses\Converters\CoursesInfoModelsConverter.cs" />
     <Compile Include="Resourses\Enums\CourseNames.cs" />
     <Compile Include="Resourses\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resourses\Utilities\ComboboxTemplateSelector.cs" />
     <Compile Include="Resourses\Utilities\IAsyncCommand.cs" />
     <Compile Include="Resourses\Utilities\ITUnityContainer.cs" />
     <Compile Include="Resourses\Utilities\RelativeCommand.cs" />
@@ -92,6 +94,12 @@
     <Compile Include="Resourses\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
     <Compile Include="Resourses\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
     <Compile Include="Resourses\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
+    <Compile Include="Resourses\Views\Controls\CoursesComboboxControl.xaml.cs">
+      <DependentUpon>CoursesComboboxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\Views\Controls\CoursesDataGridControl.xaml.cs">
+      <DependentUpon>CoursesDataGridControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resourses\Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
@@ -104,6 +112,14 @@
     <Compile Include="Resourses\Views\TabsView\JavaTabView.xaml.cs">
       <DependentUpon>JavaTabView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resourses\Views\Controls\CoursesComboboxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\Views\Controls\CoursesDataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resourses\Views\CoursesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,9 +175,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resourses\Convertors\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />
     <Resource Include="Resourses\Assets\CreateNewGroupOfSudentsImage.png" />
