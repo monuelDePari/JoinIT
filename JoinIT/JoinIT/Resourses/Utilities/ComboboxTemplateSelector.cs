@@ -6,6 +6,7 @@
     using System.Windows.Controls;
     class ComboboxTemplateSelector : DataTemplateSelector
     {
+        #region Methods
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             FrameworkElement frameworkElement = container as FrameworkElement;
@@ -22,5 +23,6 @@
             }
             return null;
         }
+        #endregion
     }
 }

@@ -7,6 +7,7 @@
 
     public static class CoursesInfoModelsConverter
     {
+        #region Methods
         public static string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess)
         {
             return ((MemberExpression)memberAccess.Body).Member.Name;
@@ -21,5 +22,6 @@
             }
             return keyValuePairs;
         }
+        #endregion
     }
 }
