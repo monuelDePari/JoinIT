@@ -1,13 +1,14 @@
 ﻿namespace JoinIT.Resourses.ViewModels.TabsViewModels
 {
-    using JoinIT.Resourses.Converters;
     using Models;
     using Repositories.Instructions;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
     public class ITBaseTabViewModel : INotifyPropertyChanged
@@ -55,12 +56,29 @@
         #endregion
 
         #region Methods
+        public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
+        {
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+            var courseInfoModelsProperties = typeof(CourseInfoModel).GetProperties();
+
+            foreach (var item in courseInfoModelsProperties)
+            {
+                keyValuePairs.Add(item.Name.ToString(), Regex.Replace(item.Name.ToString(), "([a-z])([A-Z])", "$1 $2"));
+            }
+
+            return keyValuePairs;
+        }
+
         public async Task LoadDataAsync(string tabName)
         {
             if (CourseInfoModels == null)
             {
                 CourseInfoModels = await CoursesRepository.FindAsync(t => t.CourseName == tabName);
-                CourseInfoModelsDictionary = CoursesInfoModelsConverter.CourseInfoModelsListToDictionary(CourseInfoModels.ToList());
+            }
+
+            if(CourseInfoModelsDictionary == null)
+            {
+                CourseInfoModelsDictionary = CourseInfoModelsListOfPropertiesToDictionary();
             }
         } 
         #endregion

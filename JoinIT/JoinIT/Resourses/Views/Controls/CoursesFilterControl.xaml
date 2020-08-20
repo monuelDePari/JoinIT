@@ -10,11 +10,10 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <UserControl.Resources>
-        
-        <coursesInfo:ITBaseTabViewModel x:Key="CoursesPropertyDataType"/>
-        <dataSelector:ComboboxTemplateSelector x:Key="CoursesDataTemplateSelector"/>
 
-        <DataTemplate x:Key="CourseNamesTemplate">
+        <coursesInfo:ITBaseTabViewModel x:Key="CoursesPropertyDataType"/>
+
+        <DataTemplate x:Key="IdTemplate">
             <DataTemplate.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="FontSize"
@@ -26,11 +25,29 @@
                     Padding="5"
                     Margin="5">
                 <DockPanel HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Path=CourseName}"/>
+                    <TextBox Text="{Binding Id}"/>
+                    <!--<TextBox TextChanged=""/>-->
                 </DockPanel>
             </Border>
         </DataTemplate>
-        <DataTemplate x:Key="StartDatesTemplate">
+
+        <DataTemplate x:Key="NamesTemplate">
+            <DataTemplate.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize"
+                            Value="20"/>
+                </Style>
+            </DataTemplate.Resources>
+            <Border Name="border"
+                    BorderThickness="1"
+                    Padding="5"
+                    Margin="5">
+                <DockPanel HorizontalAlignment="Center">
+                    <!--<TextBox TextChanged=""/>-->
+                </DockPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="DatesTemplate">
             <DataTemplate.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="FontSize"
@@ -50,13 +67,20 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <ComboBox IsTextSearchEnabled="False"
+                      x:Name="ComboboxPropertySelector"
                   IsEditable="True"
                   ItemsSource="{Binding CourseInfoModelsDictionary}"
                   Width="120"
-                  IsDropDownOpen="True"
+                  SelectedIndex="0"
                   StaysOpenOnEdit="True"
-                  SelectedValuePath="Key"
+                  SelectedValuePath="Key"                     
                   DisplayMemberPath="Value"/>
+
+            <ContentControl Content="{Binding ElementName=ComboboxPropertySelector, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <ContentControl.ContentTemplateSelector>
+                    <dataSelector:ComboboxTemplateSelector/>
+                </ContentControl.ContentTemplateSelector>
+            </ContentControl>
         </StackPanel>
     </Grid>
 </UserControl>
