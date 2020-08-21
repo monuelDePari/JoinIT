@@ -39,6 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -56,6 +59,9 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,47 +86,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Resourses\Enums\CourseNames.cs" />
-    <Compile Include="Resourses\LocalDataStore\StaticPropertiesStore.cs" />
-    <Compile Include="Resourses\Utilities\AsyncCommand.cs" />
-    <Compile Include="Resourses\Utilities\ComboboxTemplateSelector.cs" />
-    <Compile Include="Resourses\Utilities\IAsyncCommand.cs" />
-    <Compile Include="Resourses\Utilities\ITUnityContainer.cs" />
-    <Compile Include="Resourses\Utilities\RelativeCommand.cs" />
-    <Compile Include="Resourses\ViewModels\StartupViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\BaseTabViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\CPlusPlusTabViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
-    <Compile Include="Resourses\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
-    <Compile Include="Resourses\Views\Controls\CoursesFilterControl.xaml.cs">
+    <Compile Include="Resources\Enums\CourseNames.cs" />
+    <Compile Include="Resources\ITLocalData\ITConstants.cs" />
+    <Compile Include="Resources\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resources\Utilities\ComboboxTemplateSelector.cs" />
+    <Compile Include="Resources\Utilities\IAsyncCommand.cs" />
+    <Compile Include="Resources\Utilities\ITUnityContainer.cs" />
+    <Compile Include="Resources\Utilities\RelativeCommand.cs" />
+    <Compile Include="Resources\ViewModels\StartupViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\BaseTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\CPlusPlusTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
+    <Compile Include="Resources\Views\Controls\CoursesFilterControl.xaml.cs">
       <DependentUpon>CoursesFilterControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Views\Controls\CoursesDataGridControl.xaml.cs">
+    <Compile Include="Resources\Views\Controls\CoursesDataGridControl.xaml.cs">
       <DependentUpon>CoursesDataGridControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Views\StartupView.xaml.cs">
+    <Compile Include="Resources\Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Views\TabsView\CPlusPlusTabView.xaml.cs">
+    <Compile Include="Resources\Views\TabsView\CPlusPlusTabView.xaml.cs">
       <DependentUpon>CPlusPlusTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Views\TabsView\CSharpTabView.xaml.cs">
+    <Compile Include="Resources\Views\TabsView\CSharpTabView.xaml.cs">
       <DependentUpon>CSharpTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Views\TabsView\JavaTabView.xaml.cs">
+    <Compile Include="Resources\Views\TabsView\JavaTabView.xaml.cs">
       <DependentUpon>JavaTabView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resourses\Views\Controls\CoursesFilterControl.xaml">
+    <Page Include="Resources\Views\Controls\CoursesFilterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Views\Controls\CoursesDataGridControl.xaml">
+    <Page Include="Resources\Views\Controls\CoursesDataGridControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Views\CoursesView.xaml">
+    <Page Include="Resources\Views\CoursesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,22 +134,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resourses\Views\CoursesView.xaml.cs">
+    <Compile Include="Resources\Views\CoursesView.xaml.cs">
       <DependentUpon>CoursesView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resourses\Views\StartupView.xaml">
+    <Page Include="Resources\Views\StartupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Views\TabsView\CPlusPlusTabView.xaml">
+    <Page Include="Resources\Views\TabsView\CPlusPlusTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Views\TabsView\CSharpTabView.xaml">
+    <Page Include="Resources\Views\TabsView\CSharpTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Views\TabsView\JavaTabView.xaml">
+    <Page Include="Resources\Views\TabsView\JavaTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,18 +183,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resourses\Assets\AttachStudentsIcon.png" />
-    <Resource Include="Resourses\Assets\CreateNewGroupOfSudentsImage.png" />
-    <Resource Include="Resourses\Assets\DeleteStudentsImage.png" />
-    <Resource Include="Resourses\Assets\FontSizeImage.png" />
-    <Resource Include="Resourses\Assets\LanguageImage.png" />
-    <Resource Include="Resourses\Assets\ReadInformationAboutStudentsImage.png" />
-    <Resource Include="Resourses\Assets\UpdateStudentsImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Assets\CloseButton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ac3d750b-c7cc-476b-adae-0631fb285779}</Project>
       <Name>Models</Name>
@@ -197,6 +191,16 @@
       <Project>{eae1be5e-40b5-4432-92f8-6ea6fdc5ba4d}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Assets\AttachStudentsIcon.png" />
+    <Resource Include="Resources\Assets\CloseButton.png" />
+    <Resource Include="Resources\Assets\CreateNewGroupOfSudentsImage.png" />
+    <Resource Include="Resources\Assets\DeleteStudentsImage.png" />
+    <Resource Include="Resources\Assets\FontSizeImage.png" />
+    <Resource Include="Resources\Assets\LanguageImage.png" />
+    <Resource Include="Resources\Assets\ReadInformationAboutStudentsImage.png" />
+    <Resource Include="Resources\Assets\UpdateStudentsImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

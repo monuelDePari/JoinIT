@@ -1,8 +1,8 @@
 ﻿namespace JoinIT
 {
-    using JoinIT.Resourses.Utilities;
-    using JoinIT.Resourses.ViewModels;
-    using JoinIT.Resourses.Views;
+    using JoinIT.Resources.Utilities;
+    using JoinIT.Resources.ViewModels;
+    using JoinIT.Resources.Views;
     using Repositories;
     using Repositories.Instructions;
     using Repositories.Repository;
