@@ -2,23 +2,23 @@
 {
     public class ITConstants
     {
-        private const string _idTemplate = "IdTemplate";
-        private const string _namesTemplate = "NamesTemplate";
-        private const string _datesTemplate = "DatesTemplate";
+        public const string idTemplate = "IdTemplate";
+        public const string namesTemplate = "NamesTemplate";
+        public const string datesTemplate = "DatesTemplate";
 
         public string GetIdTemplate()
         {
-            return _idTemplate;
+            return idTemplate;
         }
 
         public string GetNamesTemplate()
         {
-            return _namesTemplate;
+            return namesTemplate;
         }
 
         public string GetDatesTemplate()
         {
-            return _datesTemplate;
+            return datesTemplate;
         }
     }
 }

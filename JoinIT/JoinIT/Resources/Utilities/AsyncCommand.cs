@@ -10,16 +10,16 @@ namespace JoinIT.Resources.Utilities
     public class AsyncCommand : IAsyncCommand
     {
         #region Fields
-        private readonly Func<Task> _command;
+        private readonly Func<object, Task> _command;
         private readonly Predicate<object> _predicate;
         #endregion
 
         #region Constructors
-        public AsyncCommand(Func<Task> command)
+        public AsyncCommand(Func<object, Task> command)
         {
             _command = command;
         }
-        public AsyncCommand(Func<Task> command, Predicate<object> predicate)
+        public AsyncCommand(Func<object, Task> command, Predicate<object> predicate)
         {
             _command = command;
             _predicate = predicate;
@@ -31,9 +31,9 @@ namespace JoinIT.Resources.Utilities
         {
             return _predicate == null || _predicate(parameter);
         }
-        public Task ExecuteAsync(object parameter)
+        public async Task ExecuteAsync(object parameter)
         {
-            return _command();
+            await _command.Invoke(parameter);
         }
         public async void Execute(object parameter)
         {

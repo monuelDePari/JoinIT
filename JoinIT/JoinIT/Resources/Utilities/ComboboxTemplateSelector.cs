@@ -14,23 +14,21 @@
         #region Methods
         public string GetProperTemplateName(string keyProperty)
         {
-            ITConstants propertiesStore = new ITConstants();
-
             var coursesPropertiesToCompare = typeof(CourseInfoModel).GetProperties();
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && propertiesStore.GetIdTemplate().Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.idTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
                 {
-                    return propertiesStore.GetIdTemplate();
+                    return ITConstants.idTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && propertiesStore.GetNamesTemplate().Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.namesTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
                 {
-                    return propertiesStore.GetNamesTemplate();
+                    return ITConstants.namesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && propertiesStore.GetDatesTemplate().Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.datesTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
                 {
-                    return propertiesStore.GetDatesTemplate();
+                    return ITConstants.datesTemplate;
                 }
             }
 

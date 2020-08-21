@@ -12,8 +12,6 @@
              d:DesignWidth="800">
     <UserControl.Resources>
 
-        <coursesInfo:ITBaseTabViewModel x:Key="CoursesPropertyDataType"/>
-
         <DataTemplate x:Key="NamesTemplate">
             <DataTemplate.Resources>
                 <Style TargetType="TextBlock">
@@ -26,10 +24,11 @@
                     Padding="5"
                     Margin="5">
                 <DockPanel HorizontalAlignment="Center">
-                    <TextBox>
+                    <TextBox x:Name="NameTextBox">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding TextChangedCommand}"/>
+                                <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TextChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       CommandParameter="{Binding ElementName=NameTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBox>
@@ -65,9 +64,9 @@
                   ItemsSource="{Binding CourseInfoModelsDictionary}"
                   Width="120"
                   SelectedIndex="0"
+                  SelectedItem="{Binding CourseInfoModelKeyValuePair, UpdateSourceTrigger=PropertyChanged}"
                   StaysOpenOnEdit="True"
-                  SelectedValuePath="Key"                     
-                  DisplayMemberPath="Value"/>
+                  SelectedValuePath="Key"/>
 
             <ContentControl Content="{Binding ElementName=ComboboxPropertySelector, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <ContentControl.ContentTemplateSelector>

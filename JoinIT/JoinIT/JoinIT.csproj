@@ -90,6 +90,7 @@
     <Compile Include="Resources\ITLocalData\ITConstants.cs" />
     <Compile Include="Resources\Utilities\AsyncCommand.cs" />
     <Compile Include="Resources\Utilities\ComboboxTemplateSelector.cs" />
+    <Compile Include="Resources\Utilities\AsyncCommandWithParameter.cs" />
     <Compile Include="Resources\Utilities\IAsyncCommand.cs" />
     <Compile Include="Resources\Utilities\ITUnityContainer.cs" />
     <Compile Include="Resources\Utilities\RelativeCommand.cs" />
