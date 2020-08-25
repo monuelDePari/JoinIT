@@ -5,6 +5,7 @@
     using Models;
     using Repositories.Instructions;
     using System;
+    using System.Threading.Tasks;
 
     public class CoursesTabViewModel : BaseTabViewModel
     {
@@ -13,12 +14,25 @@
         #endregion
 
         #region Properties
+        public CourseInfoModel CourseModel
+        {
+            get
+            {
+                return _courseInfoModel;
+            }
+            set
+            {
+                _courseInfoModel = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string CourseName
         {
             get { return _courseInfoModel.CourseName; }
             set
             {
-                _courseInfoModel.CourseName = value;
+                CourseModel.CourseName = value;
                 OnPropertyChanged();
             }
         }
@@ -28,7 +42,7 @@
             get { return _courseInfoModel.AuthorName; }
             set
             {
-                _courseInfoModel.AuthorName = value;
+                CourseModel.AuthorName = value;
                 OnPropertyChanged();
             }
         }
@@ -38,7 +52,7 @@
             get { return _courseInfoModel.StartDate; }
             set
             {
-                _courseInfoModel.StartDate = value;
+                CourseModel.StartDate = value;
                 OnPropertyChanged();
             }
         }
@@ -48,7 +62,7 @@
             get { return _courseInfoModel.EndDate.Date; }
             set
             {
-                _courseInfoModel.EndDate = value;
+                CourseModel.EndDate = value;
                 OnPropertyChanged();
             }
         }
@@ -56,10 +70,18 @@
 
         #endregion
 
+        #region Methods
+        private async Task AddNewCourse(object obj)
+        {
+            await CoursesRepository.AddAsync(CourseModel);
+        }
+        #endregion
+
         #region Constructors
         public CoursesTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
             CoursesRepository = coursesRepository;
+            _addCommand = new AsyncCommand(AddNewCourse);
             _courseInfoModel = new CourseInfoModel();
             _courseInfoModel.StartDate = DateTime.Now;
             _courseInfoModel.EndDate = DateTime.Now;
@@ -72,11 +94,12 @@
         {
             get
             {
-                return _addCommand ??
-                  (_addCommand = new AsyncCommand(async (obj) =>
-                  {
-                      await CoursesRepository.AddAsync(_courseInfoModel);
-                  }));
+                return _addCommand;
+            }
+            set
+            {
+                _addCommand = value;
+                OnPropertyChanged();
             }
         }
         #endregion

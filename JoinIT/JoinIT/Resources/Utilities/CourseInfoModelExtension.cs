@@ -4,9 +4,9 @@
     using System.Linq.Expressions;
 
 
-    public class ClassInfo
+    public static class CourseInfoModelExtension
     {
-        public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
+        public static string GetPropertyName<T>(this Expression<Func<T>> propertyLambda)
         {
             var info = propertyLambda.Body as MemberExpression;
 

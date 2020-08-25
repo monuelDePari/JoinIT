@@ -22,15 +22,15 @@
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.Id))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.Id))
                 {
                     return ITConstants.IdTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.AuthorName)))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.AuthorName)))
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.EndDate)))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }
