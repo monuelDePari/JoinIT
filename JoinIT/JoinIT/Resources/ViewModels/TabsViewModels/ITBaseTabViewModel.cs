@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -13,12 +14,14 @@
     public class ITBaseTabViewModel : INotifyPropertyChanged
     {
         #region Fields
-        private string _tabName;
-        private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
-        protected ICoursesRepository CoursesRepository;
 
+        private string _tabName;
+        private CourseInfoModel _courseInfoModel;
+        private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private IEnumerable<CourseInfoModel> _courseInfoModels;
         private Dictionary<string, string> _courseInfoModelsDictionary;
+
+        protected ICoursesRepository CoursesRepository;
         #endregion
 
         #region Properties
@@ -68,25 +71,57 @@
         public ITBaseTabViewModel()
         {
             TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
+            SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
         }
 
         private async Task OnTextChangedAsync(object arg)
         {
             if (arg != null)
             {
-                if(CourseInfoModelKeyValuePair.Key == "CourseName")
+                if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.CourseName))
+                {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
-                else if(CourseInfoModelKeyValuePair.Key == "AuthorName")
+                }
+                else if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.AuthorName))
+                {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
+                }
             }
             else
             {
                 await LoadDataAsync(_tabName);
             }
         }
+
+        private async Task OnSelectedDateChangedAsync(object arg)
+        {
+            if (arg != null && arg is DateTime)
+            {
+                if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.StartDate))
+                {
+                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
+                }
+                else if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.EndDate))
+                {
+                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
+                }
+            }
+        }
         #endregion
 
         #region Methods
+        public string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
+        {
+            var info = propertyLambda.Body as MemberExpression;
+
+            if (info == null)
+            {
+                return null;
+            }
+
+            return info.Member.Name;
+        }
+
         public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
@@ -119,6 +154,7 @@
 
         #region Commands
         private AsyncCommand _textChangedCommand;
+        private AsyncCommand _selectedDateChangedCommand;
 
         public AsyncCommand TextChangedCommand
         {
@@ -129,6 +165,19 @@
             set
             {
                 _textChangedCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AsyncCommand SelectedDateChangedCommand
+        {
+            get
+            {
+                return _selectedDateChangedCommand;
+            }
+            set
+            {
+                _selectedDateChangedCommand = value;
                 OnPropertyChanged();
             }
         }

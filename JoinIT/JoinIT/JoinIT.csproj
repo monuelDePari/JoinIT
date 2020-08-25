@@ -89,8 +89,8 @@
     <Compile Include="Resources\Enums\CourseNames.cs" />
     <Compile Include="Resources\ITLocalData\ITConstants.cs" />
     <Compile Include="Resources\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resources\Utilities\ClassInfo.cs" />
     <Compile Include="Resources\Utilities\ComboboxTemplateSelector.cs" />
-    <Compile Include="Resources\Utilities\AsyncCommandWithParameter.cs" />
     <Compile Include="Resources\Utilities\IAsyncCommand.cs" />
     <Compile Include="Resources\Utilities\ITUnityContainer.cs" />
     <Compile Include="Resources\Utilities\RelativeCommand.cs" />

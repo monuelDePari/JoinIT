@@ -7,28 +7,44 @@
     using System.Windows.Controls;
     using JoinIT.Resources.ITConstants;
     using System.Text.RegularExpressions;
+    using System.Reflection;
+    using System.Linq.Expressions;
+    using System;
 
     [ExcludeFromCodeCoverage]
     public class ComboboxTemplateSelector : DataTemplateSelector
     {
         #region Methods
+        public string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
+        {
+            var info = propertyLambda.Body as MemberExpression;
+
+            if (info == null)
+            {
+                return null;
+            }
+
+            return info.Member.Name;
+        }
+
         public string GetProperTemplateName(string keyProperty)
         {
             var coursesPropertiesToCompare = typeof(CourseInfoModel).GetProperties();
+            CourseInfoModel courseInfoModel = new CourseInfoModel();
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.idTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == GetPropertyName(() => courseInfoModel.Id))
                 {
-                    return ITConstants.idTemplate;
+                    return ITConstants.IdTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.namesTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == GetPropertyName(() => courseInfoModel.AuthorName)))
                 {
-                    return ITConstants.namesTemplate;
+                    return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && ITConstants.datesTemplate.Contains(Regex.Replace((keyProperty), "([a-z])([A-Z])", "$1 $2").Split(' ')[1]))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == GetPropertyName(() => courseInfoModel.EndDate)))
                 {
-                    return ITConstants.datesTemplate;
+                    return ITConstants.DatesTemplate;
                 }
             }
 

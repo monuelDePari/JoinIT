@@ -1,6 +1,8 @@
 ﻿namespace JoinIT.Resources.Views.Controls
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Threading;
     using System.Windows.Controls;
 
     /// <summary>

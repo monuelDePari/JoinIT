@@ -72,15 +72,15 @@
         {
             get
             {
-                //return _addCommand ??
-                //  (_addCommand = new AsyncCommand(async () =>
-                //  {
-                //      await CoursesRepository.AddAsync(_courseInfoModel);
-                //  }));
-                return _addCommand;
+                return _addCommand ??
+                  (_addCommand = new AsyncCommand(async (obj) =>
+                  {
+                      await CoursesRepository.AddAsync(_courseInfoModel);
+                  }));
             }
         }
         #endregion
     }
 }
 
+ 
