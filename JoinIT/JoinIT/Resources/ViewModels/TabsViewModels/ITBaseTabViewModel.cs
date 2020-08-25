@@ -78,11 +78,11 @@
         {
             if (arg is string)
             {
-                if (CourseInfoModelKeyValuePair.Key == CourseInfoModelExtension.GetPropertyName(() => _courseInfoModel.CourseName))
+                if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(() => _courseInfoModel.CourseName))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
                 }
-                else if (CourseInfoModelKeyValuePair.Key == CourseInfoModelExtension.GetPropertyName(() => _courseInfoModel.AuthorName))
+                else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(() => _courseInfoModel.AuthorName))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
                 }
@@ -97,11 +97,11 @@
         {
             if (arg is DateTime)
             {
-                if (CourseInfoModelKeyValuePair.Key == CourseInfoModelExtension.GetPropertyName(() => _courseInfoModel.StartDate))
+                if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(() => _courseInfoModel.StartDate))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
-                else if (CourseInfoModelKeyValuePair.Key == CourseInfoModelExtension.GetPropertyName(() => _courseInfoModel.EndDate))
+                else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(() => _courseInfoModel.EndDate))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
                 }

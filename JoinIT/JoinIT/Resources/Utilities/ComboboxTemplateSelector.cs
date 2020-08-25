@@ -6,10 +6,6 @@
     using System.Windows;
     using System.Windows.Controls;
     using JoinIT.Resources.ITConstants;
-    using System.Text.RegularExpressions;
-    using System.Reflection;
-    using System.Linq.Expressions;
-    using System;
 
     [ExcludeFromCodeCoverage]
     public class ComboboxTemplateSelector : DataTemplateSelector
@@ -22,15 +18,15 @@
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.Id))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.Id))
                 {
                     return ITConstants.IdTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.AuthorName)))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.AuthorName)))
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == CourseInfoModelExtension.GetPropertyName(() => courseInfoModel.EndDate)))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }

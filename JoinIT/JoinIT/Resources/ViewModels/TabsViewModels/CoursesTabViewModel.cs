@@ -71,7 +71,7 @@
         #endregion
 
         #region Methods
-        private async Task AddNewCourse(object obj)
+        private async Task AddNewCourseAsync(object obj)
         {
             await CoursesRepository.AddAsync(CourseModel);
         }
@@ -81,7 +81,7 @@
         public CoursesTabViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
             CoursesRepository = coursesRepository;
-            _addCommand = new AsyncCommand(AddNewCourse);
+            _addCommand = new AsyncCommand(AddNewCourseAsync);
             _courseInfoModel = new CourseInfoModel();
             _courseInfoModel.StartDate = DateTime.Now;
             _courseInfoModel.EndDate = DateTime.Now;
