@@ -15,18 +15,6 @@
     public class ComboboxTemplateSelector : DataTemplateSelector
     {
         #region Methods
-        public string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
-        {
-            var info = propertyLambda.Body as MemberExpression;
-
-            if (info == null)
-            {
-                return null;
-            }
-
-            return info.Member.Name;
-        }
-
         public string GetProperTemplateName(string keyProperty)
         {
             var coursesPropertiesToCompare = typeof(CourseInfoModel).GetProperties();
@@ -34,15 +22,15 @@
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == GetPropertyName(() => courseInfoModel.Id))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.Id))
                 {
                     return ITConstants.IdTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == GetPropertyName(() => courseInfoModel.AuthorName)))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.AuthorName)))
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == GetPropertyName(() => courseInfoModel.EndDate)))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == ClassInfo.GetPropertyName(() => courseInfoModel.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }

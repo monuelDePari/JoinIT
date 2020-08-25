@@ -78,11 +78,11 @@
         {
             if (arg != null)
             {
-                if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.CourseName))
+                if (CourseInfoModelKeyValuePair.Key == ClassInfo.GetPropertyName(() => _courseInfoModel.CourseName))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
                 }
-                else if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.AuthorName))
+                else if (CourseInfoModelKeyValuePair.Key == ClassInfo.GetPropertyName(() => _courseInfoModel.AuthorName))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
                 }
@@ -97,11 +97,11 @@
         {
             if (arg != null && arg is DateTime)
             {
-                if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.StartDate))
+                if (CourseInfoModelKeyValuePair.Key == ClassInfo.GetPropertyName(() => _courseInfoModel.StartDate))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
-                else if (CourseInfoModelKeyValuePair.Key == GetPropertyName(() => _courseInfoModel.EndDate))
+                else if (CourseInfoModelKeyValuePair.Key == ClassInfo.GetPropertyName(() => _courseInfoModel.EndDate))
                 {
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
@@ -110,18 +110,6 @@
         #endregion
 
         #region Methods
-        public string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
-        {
-            var info = propertyLambda.Body as MemberExpression;
-
-            if (info == null)
-            {
-                return null;
-            }
-
-            return info.Member.Name;
-        }
-
         public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();

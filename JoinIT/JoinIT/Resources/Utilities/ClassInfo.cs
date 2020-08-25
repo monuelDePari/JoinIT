@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities
 {
-    class ClassInfo
+    using System;
+    using System.Linq.Expressions;
+
+
+    public class ClassInfo
     {
+        public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
+        {
+            var info = propertyLambda.Body as MemberExpression;
+
+            if (info == null)
+            {
+                return null;
+            }
+
+            return info.Member.Name;
+        }
     }
 }
