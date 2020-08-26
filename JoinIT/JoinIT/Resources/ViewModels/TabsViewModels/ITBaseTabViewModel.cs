@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Globalization;
     using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
@@ -14,7 +15,6 @@
     public class ITBaseTabViewModel : INotifyPropertyChanged
     {
         #region Fields
-
         private string _tabName;
         private CourseInfoModel _courseInfoModel;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
@@ -67,6 +67,7 @@
         public ITBaseTabViewModel(ICoursesRepository coursesRepository) : this()
         {
             CoursesRepository = coursesRepository;
+            _courseInfoModel = new CourseInfoModel();
         }
         public ITBaseTabViewModel()
         {

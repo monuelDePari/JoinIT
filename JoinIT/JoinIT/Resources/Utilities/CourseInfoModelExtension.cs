@@ -7,16 +7,20 @@
 
     public static class CourseInfoModelExtension
     {
-        public static string GetPropertyName<T>(this CourseInfoModel caller, Expression<Func<T>> propertyLambda)
+        private static string GetMemberName<T>(Expression<Func<T>> expression)
         {
-            var info = propertyLambda.Body as MemberExpression;
+            var info = expression.Body as MemberExpression;
 
-            if (info == null)
+            if(info == null)
             {
                 return null;
             }
 
             return info.Member.Name;
+        }
+        public static string GetPropertyName<T>(this CourseInfoModel caller, Expression<Func<T>> propertyLambda)
+        {
+            return GetMemberName(propertyLambda);
         }
     }
 }
