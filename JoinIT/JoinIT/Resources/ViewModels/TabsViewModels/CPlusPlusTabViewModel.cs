@@ -1,7 +1,6 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
     using Repositories.Instructions;
-    using System.Collections.Generic;
 
     public class CPlusPlusTabViewModel : BaseTabViewModel
     {

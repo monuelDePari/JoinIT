@@ -1,7 +1,7 @@
-﻿using Unity;
-
-namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities
 {
+    using Unity;
+
     public class ITUnityContainer
     {
         #region Fields
