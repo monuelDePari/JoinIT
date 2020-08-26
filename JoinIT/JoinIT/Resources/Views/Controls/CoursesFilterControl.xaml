@@ -22,7 +22,7 @@
                     Padding="5"
                     Margin="5">
                 <DockPanel HorizontalAlignment="Center">
-                    <TextBox x:Name="NameTextBox">
+                    <TextBox x:Name="NameTextBox" MinWidth="200">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.TextChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"

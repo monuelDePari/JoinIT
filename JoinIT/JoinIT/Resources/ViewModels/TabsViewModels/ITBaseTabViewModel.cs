@@ -9,15 +9,19 @@
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using System.Windows;
 
     public class ITBaseTabViewModel : INotifyPropertyChanged
     {
         #region Fields
         private string _tabName;
+        private Visibility _visibility;
+        private bool _isLoaded;
         private CourseInfoModel _courseInfoModel;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private IEnumerable<CourseInfoModel> _courseInfoModels;
         private Dictionary<string, string> _courseInfoModelsDictionary;
+        private Visibility _spinnerVisibility;
 
         protected ICoursesRepository CoursesRepository;
         #endregion
@@ -59,6 +63,54 @@
                 OnPropertyChanged();
             }
         }
+        public Visibility Visibility
+        {
+            get
+            {
+                return _visibility;
+            }
+            set
+            {
+                _visibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility SpinnerVisibility
+        {
+            get
+            {
+                return _spinnerVisibility;
+            }
+            set
+            {
+                _spinnerVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool IsLoaded
+        {
+            get
+            {
+                return _isLoaded;
+            }
+            set
+            {
+                _isLoaded = value;
+
+                if (!_isLoaded)
+                {
+                    Visibility = Visibility.Collapsed;
+                    SpinnerVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    Visibility = Visibility.Visible;
+                    SpinnerVisibility = Visibility.Collapsed;
+                }
+
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Constructors
@@ -66,6 +118,8 @@
         {
             CoursesRepository = coursesRepository;
             _courseInfoModel = new CourseInfoModel();
+            Visibility = Visibility.Collapsed;
+            SpinnerVisibility = Visibility.Collapsed;
         }
         public ITBaseTabViewModel()
         {
@@ -75,6 +129,8 @@
 
         private async Task OnTextChangedAsync(object arg)
         {
+            IsLoaded = false;
+
             if (arg is string)
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.CourseName))
@@ -90,10 +146,14 @@
             {
                 await LoadDataAsync(_tabName);
             }
+
+            IsLoaded = true;
         }
 
         private async Task OnSelectedDateChangedAsync(object arg)
         {
+            IsLoaded = false;
+
             if (arg is DateTime)
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.StartDate))
@@ -105,6 +165,8 @@
                     CourseInfoModels = await CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
             }
+
+            IsLoaded = true;
         }
         #endregion
 
@@ -125,6 +187,7 @@
 
         public async Task LoadDataAsync(string tabName)
         {
+            IsLoaded = false;
             _tabName = tabName;
 
             if (CourseInfoModels == null)
@@ -136,6 +199,7 @@
             {
                 CourseInfoModelsDictionary = CourseInfoModelsListOfPropertiesToDictionary();
             }
+            IsLoaded = true;
         }
         #endregion
 
