@@ -18,15 +18,15 @@
 
             for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.Id))
+                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == courseInfoModel.GetPropertyName(t => t.Id))
                 {
                     return ITConstants.IdTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.CourseName) || keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.AuthorName)))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.CourseName) || keyProperty == courseInfoModel.GetPropertyName(t => t.AuthorName)))
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.StartDate) || keyProperty == courseInfoModel.GetPropertyName(() => courseInfoModel.EndDate)))
+                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }
