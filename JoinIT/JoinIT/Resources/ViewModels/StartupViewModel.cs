@@ -3,6 +3,6 @@
 
     public class StartupViewModel
     {
-        
+
     }
 }

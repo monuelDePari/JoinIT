@@ -1,28 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace JoinIT.Resources.Views.Controls
 {
     /// <summary>
     /// Interaction logic for SpinnerControl.xaml
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public partial class SpinnerControl : UserControl
-    {   
+    {
+        #region DependencyProperties
+        public static readonly DependencyProperty IsLoadingProperty = DependencyProperty.Register("IsLoading", typeof(bool), typeof(SpinnerControl));
+
+        public bool IsLoading
+        {
+            get { return (bool)GetValue(IsLoadingProperty); }
+            set
+            {
+                SetValue(IsLoadingProperty, value);
+            }
+        }
+        #endregion
+
+        #region Constructors
         public SpinnerControl()
         {
             InitializeComponent();
         }
+        #endregion
     }
 }

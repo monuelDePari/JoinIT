@@ -2,12 +2,10 @@
 {
     using JoinIT.Resources.Utilities;
     using Models;
-    using Repositories;
     using Repositories.Instructions;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -93,23 +91,25 @@
 
         #region Methods
 
-        public async Task<List<T>> RunTaskAsync<T>(Expression<Func<T, bool>> expression)
+        public async Task<T> RunTaskAsync<T>(Task<T> task)
         {
+            T resultList = default(T);
             try
             {
                 IsLoading = true;
-                List<T> resultList = new List<T>();
-                if (expression is Expression<Func<CourseInfoModel, bool>>)
-                {
-                    var courseExpression = expression as Expression<Func<CourseInfoModel, bool>>;
-                    resultList = await CoursesRepository.FindAsync(courseExpression) as List<T>;
-                }
-                return resultList;
+
+                resultList = await task;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
             finally
             {
                 IsLoading = false;
             }
+
+            return resultList;
         }
 
         private async Task OnTextChangedAsync(object arg)
@@ -118,11 +118,11 @@
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.CourseName))
                 {
-                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName));
                 }
                 else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.AuthorName))
                 {
-                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName));
                 }
             }
             else
@@ -137,11 +137,11 @@
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.StartDate))
                 {
-                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName));
                 }
                 else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.EndDate))
                 {
-                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
+                    CourseInfoModels = await (CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName));
                 }
             }
         }
@@ -166,7 +166,7 @@
 
             if (CourseInfoModels == null)
             {
-                CourseInfoModels = await RunTaskAsync<CourseInfoModel>(t => t.CourseName == tabName);
+                CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(t => t.CourseName == tabName));
             }
 
             if (CourseInfoModelsDictionary == null)

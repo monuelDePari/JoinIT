@@ -1,52 +1,52 @@
 ﻿<UserControl x:Class="JoinIT.Resources.Views.CoursesView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
-        xmlns:local="clr-namespace:JoinIT"
-        mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
-        Height="450"
-        Width="800">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
+             xmlns:local="clr-namespace:JoinIT"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
+             Height="450"
+             Width="800">
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
           Background="White">
         <StackPanel Orientation="Vertical"
-                    Background="Cornsilk" 
-                    VerticalAlignment="Stretch" 
-                    HorizontalAlignment="Center" 
+                    Background="Cornsilk"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Center"
                     MinWidth="400">
-            <TextBlock Margin="10, 0, 0, 0" 
-                       FontSize="32" 
-                       FontStyle="Normal" 
+            <TextBlock Margin="10, 0, 0, 0"
+                       FontSize="32"
+                       FontStyle="Normal"
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Center">Course Info</TextBlock>
-            <StackPanel Orientation="Vertical" 
-                        HorizontalAlignment="Center" 
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
                         Margin="10">
                 <StackPanel>
-                    <TextBlock Text="Name"/>
-                    <TextBox Margin="10" 
-                         VerticalAlignment="Center"
-                         Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="Author Name"/>
+                    <TextBlock Text="Name" />
                     <TextBox Margin="10"
-                         VerticalAlignment="Center"
-                         Text="{Binding AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Text="Start Date"/>
+                             VerticalAlignment="Center"
+                             Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Author Name" />
+                    <TextBox Margin="10"
+                             VerticalAlignment="Center"
+                             Text="{Binding AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Start Date" />
                     <DatePicker x:Name="StartDate"
-                            Margin="10"
-                            SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                Margin="10"
+                                SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </DatePicker>
-                    <TextBlock Text="End Date"/>
+                    <TextBlock Text="End Date" />
                     <DatePicker x:Name="EndDate"
-                            Margin="10"
-                            SelectedDate="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                Margin="10"
+                                SelectedDate="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </DatePicker>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" 
-                            Margin="10" 
+                <StackPanel Orientation="Horizontal"
+                            Margin="10"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                     <Button x:Name="Register"
@@ -54,12 +54,12 @@
                             Margin="10"
                             VerticalAlignment="Bottom"
                             MinWidth="90"
-                            Command="{Binding AddCommand}"/>
+                            Command="{Binding AddCommand}" />
                     <Button x:Name="Update"
-                            Content="Update" 
-                            Margin="10" 
-                            VerticalAlignment="Bottom" 
-                            MinWidth="90"/>
+                            Content="Update"
+                            Margin="10"
+                            VerticalAlignment="Bottom"
+                            MinWidth="90" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

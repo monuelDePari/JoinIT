@@ -26,7 +26,7 @@
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if(keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
+                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }
