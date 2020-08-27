@@ -92,6 +92,8 @@
     <Compile Include="Resources\Enums\CourseNames.cs" />
     <Compile Include="Resources\ITLocalData\ITConstants.cs" />
     <Compile Include="Resources\Utilities\AsyncCommand.cs" />
+    <Compile Include="Resources\Utilities\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\Utilities\DependencyProperties\IsLoadingDependencyProperty.cs" />
     <Compile Include="Resources\Utilities\CourseInfoModelExtension.cs" />
     <Compile Include="Resources\Utilities\ComboboxTemplateSelector.cs" />
     <Compile Include="Resources\Utilities\IAsyncCommand.cs" />
@@ -110,6 +112,9 @@
     <Compile Include="Resources\Views\Controls\CoursesDataGridControl.xaml.cs">
       <DependentUpon>CoursesDataGridControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\Controls\SpinnerControl.xaml.cs">
+      <DependentUpon>SpinnerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
@@ -127,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Views\Controls\CoursesDataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Views\Controls\SpinnerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,5 +217,6 @@
     <Resource Include="Resources\Assets\ReadInformationAboutStudentsImage.png" />
     <Resource Include="Resources\Assets\UpdateStudentsImage.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

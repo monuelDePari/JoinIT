@@ -3,19 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:JoinIT.Resources.Views.Controls"
+             xmlns:customProperties="clr-namespace:JoinIT.Resources.Utilities.DependencyProperties"
+             xmlns:converters="clr-namespace:JoinIT.Resources.Utilities.Converters"
+             xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="converter"/>
+        <customProperties:IsLoadingDependencyProperty IsLoading="{Binding RelativeSource={RelativeSource AncestorType={x:Type tabs:ITBaseTabViewModel}}, Path=IsLoading}" x:Key="SpinnerLoad"/>
+    </UserControl.Resources>
     <Grid>
         <StackPanel>
-            <Image Name="imgCircle" Visibility="{Binding Path=SpinnerVisibility}" Width="100" Height="100" gif:ImageBehavior.AnimatedSource="/Resources/Assets/LoadSpinner.gif" />
+            <local:SpinnerControl x:Name="SpinnerLoad" DataContext="{StaticResource SpinnerLoad}" Visibility="{Binding IsLoading, Converter={StaticResource converter}}"/>
             <DataGrid x:Name="CPlusPlusDataGrid"
                       HorizontalGridLinesBrush="DarkGray"
                       RowBackground="LightGray"
                       AlternatingRowBackground="White"
-                      Visibility="{Binding Path=Visibility}"
                       ItemsSource="{Binding Path=CourseInfoModels}">
             </DataGrid>
         </StackPanel>

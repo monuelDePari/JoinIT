@@ -2,10 +2,12 @@
 {
     using JoinIT.Resources.Utilities;
     using Models;
+    using Repositories;
     using Repositories.Instructions;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -15,13 +17,11 @@
     {
         #region Fields
         private string _tabName;
-        private Visibility _visibility;
-        private bool _isLoaded;
+        private bool _isLoading;
         private CourseInfoModel _courseInfoModel;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private IEnumerable<CourseInfoModel> _courseInfoModels;
         private Dictionary<string, string> _courseInfoModelsDictionary;
-        private Visibility _spinnerVisibility;
 
         protected ICoursesRepository CoursesRepository;
         #endregion
@@ -63,51 +63,16 @@
                 OnPropertyChanged();
             }
         }
-        public Visibility Visibility
-        {
-            get
-            {
-                return _visibility;
-            }
-            set
-            {
-                _visibility = value;
-                OnPropertyChanged();
-            }
-        }
-        public Visibility SpinnerVisibility
-        {
-            get
-            {
-                return _spinnerVisibility;
-            }
-            set
-            {
-                _spinnerVisibility = value;
-                OnPropertyChanged();
-            }
-        }
-        public bool IsLoaded
-        {
-            get
-            {
-                return _isLoaded;
-            }
-            set
-            {
-                _isLoaded = value;
 
-                if (!_isLoaded)
-                {
-                    Visibility = Visibility.Collapsed;
-                    SpinnerVisibility = Visibility.Visible;
-                }
-                else
-                {
-                    Visibility = Visibility.Visible;
-                    SpinnerVisibility = Visibility.Collapsed;
-                }
-
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
                 OnPropertyChanged();
             }
         }
@@ -118,59 +83,69 @@
         {
             CoursesRepository = coursesRepository;
             _courseInfoModel = new CourseInfoModel();
-            Visibility = Visibility.Collapsed;
-            SpinnerVisibility = Visibility.Collapsed;
         }
         public ITBaseTabViewModel()
         {
             TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
             SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
         }
+        #endregion
+
+        #region Methods
+
+        public async Task<List<T>> RunTaskAsync<T>(Expression<Func<T, bool>> expression)
+        {
+            try
+            {
+                IsLoading = true;
+                List<T> resultList = new List<T>();
+                if (expression is Expression<Func<CourseInfoModel, bool>>)
+                {
+                    var courseExpression = expression as Expression<Func<CourseInfoModel, bool>>;
+                    resultList = await CoursesRepository.FindAsync(courseExpression) as List<T>;
+                }
+                return resultList;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
 
         private async Task OnTextChangedAsync(object arg)
         {
-            IsLoaded = false;
-
             if (arg is string)
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.CourseName))
                 {
-                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.CourseName.Contains((string)arg) && p.CourseName == _tabName);
                 }
                 else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.AuthorName))
                 {
-                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.AuthorName.Contains((string)arg) && p.CourseName == _tabName);
                 }
             }
             else
             {
                 await LoadDataAsync(_tabName);
             }
-
-            IsLoaded = true;
         }
 
         private async Task OnSelectedDateChangedAsync(object arg)
         {
-            IsLoaded = false;
-
             if (arg is DateTime)
             {
                 if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.StartDate))
                 {
-                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
                 else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.EndDate))
                 {
-                    CourseInfoModels = await CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
+                    CourseInfoModels = await RunTaskAsync<CourseInfoModel>(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName);
                 }
             }
-
-            IsLoaded = true;
         }
-        #endregion
 
-        #region Methods
         public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
@@ -187,19 +162,17 @@
 
         public async Task LoadDataAsync(string tabName)
         {
-            IsLoaded = false;
             _tabName = tabName;
 
             if (CourseInfoModels == null)
             {
-                CourseInfoModels = await CoursesRepository.FindAsync(t => t.CourseName == tabName);
+                CourseInfoModels = await RunTaskAsync<CourseInfoModel>(t => t.CourseName == tabName);
             }
 
             if (CourseInfoModelsDictionary == null)
             {
                 CourseInfoModelsDictionary = CourseInfoModelsListOfPropertiesToDictionary();
             }
-            IsLoaded = true;
         }
         #endregion
 
