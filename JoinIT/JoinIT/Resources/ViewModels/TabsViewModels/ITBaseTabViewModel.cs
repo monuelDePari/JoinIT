@@ -93,12 +93,12 @@
 
         public async Task<T> RunTaskAsync<T>(Task<T> task)
         {
-            T resultList = default(T);
+            T result = default(T);
             try
             {
                 IsLoading = true;
 
-                resultList = await task;
+                result = await task;
             }
             catch (Exception e)
             {
@@ -109,7 +109,7 @@
                 IsLoading = false;
             }
 
-            return resultList;
+            return result;
         }
 
         private async Task OnTextChangedAsync(object arg)

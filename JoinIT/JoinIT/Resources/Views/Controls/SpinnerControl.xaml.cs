@@ -11,7 +11,8 @@ namespace JoinIT.Resources.Views.Controls
     public partial class SpinnerControl : UserControl
     {
         #region DependencyProperties
-        public static readonly DependencyProperty IsLoadingProperty = DependencyProperty.Register("IsLoading", typeof(bool), typeof(SpinnerControl));
+        public static readonly DependencyProperty IsLoadingProperty =  
+            DependencyProperty.Register("IsLoading", typeof(bool), typeof(SpinnerControl));
 
         public bool IsLoading
         {
