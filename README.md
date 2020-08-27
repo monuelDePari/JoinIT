@@ -27,3 +27,10 @@ Application must use MVVM architecture pattern.
 2. Created 2 windows
 3. Created Model
 4. Created Repository
+5. Created "Create new course Tab"
+6. Created courses tabs windows
+7. Added DataGrid to show courses related to tab
+8. Added combobox with 4 filter options
+9. Added search with data template and text box
+10. Added search with data template and Date Picker
+11. Added spinner data preload 
