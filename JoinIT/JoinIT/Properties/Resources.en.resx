@@ -180,9 +180,6 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="r" xml:space="preserve">
-    <value>Additional Commands</value>
-  </data>
   <data name="Read" xml:space="preserve">
     <value>Read</value>
   </data>
@@ -191,6 +188,9 @@
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Additional Commands</value>
   </data>
   <data name="TextSettingsCommads" xml:space="preserve">
     <value>Text Settings Commands</value>

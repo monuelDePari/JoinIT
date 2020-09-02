@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:JoinIT.Resources.Views.TabsView"
+             xmlns:localisation="clr-namespace:JoinIT.Properties"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -19,7 +19,8 @@
                        FontSize="32"
                        FontStyle="Normal"
                        VerticalAlignment="Bottom"
-                       HorizontalAlignment="Center">Java Courses</TextBlock>
+                       HorizontalAlignment="Center"
+                       Text="{x:Static localisation:Resources.JavaTab}"/>
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="10">

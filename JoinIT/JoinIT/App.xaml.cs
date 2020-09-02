@@ -1,5 +1,6 @@
 ﻿namespace JoinIT
 {
+    using JoinIT.Properties;
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.ViewModels;
     using JoinIT.Resources.Views;
@@ -20,6 +21,8 @@
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Default.LanguageSetting);
 
             ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>();
 

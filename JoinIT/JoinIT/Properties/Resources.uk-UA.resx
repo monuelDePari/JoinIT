@@ -118,87 +118,87 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdditionalCommands" xml:space="preserve">
-    <value>Additional Commands</value>
+    <value>Додаткові команди</value>
   </data>
   <data name="AdditionalOperations" xml:space="preserve">
-    <value>Additional Operations</value>
+    <value>Додаткові Операції</value>
   </data>
   <data name="AppRestart" xml:space="preserve">
-    <value>The App will restart to apply changes</value>
+    <value>Додаток перезапуститься, щоб застосувати зміни</value>
   </data>
   <data name="AttachStudents" xml:space="preserve">
-    <value>Attach Students</value>
+    <value>Прикріпити Студентів</value>
   </data>
   <data name="AuthorName" xml:space="preserve">
-    <value>Author Name</value>
+    <value>Ім'я автору</value>
   </data>
   <data name="ChangeFontSize" xml:space="preserve">
-    <value>Change Font Size</value>
+    <value>Змінити розмір шрифту</value>
   </data>
   <data name="ChangeFontSizeButton" xml:space="preserve">
-    <value>Change Font Size Button</value>
+    <value>Змінити розмір кнопки</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
+    <value>Змінити мову</value>
   </data>
   <data name="CourseInfo" xml:space="preserve">
-    <value>Course Information</value>
+    <value>Інформація про курс</value>
   </data>
   <data name="CoursesTab" xml:space="preserve">
-    <value>Courses Tab</value>
+    <value>вкладка курсів</value>
   </data>
   <data name="CPlusPlusTab" xml:space="preserve">
-    <value>C++ Tab</value>
+    <value>C++ вкладка</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Створити</value>
   </data>
   <data name="CrudOperations" xml:space="preserve">
-    <value>Crud Operations</value>
+    <value>СЧОВ Операції</value>
   </data>
   <data name="CSharpTab" xml:space="preserve">
-    <value>C# Tab</value>
+    <value>C# вкладка</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Видалити</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End Date</value>
+    <value>Кінцева Дата</value>
   </data>
   <data name="FontSettings" xml:space="preserve">
-    <value>Font Settings</value>
+    <value>Розміри шрифту</value>
   </data>
   <data name="JavaTab" xml:space="preserve">
-    <value>Java Tab</value>
+    <value>Java вкладка</value>
   </data>
   <data name="LanguageSettings" xml:space="preserve">
-    <value>Language Settings</value>
+    <value>Налаштування мови</value>
   </data>
   <data name="LanguageTab" xml:space="preserve">
-    <value>Language Tab</value>
+    <value>Вкладка мов</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="r" xml:space="preserve">
-    <value>Additional Commands</value>
+    <value>Ім'я</value>
   </data>
   <data name="Read" xml:space="preserve">
-    <value>Read</value>
+    <value>Зчитати</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Зареєструвати</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start Date</value>
+    <value>Дата Старту</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Додаткові Операції</value>
   </data>
   <data name="TextSettingsCommads" xml:space="preserve">
-    <value>Text Settings Commands</value>
+    <value>Команди Налаштування Тексту</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Title</value>
+    <value>заголовок</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Update</value>
+    <value>Оновити</value>
   </data>
 </root>
