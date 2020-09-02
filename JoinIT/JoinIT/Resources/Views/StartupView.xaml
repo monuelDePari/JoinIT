@@ -47,7 +47,7 @@
                 <ribbon:RibbonGroup x:Name="LanguageSettings"
                                     Header="{x:Static localisation:Resources.LanguageSettings}">
                     <ribbon:RibbonButton x:Name="LanguageSettingsButton"
-                                         ribbon:ButtonBase.Click="LanguageSettingsButton_Click"
+                                         Command="{Binding OpenNewWindowCommand}"
                                          LargeImageSource="/Resources\Assets\LanguageImage.png"
                                          Label="{x:Static localisation:Resources.ChangeLanguage}" />
                 </ribbon:RibbonGroup>
@@ -92,9 +92,6 @@
             <TabItem Header="{x:Static localisation:Resources.CPlusPlusTab}">
                 <tabsview:CPlusPlusTabView />
             </TabItem>
-            <!--<TabItem Header="{x:Static localisation:Resources.LanguageTab}">
-                <tabsview:LanguageTabView />
-            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>

@@ -5,6 +5,7 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Windows;
+    using System.Diagnostics;
     using Unity;
 
     /// <summary>
@@ -36,7 +37,7 @@
 
             MessageBox.Show(Properties.Resources.AppRestart, Assembly.GetEntryAssembly().GetName().Name, MessageBoxButton.OK);
 
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
         }
     }
