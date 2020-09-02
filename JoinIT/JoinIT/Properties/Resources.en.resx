@@ -165,6 +165,9 @@
   <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="FontSettings" xml:space="preserve">
     <value>Font Settings</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="Ukrainian" xml:space="preserve">
+    <value>Ukrainian</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

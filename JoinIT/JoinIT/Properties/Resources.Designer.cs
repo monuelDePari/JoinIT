@@ -205,6 +205,15 @@ namespace JoinIT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font Settings.
         /// </summary>
         public static string FontSettings {
@@ -300,6 +309,15 @@ namespace JoinIT.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukrainian.
+        /// </summary>
+        public static string Ukrainian {
+            get {
+                return ResourceManager.GetString("Ukrainian", resourceCulture);
             }
         }
         

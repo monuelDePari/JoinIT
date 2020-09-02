@@ -101,7 +101,6 @@
     </Compile>
     <Compile Include="Resources\Enums\CourseNames.cs" />
     <Compile Include="Resources\ITLocalData\ITConstants.cs" />
-    <Compile Include="Resources\ITLocalData\LanguageInfo.cs" />
     <Compile Include="Resources\Utilities\AsyncCommand.cs" />
     <Compile Include="Resources\Utilities\CourseInfoModelExtension.cs" />
     <Compile Include="Resources\Utilities\ComboboxTemplateSelector.cs" />

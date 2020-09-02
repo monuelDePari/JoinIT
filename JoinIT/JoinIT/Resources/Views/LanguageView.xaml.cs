@@ -7,6 +7,7 @@
     using System.Windows;
     using System.Diagnostics;
     using Unity;
+    using System;
 
     /// <summary>
     /// Interaction logic for LanguageTabView.xaml
@@ -14,31 +15,38 @@
     [ExcludeFromCodeCoverage]
     public partial class LanguageView : Window
     {
+        private readonly LanguageViewModel _languageViewModel;
         public LanguageView()
         {
             InitializeComponent();
 
             DataContext = ITUnityContainer.Instance.Resolve<LanguageViewModel>();
 
+            _languageViewModel = (LanguageViewModel)DataContext;
+
             Loaded += LanguageView_OnLoaded;
-            Unloaded += LanguageView_OnClosed;
+            Closed += LanguageView_OnClosed;
+            _languageViewModel.RestartAppEvenHandler += OnAppRestart;
+        }
+
+        private void OnAppRestart(object sender, EventArgs e)
+        {
+            if(MessageBox.Show(Properties.Resources.AppRestart, Assembly.GetEntryAssembly().GetName().Name, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
         }
 
         private void LanguageView_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var languageTabViewModel = (LanguageViewModel)DataContext;
-            languageTabViewModel.SubscribePropertyChanged();
+            _languageViewModel.PropertyChanged += _languageViewModel.LanguageTabViewModelOnPropertyChanged;
         }
 
-        private void LanguageView_OnClosed(object sender, RoutedEventArgs e)
+        private void LanguageView_OnClosed(object sender, EventArgs e)
         {
-            var languageTabViewModel = (LanguageViewModel)DataContext;
-            languageTabViewModel.DisposePropertyChanged();
-
-            MessageBox.Show(Properties.Resources.AppRestart, Assembly.GetEntryAssembly().GetName().Name, MessageBoxButton.OK);
-
-            Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
+            _languageViewModel.PropertyChanged -= _languageViewModel.LanguageTabViewModelOnPropertyChanged;
+            _languageViewModel.RestartAppEvenHandler -= OnAppRestart;
         }
     }
 }

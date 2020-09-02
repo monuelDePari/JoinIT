@@ -1,11 +1,13 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
     using JoinIT.Properties;
-    using JoinIT.Resources.ITLocalData;
     using JoinIT.Resources.Utilities;
     using Repositories.Instructions;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using Resources.ITConstants;
+    using System.Reflection;
 
     public class LanguageViewModel : ITBaseTabViewModel
     {
@@ -17,28 +19,33 @@
         #region Constructors
         public LanguageViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
         {
-            Languages = LanguageInfo.Languages;
+            Languages = new Dictionary<string, string>()
+            {
+                { Resources.English, ITConstants.English },
+                { Resources.Ukrainian, ITConstants.Ukrainian }
+            };
         }
 
         #endregion
 
         #region Methods
-        private void LanguageTabViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+
+
+        public void LanguageTabViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == this.GetPropertyName(p => p.LanguagesKeyValuePair))
             {
                 Settings.Default.LanguageSetting = LanguagesKeyValuePair.Value;
                 Settings.Default.Save();
+
+                var handler = RestartAppEvenHandler;
+                if (handler != null)
+                {
+                    handler(null, null);
+                }
             }
         }
-        public void SubscribePropertyChanged()
-        {
-            PropertyChanged += LanguageTabViewModelOnPropertyChanged;
-        }
-        public void DisposePropertyChanged()
-        {
-            PropertyChanged -= LanguageTabViewModelOnPropertyChanged;
-        }
+
         #endregion
 
         #region Properties
@@ -68,5 +75,7 @@
             }
         }
         #endregion
+
+        public event EventHandler RestartAppEvenHandler;
     }
 }

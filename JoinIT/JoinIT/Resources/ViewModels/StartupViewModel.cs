@@ -1,11 +1,10 @@
 ﻿namespace JoinIT.Resources.ViewModels
 {
     using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.Views;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
+    using JoinIT.Resources.ViewModels.TabsViewModels;
+    using System;
 
-    public class StartupViewModel : INotifyPropertyChanged
+    public class StartupViewModel : ITBaseTabViewModel
     {
         #region Fields
         private RelativeCommand _openNewWindowCommand;
@@ -14,15 +13,18 @@
         #region Constructors
         public StartupViewModel()
         {
-            OpenNewWindowCommand = new RelativeCommand(OpenNewLanguageWindow);
+            OpenNewWindowCommand = new RelativeCommand(OnOpenNewLanguageWindow);
         }
         #endregion
 
         #region Methods
-        private void OpenNewLanguageWindow(object arg)
+        private void OnOpenNewLanguageWindow(object o)
         {
-            LanguageView languageTabView = new LanguageView();
-            languageTabView.Show();
+            var handler = OpenWindowEventHandler;
+            if (handler != null)
+            {
+                handler(null, null);
+            }
         }
         #endregion
 
@@ -42,15 +44,7 @@
         #endregion
 
         #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string info = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
+        public event EventHandler OpenWindowEventHandler;
         #endregion
     }
 }
