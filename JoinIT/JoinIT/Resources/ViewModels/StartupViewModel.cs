@@ -7,19 +7,26 @@
 
     public class StartupViewModel : INotifyPropertyChanged
     {
+        #region Fields
         private RelativeCommand _openNewWindowCommand;
+        #endregion
 
+        #region Constructors
         public StartupViewModel()
         {
             OpenNewWindowCommand = new RelativeCommand(OpenNewLanguageWindow);
         }
+        #endregion
 
+        #region Methods
         private void OpenNewLanguageWindow(object arg)
         {
             LanguageView languageTabView = new LanguageView();
             languageTabView.Show();
         }
+        #endregion
 
+        #region Commands
         public RelativeCommand OpenNewWindowCommand
         {
             get
@@ -32,6 +39,7 @@
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;

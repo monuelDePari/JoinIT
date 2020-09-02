@@ -4,7 +4,6 @@
     using JoinIT.Resources.ITLocalData;
     using JoinIT.Resources.Utilities;
     using Repositories.Instructions;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
 

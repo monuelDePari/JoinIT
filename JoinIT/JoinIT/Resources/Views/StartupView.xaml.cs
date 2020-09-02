@@ -2,7 +2,6 @@
 {
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.ViewModels;
-    using JoinIT.Resources.Views.TabsView;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using Unity;
