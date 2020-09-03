@@ -89,6 +89,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Resources.en.Designer.cs">
+      <DependentUpon>Resources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.uk-UA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.uk-UA.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Enums\CourseNames.cs" />
     <Compile Include="Resources\ITLocalData\ITConstants.cs" />
     <Compile Include="Resources\Utilities\AsyncCommand.cs" />
@@ -104,6 +114,7 @@
     <Compile Include="Resources\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\TabsViewModels\LanguageViewModel.cs" />
     <Compile Include="Resources\Views\Controls\CoursesFilterControl.xaml.cs">
       <DependentUpon>CoursesFilterControl.xaml</DependentUpon>
     </Compile>
@@ -124,6 +135,9 @@
     </Compile>
     <Compile Include="Resources\Views\TabsView\JavaTabView.xaml.cs">
       <DependentUpon>JavaTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\LanguageView.xaml.cs">
+      <DependentUpon>LanguageView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Views\Controls\CoursesFilterControl.xaml">
       <SubType>Designer</SubType>
@@ -164,6 +178,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Views\LanguageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -179,8 +197,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.uk-UA.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.uk-UA.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />

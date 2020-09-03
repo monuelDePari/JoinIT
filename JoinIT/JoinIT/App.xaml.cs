@@ -1,5 +1,6 @@
 ﻿namespace JoinIT
 {
+    using JoinIT.Properties;
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.ViewModels;
     using JoinIT.Resources.Views;
@@ -21,14 +22,15 @@
         {
             base.OnStartup(e);
 
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Default.LanguageSetting);
+
             ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>();
 
             ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
             ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
 
-            var startupViewModel = ITUnityContainer.Instance.Resolve<StartupViewModel>();
-            var window = new StartupView { DataContext = startupViewModel };
+            var window = new StartupView();                
             window.Show();
         }
     }

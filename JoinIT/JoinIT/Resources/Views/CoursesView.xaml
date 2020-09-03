@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
+             xmlns:localisation="clr-namespace:JoinIT.Properties"
              xmlns:local="clr-namespace:JoinIT"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
@@ -21,25 +22,26 @@
                        FontSize="32"
                        FontStyle="Normal"
                        VerticalAlignment="Bottom"
-                       HorizontalAlignment="Center">Course Info</TextBlock>
+                       HorizontalAlignment="Center"
+                       Text="{x:Static localisation:Resources.CourseInfo}" />
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="10">
                 <StackPanel>
-                    <TextBlock Text="Name" />
+                    <TextBlock Text="{x:Static localisation:Resources.CoursesTab}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
                              Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Text="Author Name" />
+                    <TextBlock Text="{x:Static localisation:Resources.AuthorName}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
                              Text="{Binding AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Text="Start Date" />
+                    <TextBlock Text="{x:Static localisation:Resources.StartDate}" />
                     <DatePicker x:Name="StartDate"
                                 Margin="10"
                                 SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </DatePicker>
-                    <TextBlock Text="End Date" />
+                    <TextBlock Text="{x:Static localisation:Resources.EndDate}" />
                     <DatePicker x:Name="EndDate"
                                 Margin="10"
                                 SelectedDate="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -50,13 +52,13 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                     <Button x:Name="Register"
-                            Content="Register"
+                            Content="{x:Static localisation:Resources.Register}"
                             Margin="10"
                             VerticalAlignment="Bottom"
                             MinWidth="90"
                             Command="{Binding AddCommand}" />
                     <Button x:Name="Update"
-                            Content="Update"
+                            Content="{x:Static localisation:Resources.Update}"
                             Margin="10"
                             VerticalAlignment="Bottom"
                             MinWidth="90" />

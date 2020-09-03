@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
              xmlns:customControl="clr-namespace:JoinIT.Resources.Views.Controls"
+             xmlns:localisation="clr-namespace:JoinIT.Properties"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:CPlusPlusTabViewModel}"
              d:DesignHeight="450"
@@ -21,7 +22,8 @@
                        FontSize="32"
                        FontStyle="Normal"
                        VerticalAlignment="Bottom"
-                       HorizontalAlignment="Center">C++ Courses</TextBlock>
+                       HorizontalAlignment="Center"
+                       Text="{x:Static localisation:Resources.CPlusPlusTab}" />
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="10">
