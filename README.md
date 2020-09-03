@@ -34,3 +34,4 @@ Application must use MVVM architecture pattern.
 9. Added search with data template and text box
 10. Added search with data template and Date Picker
 11. Added spinner data preload 
+12. Added Change Language Window
