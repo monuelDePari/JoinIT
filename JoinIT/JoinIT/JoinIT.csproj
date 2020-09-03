@@ -112,7 +112,7 @@
     <Compile Include="Resources\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\CPlusPlusTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
-    <Compile Include="Resources\ViewModels\TabsViewModels\ITBaseTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\ITBaseViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\JavaTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\LanguageViewModel.cs" />
     <Compile Include="Resources\Views\Controls\CoursesFilterControl.xaml.cs">

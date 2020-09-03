@@ -2,14 +2,13 @@
 {
     using JoinIT.Properties;
     using JoinIT.Resources.Utilities;
-    using Repositories.Instructions;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using Resources.ITConstants;
     using System.Linq;
 
-    public class LanguageViewModel : ITBaseTabViewModel
+    public class LanguageViewModel : ITBaseViewModel
     {
         #region Fields
         private KeyValuePair<string, string> _languagesKeyValuePair;
@@ -17,7 +16,7 @@
         #endregion
 
         #region Constructors
-        public LanguageViewModel(ICoursesRepository coursesRepository) : base(coursesRepository)
+        public LanguageViewModel()
         {
             Languages = new Dictionary<string, string>()
             {

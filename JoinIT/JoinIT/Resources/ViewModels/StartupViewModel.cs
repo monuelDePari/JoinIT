@@ -1,11 +1,9 @@
 ﻿namespace JoinIT.Resources.ViewModels
 {
     using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels.TabsViewModels;
-    using JoinIT.Resources.Views;
     using System;
 
-    public class StartupViewModel : ITBaseTabViewModel
+    public class StartupViewModel : ITBaseViewModel
     {
         #region Fields
         private RelativeCommand _openNewWindowCommand;
