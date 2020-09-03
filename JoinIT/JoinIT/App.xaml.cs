@@ -2,7 +2,6 @@
 {
     using JoinIT.Properties;
     using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels;
     using JoinIT.Resources.Views;
     using Repositories;
     using Repositories.Instructions;
