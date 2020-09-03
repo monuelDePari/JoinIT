@@ -30,8 +30,7 @@
 
             ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
 
-            var startupViewModel = ITUnityContainer.Instance.Resolve<StartupViewModel>();
-            var window = new StartupView { DataContext = startupViewModel };
+            var window = new StartupView();                
             window.Show();
         }
     }

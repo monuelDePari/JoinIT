@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using Resources.ITConstants;
-    using System.Reflection;
+    using System.Linq;
 
     public class LanguageViewModel : ITBaseTabViewModel
     {
@@ -24,6 +24,9 @@
                 { Resources.English, ITConstants.English },
                 { Resources.Ukrainian, ITConstants.Ukrainian }
             };
+
+            LanguagesKeyValuePair = new KeyValuePair<string, string>(
+                Languages.FirstOrDefault(x => x.Value == Settings.Default.LanguageSetting).Key, Settings.Default.LanguageSetting);
         }
 
         #endregion

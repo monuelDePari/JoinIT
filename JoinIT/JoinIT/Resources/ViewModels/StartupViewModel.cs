@@ -2,6 +2,7 @@
 {
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.ViewModels.TabsViewModels;
+    using JoinIT.Resources.Views;
     using System;
 
     public class StartupViewModel : ITBaseTabViewModel
@@ -18,12 +19,12 @@
         #endregion
 
         #region Methods
-        private void OnOpenNewLanguageWindow(object o)
+        private void OnOpenNewLanguageWindow(object sender)
         {
             var handler = OpenWindowEventHandler;
             if (handler != null)
             {
-                handler(null, null);
+                handler(null, EventArgs.Empty);
             }
         }
         #endregion

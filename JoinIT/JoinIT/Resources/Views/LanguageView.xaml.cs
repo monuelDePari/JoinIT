@@ -15,7 +15,7 @@
     [ExcludeFromCodeCoverage]
     public partial class LanguageView : Window
     {
-        private readonly LanguageViewModel _languageViewModel;
+        private LanguageViewModel _languageViewModel;
         public LanguageView()
         {
             InitializeComponent();

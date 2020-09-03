@@ -13,7 +13,7 @@
     [ExcludeFromCodeCoverage]
     public partial class StartupView : Window
     {
-        private StartupViewModel _startupViewModel;
+        private readonly StartupViewModel _startupViewModel;
         public StartupView()
         {
             InitializeComponent();
@@ -21,19 +21,24 @@
             DataContext = ITUnityContainer.Instance.Resolve<StartupViewModel>();
 
             _startupViewModel = (StartupViewModel)DataContext;
-            _startupViewModel.OpenWindowEventHandler += OnWindowOpen;
-            Closed += OnWindowClose;
+            Loaded += StartupView_Loaded;
+            Closed += StartupView_Closed;
         }
 
-        public void OnWindowClose(object sender, EventArgs e)
+        private void StartupView_Loaded(object sender, RoutedEventArgs e)
+        {
+            _startupViewModel.OpenWindowEventHandler += OnWindowOpen;
+        }
+
+        public void StartupView_Closed(object sender, EventArgs e)
         {
             _startupViewModel.OpenWindowEventHandler -= OnWindowOpen;
         }
 
         public void OnWindowOpen(object sender, EventArgs e)
         {
-            LanguageView languageTabView = new LanguageView();
-            languageTabView.Show();
+            LanguageView languageView = new LanguageView();
+            languageView.Show();
         }
     }
 }
