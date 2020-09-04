@@ -6,6 +6,7 @@
     using System.Windows;
     using System.Windows.Controls;
     using JoinIT.Resources.ITConstants;
+    using System.Reflection;
 
     [ExcludeFromCodeCoverage]
     public class ComboboxTemplateSelector : DataTemplateSelector
@@ -16,17 +17,13 @@
             var coursesPropertiesToCompare = typeof(CourseInfoModel).GetProperties();
             CourseInfoModel courseInfoModel = new CourseInfoModel();
 
-            for (int i = 0; i < coursesPropertiesToCompare.Length; i++)
+            foreach (PropertyInfo propertyInfo in coursesPropertiesToCompare)
             {
-                if (keyProperty == coursesPropertiesToCompare[i].Name && keyProperty == courseInfoModel.GetPropertyName(t => t.Id))
-                {
-                    return ITConstants.IdTemplate;
-                }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.CourseName) || keyProperty == courseInfoModel.GetPropertyName(t => t.AuthorName)))
+                if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.CourseName) || keyProperty == courseInfoModel.GetPropertyName(t => t.AuthorName)))
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if (keyProperty == coursesPropertiesToCompare[i].Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
+                else if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }
@@ -39,6 +36,7 @@
         {
             FrameworkElement frameworkElement = container as FrameworkElement;
             var properties = typeof(CourseInfoModel).GetProperties();
+
             if (item is KeyValuePair<string, string>)
             {
                 var itemData = (KeyValuePair<string, string>)item;
@@ -47,7 +45,11 @@
                 {
                     if (itemData.Key == itemProperty.Name)
                     {
-                        return frameworkElement.FindResource(GetProperTemplateName(itemProperty.Name)) as DataTemplate;
+                        string propertyName = GetProperTemplateName(itemProperty.Name);
+                        if (propertyName != null)
+                        {
+                            return frameworkElement.FindResource(propertyName) as DataTemplate;
+                        }
                     }
                 }
             }

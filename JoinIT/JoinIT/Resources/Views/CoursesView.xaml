@@ -10,6 +10,17 @@
              d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
              Height="450"
              Width="800">
+    <UserControl.Resources>
+        <Style TargetType="DatePicker">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
           Background="White">
@@ -31,20 +42,20 @@
                     <TextBlock Text="{x:Static localisation:Resources.CoursesTab}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
-                             Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                             Text="{Binding Path=CourseModel.CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" />
                     <TextBlock Text="{x:Static localisation:Resources.AuthorName}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
-                             Text="{Binding AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                             Text="{Binding Path=CourseModel.AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                     <TextBlock Text="{x:Static localisation:Resources.StartDate}" />
                     <DatePicker x:Name="StartDate"
                                 Margin="10"
-                                SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}">
                     </DatePicker>
                     <TextBlock Text="{x:Static localisation:Resources.EndDate}" />
                     <DatePicker x:Name="EndDate"
                                 Margin="10"
-                                SelectedDate="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}">
                     </DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"

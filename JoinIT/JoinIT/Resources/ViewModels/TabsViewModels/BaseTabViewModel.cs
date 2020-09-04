@@ -74,8 +74,12 @@
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
             var courseInfoModelsProperties = typeof(CourseInfoModel).GetProperties();
 
-            for (int i = 1; i < courseInfoModelsProperties.Length; i++)
+            for (int i = 0; i < courseInfoModelsProperties.Length; i++)
             {
+                if (courseInfoModelsProperties[i].Name.Equals(_courseInfoModel.GetPropertyName(t => t.Error)) || courseInfoModelsProperties[i].Name.Equals(_courseInfoModel.GetPropertyName(t => t.Id)) || courseInfoModelsProperties[i].Name.Equals("Item"))
+                {
+                    continue;
+                }
                 System.Reflection.PropertyInfo item = courseInfoModelsProperties[i];
                 keyValuePairs.Add(item.Name.ToString(), Regex.Replace(item.Name.ToString(), "([a-z])([A-Z])", "$1 $2"));
             }

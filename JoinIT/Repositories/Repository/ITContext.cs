@@ -12,7 +12,7 @@ namespace Repositories.Repository
         }
         #endregion
         #region data
-        public DbSet<CourseInfoModel> courseInfoModels { get; set; }
+        public DbSet<CourseInfoModel> CourseInfoModels { get; set; }
         #endregion
     }
 }

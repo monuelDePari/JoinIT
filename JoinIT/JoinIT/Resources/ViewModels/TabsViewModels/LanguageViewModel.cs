@@ -78,6 +78,8 @@
         }
         #endregion
 
+        #region Events
         public event EventHandler RestartAppEvenHandler;
+        #endregion
     }
 }

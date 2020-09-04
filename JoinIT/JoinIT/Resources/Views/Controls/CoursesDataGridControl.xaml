@@ -14,7 +14,21 @@
                       HorizontalGridLinesBrush="DarkGray"
                       RowBackground="LightGray"
                       AlternatingRowBackground="White"
-                      ItemsSource="{Binding Path=CourseInfoModels}">
+                      ItemsSource="{Binding Path=CourseInfoModels}"
+                      AutoGenerateColumns="False"
+                      SelectedItem="{Binding Path=CourseModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding Path=Id}" />
+                    <DataGridTextColumn Header="Course Name"
+                                        Binding="{Binding Path=CourseName}" />
+                    <DataGridTextColumn Header="Author Name"
+                                        Binding="{Binding Path=AuthorName}" />
+                    <DataGridTextColumn Header="Start Date"
+                                        Binding="{Binding Path=StartDate}" />
+                    <DataGridTextColumn Header="End Date"
+                                        Binding="{Binding Path=EndDate}" />
+                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </Grid>

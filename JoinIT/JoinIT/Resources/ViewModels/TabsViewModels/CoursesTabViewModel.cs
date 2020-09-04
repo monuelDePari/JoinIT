@@ -4,6 +4,7 @@
     using Models;
     using Repositories.Instructions;
     using System;
+    using System.ComponentModel;
     using System.Threading.Tasks;
 
     public class CoursesTabViewModel : BaseTabViewModel
@@ -26,47 +27,6 @@
             }
         }
 
-        public string CourseName
-        {
-            get { return _courseInfoModel.CourseName; }
-            set
-            {
-                CourseModel.CourseName = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string AuthorName
-        {
-            get { return _courseInfoModel.AuthorName; }
-            set
-            {
-                CourseModel.AuthorName = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DateTime StartDate
-        {
-            get { return _courseInfoModel.StartDate; }
-            set
-            {
-                CourseModel.StartDate = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DateTime EndDate
-        {
-            get { return _courseInfoModel.EndDate.Date; }
-            set
-            {
-                CourseModel.EndDate = value;
-                OnPropertyChanged();
-            }
-        }
-
-
         #endregion
 
         #region Methods
@@ -81,7 +41,7 @@
         {
             CoursesRepository = coursesRepository;
             _addCommand = new AsyncCommand(AddNewCourseAsync);
-            _courseInfoModel = new CourseInfoModel();
+            CourseModel = new CourseInfoModel();
             _courseInfoModel.StartDate = DateTime.Now;
             _courseInfoModel.EndDate = DateTime.Now;
         }
