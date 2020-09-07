@@ -4,7 +4,6 @@
     using Models;
     using Repositories.Instructions;
     using System;
-    using System.ComponentModel;
     using System.Threading.Tasks;
 
     public class CoursesTabViewModel : BaseTabViewModel

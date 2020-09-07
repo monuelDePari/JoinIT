@@ -16,6 +16,7 @@
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private IEnumerable<CourseInfoModel> _courseInfoModels;
         private Dictionary<string, string> _courseInfoModelsDictionary;
+        //private Nullable<DateTime> _selectedDate = null;
 
         protected ICoursesRepository CoursesRepository;
         #endregion
@@ -56,15 +57,19 @@
 
         private async Task OnSelectedDateChangedAsync(object arg)
         {
-            if (arg is DateTime)
+            DateTime date;
+            if (arg != null)
             {
-                if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.StartDate))
+                if (DateTime.TryParse(arg.ToString(), out date))
                 {
-                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.StartDate >= (DateTime)arg && p.CourseName == _tabName));
-                }
-                else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.EndDate))
-                {
-                    CourseInfoModels = await (CoursesRepository.FindAsync(p => p.EndDate >= (DateTime)arg && p.CourseName == _tabName));
+                    if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.StartDate))
+                    {
+                        CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.StartDate >= date && p.CourseName == _tabName));
+                    }
+                    else if (CourseInfoModelKeyValuePair.Key == _courseInfoModel.GetPropertyName(t => t.EndDate))
+                    {
+                        CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.EndDate >= date && p.CourseName == _tabName));
+                    }
                 }
             }
         }
@@ -140,6 +145,23 @@
                 OnPropertyChanged();
             }
         }
+        //public Nullable<DateTime> SelectedDate
+        //{
+        //    get
+        //    {
+        //        if (_selectedDate == null)
+        //        {
+        //            _selectedDate = DateTime.Today;
+        //        }
+        //        return _selectedDate;
+        //    }
+        //    set
+        //    {
+        //        OnSelectedDateChangedAsync(value);
+        //        _selectedDate = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
         #endregion
 
         #region Commands
