@@ -45,7 +45,7 @@
                     <TextBlock Text="{x:Static localisation:Resources.CoursesTab}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
-                             Text="{Binding Path=CourseModel.CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" />
+                             Text="{Binding Path=CourseModel.CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
                     <TextBlock Text="{x:Static localisation:Resources.AuthorName}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
@@ -53,12 +53,12 @@
                     <TextBlock Text="{x:Static localisation:Resources.StartDate}" />
                     <DatePicker x:Name="StartDate"
                                 Margin="10"
-                                SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}">
+                                SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                     </DatePicker>
                     <TextBlock Text="{x:Static localisation:Resources.EndDate}" />
                     <DatePicker x:Name="EndDate"
                                 Margin="10"
-                                SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}">
+                                SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                     </DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
