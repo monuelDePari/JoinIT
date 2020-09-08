@@ -28,7 +28,7 @@
                 <ribbon:RibbonGroup x:Name="CrudOperations"
                                     Header="{x:Static localisation:Resources.CrudOperations}">
                     <ribbon:RibbonButton x:Name="Create"
-                                         Command="{Binding NewCoursesTabCommand}"
+                                         Command="{Binding OpenCoursesWindowCommand}"
                                          LargeImageSource="/Resources\Assets\CreateNewGroupOfSudentsImage.png"
                                          Label="{x:Static localisation:Resources.Create}" />
                     <ribbon:RibbonButton x:Name="Update"
@@ -47,7 +47,7 @@
                 <ribbon:RibbonGroup x:Name="LanguageSettings"
                                     Header="{x:Static localisation:Resources.LanguageSettings}">
                     <ribbon:RibbonButton x:Name="LanguageSettingsButton"
-                                         Command="{Binding OpenNewWindowCommand}"
+                                         Command="{Binding OpenLanguageWindowCommand}"
                                          LargeImageSource="/Resources\Assets\LanguageImage.png"
                                          Label="{x:Static localisation:Resources.ChangeLanguage}" />
                 </ribbon:RibbonGroup>
@@ -86,9 +86,6 @@
         <TabControl x:Name="CourseInformationTab"
                     VerticalAlignment="Top"
                     Grid.Row="1">
-            <TabItem Header="{x:Static localisation:Resources.CoursesTab}">
-                <tabs:CoursesView />
-            </TabItem>
             <TabItem Header="{x:Static localisation:Resources.CPlusPlusTab}">
                 <tabsview:CPlusPlusTabView />
             </TabItem>

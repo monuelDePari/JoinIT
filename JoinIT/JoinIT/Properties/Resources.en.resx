@@ -183,6 +183,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NewCourseAdded" xml:space="preserve">
+    <value>New Course Added</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>Read</value>
   </data>

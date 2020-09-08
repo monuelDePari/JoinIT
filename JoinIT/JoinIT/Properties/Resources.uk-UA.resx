@@ -183,6 +183,9 @@
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>
   </data>
+  <data name="NewCourseAdded" xml:space="preserve">
+    <value>Добавлений новий курс</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>Зчитати</value>
   </data>

@@ -259,6 +259,15 @@ namespace JoinIT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Course Added.
+        /// </summary>
+        public static string NewCourseAdded {
+            get {
+                return ResourceManager.GetString("NewCourseAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Additional Commands.
         /// </summary>
         public static string r {

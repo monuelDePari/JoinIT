@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JoinIT.Resources.Views.CoursesView"
+﻿<Window x:Class="JoinIT.Resources.Views.CoursesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,7 +10,7 @@
              d:DataContext="{d:DesignInstance tabs:CoursesTabViewModel}"
              Height="450"
              Width="800">
-    <UserControl.Resources>
+    <Window.Resources>
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError"
@@ -22,7 +22,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-    </UserControl.Resources>
+    </Window.Resources>
 
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
@@ -70,14 +70,16 @@
                             Margin="10"
                             VerticalAlignment="Bottom"
                             MinWidth="90"
-                            Command="{Binding AddCommand}" />
+                            Command="{Binding AddCommand}"
+                            Click="Register_Click" />
                     <Button x:Name="Update"
                             Content="{x:Static localisation:Resources.Update}"
                             Margin="10"
                             VerticalAlignment="Bottom"
-                            MinWidth="90" />
+                            MinWidth="90"
+                            Command="{Binding UpdateCommand}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>
-</UserControl>
+</Window>
