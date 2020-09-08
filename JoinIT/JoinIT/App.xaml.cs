@@ -3,7 +3,6 @@
     using JoinIT.Properties;
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.Views;
-    using Models;
     using Repositories;
     using Repositories.Instructions;
     using Repositories.Repository;

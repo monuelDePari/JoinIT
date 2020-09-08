@@ -2,7 +2,6 @@
 {
     using JoinIT.Resources.Utilities;
     using JoinIT.Resources.ViewModels;
-    using Models;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
