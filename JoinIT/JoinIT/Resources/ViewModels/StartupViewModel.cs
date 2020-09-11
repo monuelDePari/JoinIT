@@ -13,11 +13,8 @@
         #region Constructors
         public StartupViewModel()
         {
-            if (!IsLoading)
-            {
-                OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
-                OpenCoursesWindowCommand = new RelativeCommand(OnOpenCoursesWindow, OpenCoursesWindowCommand_CanExecute);
-            }
+            OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
+            OpenCoursesWindowCommand = new RelativeCommand(OnOpenCoursesWindow, OpenCoursesWindowCommand_CanExecute);
         }
         #endregion
 
@@ -40,7 +37,7 @@
         }
         public bool OpenCoursesWindowCommand_CanExecute()
         {
-            if (OpenCoursesWindowEventHandler != null)
+            if (OpenCoursesWindowEventHandler != null && !IsLoading)
             {
                 return true;
             }
@@ -48,7 +45,7 @@
         }
         public bool OpenLanguageWindowCommand_CanExecute()
         {
-            if(OpenLanguageWindowEventHandler != null)
+            if (OpenLanguageWindowEventHandler != null && !IsLoading)
             {
                 return true;
             }
