@@ -24,7 +24,7 @@
         #region constructors
         public CoursesRepository(ITContext context) : base(context)
         {
-            this._context = context;
+            _context = context;
         }
         #endregion
     }
