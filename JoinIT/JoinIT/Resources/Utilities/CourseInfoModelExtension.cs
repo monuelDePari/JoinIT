@@ -1,9 +1,9 @@
 ﻿namespace JoinIT.Resources.Utilities
 {
-    using Models;
     using System;
+    using System.IO;
     using System.Linq.Expressions;
-
+    using System.Runtime.Serialization.Formatters.Binary;
 
     public static class CourseInfoModelExtension
     {

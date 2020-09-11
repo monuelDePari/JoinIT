@@ -144,6 +144,9 @@
   <data name="CourseInfo" xml:space="preserve">
     <value>Інформація про курс</value>
   </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Ім'я курсу</value>
+  </data>
   <data name="CoursesTab" xml:space="preserve">
     <value>вкладка курсів</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="FontSettings" xml:space="preserve">
     <value>Розміри шрифту</value>
   </data>
+  <data name="ID" xml:space="preserve">
+    <value>ідентифікатор</value>
+  </data>
   <data name="JavaTab" xml:space="preserve">
     <value>Java вкладка</value>
   </data>
@@ -191,6 +197,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зареєструвати</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>Дата Старту</value>

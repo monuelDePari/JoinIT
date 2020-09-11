@@ -109,7 +109,7 @@
     <Compile Include="Resources\Utilities\RelativeCommand.cs" />
     <Compile Include="Resources\ViewModels\StartupViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\BaseTabViewModel.cs" />
-    <Compile Include="Resources\ViewModels\TabsViewModels\CoursesTabViewModel.cs" />
+    <Compile Include="Resources\ViewModels\ManageCoursesViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\CPlusPlusTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\CSharpTabViewModel.cs" />
     <Compile Include="Resources\ViewModels\ITBaseViewModel.cs" />

@@ -1,12 +1,13 @@
 ﻿namespace JoinIT.Resources.Views
 {
     using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels.TabsViewModels;
+    using JoinIT.Resources.ViewModels;
     using Models;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using Unity;
     using Unity.Injection;
+    using Unity.Resolution;
 
     /// <summary>
     /// Interaction logic for CoursesView.xaml
@@ -14,25 +15,11 @@
     [ExcludeFromCodeCoverage]
     public partial class CoursesView : Window
     {
-        public CoursesView()
+        public CoursesView(CourseInfoModel courseInfoModel = null)
         {
             InitializeComponent();
 
-            DataContext = ITUnityContainer.Instance.Resolve<CoursesTabViewModel>();
-        }
-
-        public CoursesView(CourseInfoModel courseInfoModel)
-        {
-            InitializeComponent();
-
-            ITUnityContainer.Instance.RegisterType<CourseInfoModel>(new InjectionFactory(t => courseInfoModel));
-
-            DataContext = ITUnityContainer.Instance.Resolve<CoursesTabViewModel>();
-        }
-
-        private void Register_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
+            DataContext = ITUnityContainer.Instance.Resolve<ManageCoursesViewModel>(new ResolverOverride[] { new ParameterOverride("courseModel", courseInfoModel)});
         }
     }
 }

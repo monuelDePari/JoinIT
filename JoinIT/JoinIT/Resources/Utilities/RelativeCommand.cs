@@ -6,16 +6,16 @@
     {
         #region Fields
         private readonly Action<object> _actionCommand;
-        private readonly Predicate<object> _predicateCommand;
+        private readonly Func<bool> _canExecuteCommand;
         #endregion
 
         #region Constructors
         public RelativeCommand(Action<object> action) : this(action, null) { }
 
-        public RelativeCommand(Action<object> action, Predicate<Object> predicate)
+        public RelativeCommand(Action<object> action, Func<bool> canExecuteCommand)
         {
             _actionCommand = action;
-            _predicateCommand = predicate;
+            _canExecuteCommand = canExecuteCommand;
         }
         #endregion
 
@@ -30,7 +30,15 @@
         #region Methods
         public bool CanExecute(object parameter)
         {
-            return _predicateCommand == null || _predicateCommand(parameter);
+            if (_canExecuteCommand == null)
+            {
+                return true;
+            }
+            else
+            {
+                bool result = _canExecuteCommand.Invoke();
+                return result;
+            }
         }
 
         public void Execute(object parameter)

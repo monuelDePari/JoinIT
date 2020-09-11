@@ -43,11 +43,9 @@
 
         private void CPlusPlusCourseUpdate(object sender, EventArgs e)
         {
-            if(sender is CourseInfoModel)
-            {
-                CoursesView coursesView = new CoursesView((CourseInfoModel)sender);
-                coursesView.ShowDialog();
-            }
+            CourseInfoModel courseModel = new CourseInfoModel((CourseInfoModel)sender);
+            CoursesView coursesView = new CoursesView(courseModel);
+            coursesView.ShowDialog();
         }
     }
 }

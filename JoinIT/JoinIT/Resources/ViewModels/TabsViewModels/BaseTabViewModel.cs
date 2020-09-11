@@ -58,18 +58,15 @@
         private async Task OnSelectedDateChangedAsync(object arg)
         {
             DateTime date;
-            if (arg != null)
+            if (arg != null && DateTime.TryParse(arg.ToString(), out date))
             {
-                if (DateTime.TryParse(arg.ToString(), out date))
+                if (CourseInfoModelKeyValuePair.Key == Course.GetPropertyName(t => t.StartDate))
                 {
-                    if (CourseInfoModelKeyValuePair.Key == Course.GetPropertyName(t => t.StartDate))
-                    {
-                        CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.StartDate >= date && p.CourseName == _tabName));
-                    }
-                    else if (CourseInfoModelKeyValuePair.Key == Course.GetPropertyName(t => t.EndDate))
-                    {
-                        CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.EndDate >= date && p.CourseName == _tabName));
-                    }
+                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.StartDate >= date && p.CourseName == _tabName));
+                }
+                else if (CourseInfoModelKeyValuePair.Key == Course.GetPropertyName(t => t.EndDate))
+                {
+                    CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(p => p.EndDate >= date && p.CourseName == _tabName));
                 }
             }
         }
@@ -77,8 +74,7 @@
         public void OnSelectedCourseChanged(object arg)
         {
             var handler = UpdateCourseHandler;
-
-            if(handler != null)
+            if (handler != null)
             {
                 handler(arg, EventArgs.Empty);
             }
