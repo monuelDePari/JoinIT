@@ -33,7 +33,7 @@
             {
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now
-            } : courseModel.Clone();
+            } : courseModel;
         }
         #endregion
 
