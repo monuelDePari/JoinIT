@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:JoinIT.Resources.Views.Controls"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:localisation="clr-namespace:JoinIT.Properties"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -14,7 +16,28 @@
                       HorizontalGridLinesBrush="DarkGray"
                       RowBackground="LightGray"
                       AlternatingRowBackground="White"
-                      ItemsSource="{Binding Path=CourseInfoModels}">
+                      ItemsSource="{Binding Path=CourseInfoModels}"
+                      AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{x:Static localisation:Resources.ID}"
+                                        Binding="{Binding Path=Id}" />
+                    <DataGridTextColumn Header="{x:Static localisation:Resources.CourseName}"
+                                        Binding="{Binding Path=CourseName}" />
+                    <DataGridTextColumn Header="{x:Static localisation:Resources.AuthorName}"
+                                        Binding="{Binding Path=AuthorName}" />
+                    <DataGridTextColumn Header="{x:Static localisation:Resources.StartDate}"
+                                        Binding="{Binding Path=StartDate}" />
+                    <DataGridTextColumn Header="{x:Static localisation:Resources.EndDate}"
+                                        Binding="{Binding Path=EndDate}" />
+                </DataGrid.Columns>
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=CPlusPlusDataGrid, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                                               Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCourseChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </DataGrid>
         </StackPanel>
     </Grid>

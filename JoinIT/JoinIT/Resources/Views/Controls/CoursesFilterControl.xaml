@@ -50,8 +50,8 @@
                     <DatePicker x:Name="DateFilterPicker">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectedDateChanged">
-                                <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedDateChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                       CommandParameter="{Binding ElementName=DateFilterPicker, Path=SelectedDate, UpdateSourceTrigger=PropertyChanged}" />
+                                <i:InvokeCommandAction CommandParameter="{Binding ElementName=DateFilterPicker, UpdateSourceTrigger=PropertyChanged}"
+                                                       Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedDateChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </DatePicker>

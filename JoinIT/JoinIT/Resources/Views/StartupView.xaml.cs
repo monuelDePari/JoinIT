@@ -27,18 +27,26 @@
 
         private void StartupView_Loaded(object sender, RoutedEventArgs e)
         {
-            _startupViewModel.OpenWindowEventHandler += OnWindowOpen;
+            _startupViewModel.OpenLanguageWindowEventHandler += OnLanguageWindowOpen;
+            _startupViewModel.OpenCoursesWindowEventHandler += OnCoursesWindowOpen;
         }
 
         public void StartupView_Closed(object sender, EventArgs e)
         {
-            _startupViewModel.OpenWindowEventHandler -= OnWindowOpen;
+            _startupViewModel.OpenLanguageWindowEventHandler -= OnLanguageWindowOpen;
+            _startupViewModel.OpenCoursesWindowEventHandler -= OnCoursesWindowOpen;
         }
 
-        public void OnWindowOpen(object sender, EventArgs e)
+        public void OnLanguageWindowOpen(object sender, EventArgs e)
         {
             LanguageView languageView = new LanguageView();
             languageView.Show();
+        }
+
+        public void OnCoursesWindowOpen(object sender, EventArgs e)
+        {
+            CoursesView coursesView = new CoursesView();
+            coursesView.ShowDialog();
         }
     }
 }

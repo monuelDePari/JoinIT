@@ -1,6 +1,5 @@
 ﻿namespace Repositories
 {
-    using Repositories.Repository;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;

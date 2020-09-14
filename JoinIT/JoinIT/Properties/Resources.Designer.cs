@@ -142,6 +142,15 @@ namespace JoinIT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Course Name.
+        /// </summary>
+        public static string CourseName {
+            get {
+                return ResourceManager.GetString("CourseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Courses Tab.
         /// </summary>
         public static string CoursesTab {
@@ -223,6 +232,15 @@ namespace JoinIT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Java Tab.
         /// </summary>
         public static string JavaTab {
@@ -259,6 +277,15 @@ namespace JoinIT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Course Added.
+        /// </summary>
+        public static string NewCourseAdded {
+            get {
+                return ResourceManager.GetString("NewCourseAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Additional Commands.
         /// </summary>
         public static string r {
@@ -282,6 +309,15 @@ namespace JoinIT.Properties {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

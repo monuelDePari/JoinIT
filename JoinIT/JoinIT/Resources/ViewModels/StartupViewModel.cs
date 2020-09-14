@@ -6,44 +6,75 @@
     public class StartupViewModel : ITBaseViewModel
     {
         #region Fields
-        private RelativeCommand _openNewWindowCommand;
+        private RelativeCommand _openLanguageWindowCommand;
+        private RelativeCommand _openCoursesWindowCommand;
         #endregion
 
         #region Constructors
         public StartupViewModel()
         {
-            OpenNewWindowCommand = new RelativeCommand(OnOpenNewLanguageWindow);
+            OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
+            OpenCoursesWindowCommand = new RelativeCommand(OnOpenCoursesWindow, OpenCoursesWindowCommand_CanExecute);
         }
         #endregion
 
         #region Methods
-        private void OnOpenNewLanguageWindow(object sender)
+        private void OnOpenLanguageWindow(object sender)
         {
-            var handler = OpenWindowEventHandler;
+            var handler = OpenLanguageWindowEventHandler;
             if (handler != null)
             {
                 handler(null, EventArgs.Empty);
             }
         }
+        private void OnOpenCoursesWindow(object sender)
+        {
+            var handler = OpenCoursesWindowEventHandler;
+            if (handler != null)
+            {
+                handler(null, EventArgs.Empty);
+            }
+        }
+        public bool OpenCoursesWindowCommand_CanExecute()
+        {
+            return OpenCoursesWindowEventHandler != null && !IsLoading;
+        }
+        public bool OpenLanguageWindowCommand_CanExecute()
+        {
+            return OpenLanguageWindowEventHandler != null && !IsLoading;
+        }
         #endregion
 
         #region Commands
-        public RelativeCommand OpenNewWindowCommand
+        public RelativeCommand OpenLanguageWindowCommand
         {
             get
             {
-                return _openNewWindowCommand;
+                return _openLanguageWindowCommand;
             }
             set
             {
-                _openNewWindowCommand = value;
+                _openLanguageWindowCommand = value;
+                OnPropertyChanged();
+            }
+        }
+        public RelativeCommand OpenCoursesWindowCommand
+        {
+            get
+            {
+                return _openCoursesWindowCommand;
+            }
+            set
+            {
+                _openCoursesWindowCommand = value;
                 OnPropertyChanged();
             }
         }
         #endregion
 
         #region Events
-        public event EventHandler OpenWindowEventHandler;
+        public event EventHandler OpenLanguageWindowEventHandler;
+        public event EventHandler OpenCoursesWindowEventHandler;
         #endregion
     }
 }

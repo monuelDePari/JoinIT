@@ -144,6 +144,9 @@
   <data name="CourseInfo" xml:space="preserve">
     <value>Course Information</value>
   </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
   <data name="CoursesTab" xml:space="preserve">
     <value>Courses Tab</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="FontSettings" xml:space="preserve">
     <value>Font Settings</value>
   </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
   <data name="JavaTab" xml:space="preserve">
     <value>Java Tab</value>
   </data>
@@ -183,11 +189,17 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NewCourseAdded" xml:space="preserve">
+    <value>New Course Added</value>
+  </data>
   <data name="Read" xml:space="preserve">
     <value>Read</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>Start Date</value>
