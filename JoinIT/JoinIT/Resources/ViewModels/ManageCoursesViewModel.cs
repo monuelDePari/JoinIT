@@ -14,11 +14,11 @@
         {
             if (IsUpdating)
             {
-                await RunTaskAsync(Task.FromResult(CoursesRepository.UpdateAsync(CourseModel)));
+                await RunTaskAsync(CoursesRepository.UpdateAsync(CourseModel));
             }
             else
             {
-                await RunTaskAsync(Task.FromResult(CoursesRepository.AddAsync(CourseModel)));
+                await RunTaskAsync(CoursesRepository.AddAsync(CourseModel));
             }
         }
         #endregion
@@ -33,7 +33,7 @@
             {
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now
-            } : courseModel;
+            } : courseModel.Clone();
         }
         #endregion
 

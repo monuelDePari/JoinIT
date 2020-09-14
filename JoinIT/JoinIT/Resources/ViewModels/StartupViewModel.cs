@@ -37,19 +37,11 @@
         }
         public bool OpenCoursesWindowCommand_CanExecute()
         {
-            if (OpenCoursesWindowEventHandler != null && !IsLoading)
-            {
-                return true;
-            }
-            return false;
+            return OpenCoursesWindowEventHandler != null && !IsLoading;
         }
         public bool OpenLanguageWindowCommand_CanExecute()
         {
-            if (OpenLanguageWindowEventHandler != null && !IsLoading)
-            {
-                return true;
-            }
-            return false;
+            return OpenLanguageWindowEventHandler != null && !IsLoading;
         }
         #endregion
 

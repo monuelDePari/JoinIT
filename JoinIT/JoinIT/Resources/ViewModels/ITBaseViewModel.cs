@@ -53,6 +53,23 @@
 
             return result;
         }
+        public async Task RunTaskAsync(Task task)
+        {
+            try
+            {
+                IsLoading = true;
+
+                await task;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
         #endregion
 
         #region Events
