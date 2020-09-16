@@ -5,6 +5,7 @@
     using Repositories.Instructions;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -14,12 +15,12 @@
         private string _tabName;
         protected CourseInfoModel Course;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
-        private IEnumerable<CourseInfoModel> _courseInfoModels;
+        private List<CourseInfoModel> _courseInfoModels;
+        private ICollection<object> _selectedCoursesInfoModels;
         private Dictionary<string, string> _courseInfoModelsDictionary;
 
         protected ICoursesRepository CoursesRepository;
         #endregion
-
 
         #region Constructors
         public BaseTabViewModel(ICoursesRepository coursesRepository) : this()
@@ -31,11 +32,37 @@
         {
             TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
             SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
+            DeleteSelectedCoursesCommand = new AsyncCommand(OnDeletedCoursesChangedAsync, OnDeletedCoursesChangedAsync_CanExecute);
             SelectedCourseChangedCommand = new RelativeCommand(OnSelectedCourseChanged);
+            SelectedCoursesChangedCommand = new RelativeCommand(OnSelectedCoursesChangedAsync);
         }
         #endregion
 
         #region Methods
+        private void OnSelectedCoursesChangedAsync(object obj)
+        {
+            if (obj != null)
+            {
+                SelectedCoursesInfoModels = obj as ICollection<object>;
+            }
+        }
+
+        public async Task OnDeletedCoursesChangedAsync(object arg)
+        {
+            List<CourseInfoModel> selectedCourseInfoModels = new List<CourseInfoModel>();
+            foreach (var course in SelectedCoursesInfoModels)
+            {
+                selectedCourseInfoModels.Add((CourseInfoModel)course);
+            }
+            CourseInfoModels = CourseInfoModels.Except(selectedCourseInfoModels).ToList();
+            await RunTaskAsync(CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels));
+        }
+
+        private bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
+        {
+            return SelectedCoursesInfoModels != null && !IsLoading;
+        }
+
         private async Task OnTextChangedAsync(object arg)
         {
             if (arg is string)
@@ -127,7 +154,7 @@
                 OnPropertyChanged();
             }
         }
-        public IEnumerable<CourseInfoModel> CourseInfoModels
+        public List<CourseInfoModel> CourseInfoModels
         {
             get
             {
@@ -136,6 +163,18 @@
             set
             {
                 _courseInfoModels = value;
+                OnPropertyChanged();
+            }
+        }
+        public ICollection<object> SelectedCoursesInfoModels
+        {
+            get
+            {
+                return _selectedCoursesInfoModels;
+            }
+            set
+            {
+                _selectedCoursesInfoModels = value;
                 OnPropertyChanged();
             }
         }
@@ -168,6 +207,8 @@
         #region Commands
         private AsyncCommand _textChangedCommand;
         private AsyncCommand _selectedDateChangedCommand;
+        private AsyncCommand _deleteSelectedCoursesCommand;
+        private RelativeCommand _selectedCoursesChangedCommand;
         private RelativeCommand _selectedCourseChangedCommand;
 
         public AsyncCommand TextChangedCommand
@@ -195,6 +236,33 @@
                 OnPropertyChanged();
             }
         }
+
+        public AsyncCommand DeleteSelectedCoursesCommand
+        {
+            get
+            {
+                return _deleteSelectedCoursesCommand;
+            }
+            set
+            {
+                _deleteSelectedCoursesCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelativeCommand SelectedCoursesChangedCommand
+        {
+            get
+            {
+                return _selectedCoursesChangedCommand;
+            }
+            set
+            {
+                _selectedCoursesChangedCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
         public RelativeCommand SelectedCourseChangedCommand
         {
             get

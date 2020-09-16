@@ -34,6 +34,7 @@
             await cPlusPlusViewModel.LoadDataAsync(CourseNames.CPlusPlus.ToString());
 
             _cPlusPlusTabViewModel.UpdateCourseHandler += CPlusPlusCourseUpdate;
+            
         }
 
         private void CPlusPlusTab_Unloaded(object sender, RoutedEventArgs e)
