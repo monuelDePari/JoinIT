@@ -35,3 +35,6 @@ Application must use MVVM architecture pattern.
 10. Added search with data template and Date Picker
 11. Added spinner data preload 
 12. Added Change Language Window
+13. Added Update with datagrid click
+14. Added Add with Create new Course Tab click
+15. Added Delete with Ctrl+Left Mouse Click Selection and Button Click
