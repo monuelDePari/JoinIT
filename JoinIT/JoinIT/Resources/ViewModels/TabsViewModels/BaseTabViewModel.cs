@@ -32,7 +32,7 @@
         {
             TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
             SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
-            DeleteSelectedCoursesCommand = new AsyncCommand(OnDeletedCoursesChangedAsync);
+            DeleteSelectedCoursesCommand = new AsyncCommand(OnDeletedCoursesChangedAsync, OnDeletedCoursesChangedAsync_CanExecute);
             SelectedCourseChangedCommand = new RelativeCommand(OnSelectedCourseChanged);
             SelectedCoursesChangedCommand = new RelativeCommand(OnSelectedCoursesChangedAsync);
         }
@@ -49,16 +49,18 @@
 
         public async Task OnDeletedCoursesChangedAsync(object arg)
         {
-            if (SelectedCoursesInfoModels != null)
+            List<CourseInfoModel> selectedCourseInfoModels = new List<CourseInfoModel>();
+            foreach (var course in SelectedCoursesInfoModels)
             {
-                List<CourseInfoModel> selectedCourseInfoModels = new List<CourseInfoModel>();
-                foreach (var course in SelectedCoursesInfoModels)
-                {
-                    selectedCourseInfoModels.Add((CourseInfoModel)course);
-                }
-                CourseInfoModels = CourseInfoModels.Except(selectedCourseInfoModels).ToList();
-                await CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels);
+                selectedCourseInfoModels.Add((CourseInfoModel)course);
             }
+            CourseInfoModels = CourseInfoModels.Except(selectedCourseInfoModels).ToList();
+            await CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels);
+        }
+
+        private bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
+        {
+            return SelectedCoursesInfoModels != null;
         }
 
         private async Task OnTextChangedAsync(object arg)
