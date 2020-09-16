@@ -17,7 +17,9 @@
                       RowBackground="LightGray"
                       AlternatingRowBackground="White"
                       ItemsSource="{Binding Path=CourseInfoModels}"
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      CanUserDeleteRows="True"
+                      SelectionMode="Extended">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="{x:Static localisation:Resources.ID}"
@@ -33,12 +35,18 @@
                 </DataGrid.Columns>
 
                 <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
+                    <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction CommandParameter="{Binding ElementName=CPlusPlusDataGrid, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                                                Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCourseChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                     </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=CPlusPlusDataGrid, Path=SelectedItems, UpdateSourceTrigger=PropertyChanged}"
+                                               Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCoursesChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    </i:EventTrigger>
                 </i:Interaction.Triggers>
             </DataGrid>
+            <Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.DeleteSelectedCoursesCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Content="{x:Static localisation:Resources.Delete}" />
         </StackPanel>
     </Grid>
 </UserControl>
