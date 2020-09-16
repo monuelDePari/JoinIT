@@ -55,12 +55,12 @@
                 selectedCourseInfoModels.Add((CourseInfoModel)course);
             }
             CourseInfoModels = CourseInfoModels.Except(selectedCourseInfoModels).ToList();
-            await CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels);
+            await RunTaskAsync(CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels));
         }
 
         private bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
         {
-            return SelectedCoursesInfoModels != null;
+            return SelectedCoursesInfoModels != null && !IsLoading;
         }
 
         private async Task OnTextChangedAsync(object arg)
