@@ -1,7 +1,7 @@
 ﻿namespace JoinIT.Resources.Views
 {
-    using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels;
+    using Utilities;
+    using ViewModels;
     using Models;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
@@ -20,7 +20,7 @@
             InitializeComponent();
 
             DataContext = ITUnityContainer.Instance.Resolve<ManageCoursesViewModel>(
-                new ResolverOverride[] { new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 1), courseInfoModel)});
+                new ResolverOverride[] { new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 2), courseInfoModel)});
         }
     }
 }

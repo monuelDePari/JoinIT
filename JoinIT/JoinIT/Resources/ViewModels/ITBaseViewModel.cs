@@ -33,6 +33,10 @@
 
         #region Methods
 
+        public virtual void OnLoaded() { }
+
+        public virtual void OnUnloaded() { }
+
         public async Task<T> RunTaskAsync<T>(Task<T> task)
         {
             T result = default(T);

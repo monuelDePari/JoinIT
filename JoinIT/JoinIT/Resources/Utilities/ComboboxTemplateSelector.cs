@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
-    using JoinIT.Resources.ITConstants;
+    using ITConstants;
     using System.Reflection;
 
     [ExcludeFromCodeCoverage]

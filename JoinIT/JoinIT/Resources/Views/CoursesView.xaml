@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
-        xmlns:localisation="clr-namespace:JoinIT.Properties"
+        xmlns:localization="clr-namespace:JoinIT.Properties"
         xmlns:courses="clr-namespace:JoinIT.Resources.ViewModels"
         xmlns:local="clr-namespace:JoinIT"
         mc:Ignorable="d"
@@ -38,25 +38,25 @@
                        FontStyle="Normal"
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Center"
-                       Text="{x:Static localisation:Resources.CourseInfo}" />
+                       Text="{x:Static localization:Resources.CourseInfo}" />
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="10">
                 <StackPanel>
-                    <TextBlock Text="{x:Static localisation:Resources.CoursesTab}" />
+                    <TextBlock Text="{x:Static localization:Resources.CoursesTab}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
                              Text="{Binding Path=CourseModel.CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-                    <TextBlock Text="{x:Static localisation:Resources.AuthorName}" />
+                    <TextBlock Text="{x:Static localization:Resources.AuthorName}" />
                     <TextBox Margin="10"
                              VerticalAlignment="Center"
                              Text="{Binding Path=CourseModel.AuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-                    <TextBlock Text="{x:Static localisation:Resources.StartDate}" />
+                    <TextBlock Text="{x:Static localization:Resources.StartDate}" />
                     <DatePicker x:Name="StartDate"
                                 Margin="10"
                                 SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                     </DatePicker>
-                    <TextBlock Text="{x:Static localisation:Resources.EndDate}" />
+                    <TextBlock Text="{x:Static localization:Resources.EndDate}" />
                     <DatePicker x:Name="EndDate"
                                 Margin="10"
                                 SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
@@ -67,7 +67,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                     <Button x:Name="Register"
-                            Content="{x:Static localisation:Resources.Save}"
+                            Content="{x:Static localization:Resources.Save}"
                             Margin="10"
                             VerticalAlignment="Bottom"
                             MinWidth="90"

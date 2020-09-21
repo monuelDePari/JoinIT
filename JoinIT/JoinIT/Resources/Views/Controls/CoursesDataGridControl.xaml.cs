@@ -7,7 +7,7 @@
     /// Interaction logic for CoursesDataGridControl.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CoursesDataGridControl : UserControl
+    public partial class CoursesDataGridControl
     {
         public CoursesDataGridControl()
         {

@@ -1,6 +1,7 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
-    using JoinIT.Resources.Utilities;
+    using Prism.Events;
+    using Utilities;
     using Models;
     using Repositories.Instructions;
     using System;
@@ -15,19 +16,48 @@
         private string _tabName;
         protected CourseInfoModel Course;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
-        private List<CourseInfoModel> _courseInfoModels;
-        private ICollection<object> _selectedCoursesInfoModels;
+        private RelativeCommand _updateCommand;
         private Dictionary<string, string> _courseInfoModelsDictionary;
+        private CourseInfoModel _selectedCourseModel;
 
+        private IEventAggregator _eventAggregator;
+        private ICollection<CourseInfoModel> _courseInfoModels;
+        private ICollection<object> _selectedCoursesInfoModels;
         protected ICoursesRepository CoursesRepository;
+        private readonly IApplicationCommands _applicationCommands;
         #endregion
 
         #region Constructors
-        public BaseTabViewModel(ICoursesRepository coursesRepository) : this()
+        public BaseTabViewModel(ICoursesRepository coursesRepository, IApplicationCommands applicationCommands, IEventAggregator eventAggregator) : this()
         {
-            CoursesRepository = coursesRepository;
+            SelectedCoursesInfoModels = new List<object>();
+            SelectedCourseModel = new CourseInfoModel();
             Course = new CourseInfoModel();
+
+            CoursesRepository = coursesRepository;
+            _applicationCommands = applicationCommands;
+            _eventAggregator = eventAggregator;
+
+            UpdateCommand = new RelativeCommand(OnEditExecute);
+            _applicationCommands.UpdateAllCommand.RegisterCommand(UpdateCommand);
+
+            _eventAggregator.GetEvent<DeleteItemFromUserControlDataGridEvent>().Subscribe(OnDeletedCourses);
         }
+
+        private async void OnDeletedCourses()
+        {
+            await OnDeletedCoursesChangedAsync(null);
+        }
+
+        private void OnEditExecute(object obj)
+        {
+            var handler = UpdateCourseHandler;
+            if (handler != null)
+            {
+                handler(SelectedCourseModel, EventArgs.Empty);
+            }
+        }
+
         public BaseTabViewModel()
         {
             TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
@@ -39,6 +69,7 @@
         #endregion
 
         #region Methods
+
         private void OnSelectedCoursesChangedAsync(object obj)
         {
             if (obj != null)
@@ -142,6 +173,19 @@
         #endregion
 
         #region Properties
+
+        public CourseInfoModel SelectedCourseModel
+        {
+            get
+            {
+                return _selectedCourseModel;
+            }
+            set
+            {
+                _selectedCourseModel = value;
+                OnPropertyChanged();
+            }
+        }
         public CourseInfoModel CourseModel
         {
             get
@@ -154,7 +198,7 @@
                 OnPropertyChanged();
             }
         }
-        public List<CourseInfoModel> CourseInfoModels
+        public ICollection<CourseInfoModel> CourseInfoModels
         {
             get
             {
@@ -199,6 +243,19 @@
             set
             {
                 _courseInfoModelKeyValuePair = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelativeCommand UpdateCommand
+        {
+            get
+            {
+                return _updateCommand;
+            }
+            set
+            {
+                _updateCommand = value;
                 OnPropertyChanged();
             }
         }
