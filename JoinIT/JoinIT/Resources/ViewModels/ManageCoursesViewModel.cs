@@ -26,7 +26,7 @@ namespace JoinIT.Resources.ViewModels
         #endregion
 
         #region Constructors
-        public ManageCoursesViewModel(ICoursesRepository coursesRepository, IApplicationCommands applicationCommands, CourseInfoModel courseModel = null)
+        public ManageCoursesViewModel(ICoursesRepository coursesRepository, CourseInfoModel courseModel = null)
         {
             CoursesRepository = coursesRepository;
             SaveCommand = new AsyncCommand(SaveCourseAsync);

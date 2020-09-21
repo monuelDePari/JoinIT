@@ -26,7 +26,7 @@ namespace JoinIT.Resources.ViewModels
             ApplicationCommands = applicationCommands;
             OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
             OpenCoursesWindowCommand = new RelativeCommand(OnOpenCoursesWindow, OpenCoursesWindowCommand_CanExecute);
-            DeleteFromDataGrid = new RelativeCommand(OnDeleteCourses, OnDeleteCourses_CanExecute);
+            DeleteFromDataGrid = new RelativeCommand(OnDeleteCourses);
 
             _deleteFromUserControlDataGridEventAggregator = eventAggregator;
         }
@@ -34,11 +34,6 @@ namespace JoinIT.Resources.ViewModels
         #endregion
 
         #region Methods
-
-        private bool OnDeleteCourses_CanExecute()
-        {
-            return true;
-        }
 
         private void OnDeleteCourses(object obj)
         {
