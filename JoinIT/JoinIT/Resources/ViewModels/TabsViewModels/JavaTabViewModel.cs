@@ -22,7 +22,7 @@
         {
             base.OnLoaded();
 
-            await LoadDataAsync(CourseNames.Java.ToString());
+            await RunTaskAsync(LoadDataAsync(CourseNames.Java.ToString()));
         }
 
         #endregion
