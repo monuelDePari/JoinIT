@@ -78,13 +78,11 @@
                     <ribbon:RibbonComboBox x:Name="FontSizeCombobox"
                                            Height="30"
                                            VerticalAlignment="Stretch">
-                        <ribbon:RibbonGallery x:Name="RibbonGallery"
-                                              SelectedValuePath="Key"
+                        <ribbon:RibbonGallery SelectedValuePath="Key"
                                               SelectedValue="{Binding SelectedFontSize}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction CommandParameter="{Binding ElementName=RibbonGallery, UpdateSourceTrigger=PropertyChanged}"
-                                                           Command="{Binding Path=FontSizeSelectionChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    <i:InvokeCommandAction Command="{Binding Path=FontSizeSelectionChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <ribbon:RibbonGalleryCategory ItemsSource="{Binding FontSizeDictionary, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
