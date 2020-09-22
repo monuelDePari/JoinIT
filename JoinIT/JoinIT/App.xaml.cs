@@ -19,7 +19,7 @@ namespace JoinIT
     /// Interaction logic for App.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class App : Application
+    public partial class App
     {
         protected override void OnStartup(StartupEventArgs e)
         {

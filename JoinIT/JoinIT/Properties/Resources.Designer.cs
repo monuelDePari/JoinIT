@@ -333,9 +333,9 @@ namespace JoinIT.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Text Settings Commands.
         /// </summary>
-        public static string TextSettingsCommads {
+        public static string TextSettingsCommands {
             get {
-                return ResourceManager.GetString("TextSettingsCommads", resourceCulture);
+                return ResourceManager.GetString("TextSettingsCommands", resourceCulture);
             }
         }
         
