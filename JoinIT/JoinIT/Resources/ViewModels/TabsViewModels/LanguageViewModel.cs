@@ -1,11 +1,11 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
-    using JoinIT.Properties;
-    using JoinIT.Resources.Utilities;
+    using Properties;
+    using Utilities;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using Resources.ITConstants;
+    using ITConstants;
     using System.Linq;
 
     public class LanguageViewModel : ITBaseViewModel

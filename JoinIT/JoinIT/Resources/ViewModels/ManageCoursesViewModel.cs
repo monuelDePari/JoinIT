@@ -1,7 +1,9 @@
-﻿namespace JoinIT.Resources.ViewModels
+﻿using Prism.Events;
+
+namespace JoinIT.Resources.ViewModels
 {
-    using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels.TabsViewModels;
+    using Utilities;
+    using TabsViewModels;
     using Models;
     using Repositories.Instructions;
     using System;
@@ -24,7 +26,7 @@
         #endregion
 
         #region Constructors
-        public ManageCoursesViewModel(ICoursesRepository coursesRepository, CourseInfoModel courseModel = null) : base(coursesRepository)
+        public ManageCoursesViewModel(ICoursesRepository coursesRepository, CourseInfoModel courseModel = null)
         {
             CoursesRepository = coursesRepository;
             SaveCommand = new AsyncCommand(SaveCourseAsync);
@@ -33,7 +35,7 @@
             {
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now
-            } : courseModel;
+            } : new CourseInfoModel(courseModel);
         }
         #endregion
 

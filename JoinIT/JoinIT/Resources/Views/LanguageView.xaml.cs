@@ -1,7 +1,7 @@
 ﻿namespace JoinIT.Resources.Views
 {
-    using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels.TabsViewModels;
+    using Utilities;
+    using ViewModels.TabsViewModels;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Windows;

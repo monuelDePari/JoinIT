@@ -1,35 +1,39 @@
-﻿using JoinIT.Resources.Enums;
-using JoinIT.Resources.Utilities;
-using JoinIT.Resources.ViewModels.TabsViewModels;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-using Unity;
-
-namespace JoinIT.Resources.Views.TabsView
+﻿namespace JoinIT.Resources.Views.TabsView
 {
+    using Models;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for JavaTabView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class JavaTabView : UserControl
+    public partial class JavaTabView
     {
         public JavaTabView()
         {
             InitializeComponent();
-
-            ITUnityContainer.Instance.Resolve<JavaTabViewModel>();
-
-            Loaded += JavaTab_Loaded;
         }
 
-        private async void JavaTab_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var javaTabViewModel = DataContext as CSharpTabViewModel;
-            if (javaTabViewModel != null)
-            {
-                await javaTabViewModel.LoadDataAsync(CourseNames.Java.ToString());
-            }
+            base.OnLoaded(sender, e);
+
+            ViewModel.UpdateCourseHandler += JavaCourseUpdate;
+        }
+
+        protected override void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            base.OnUnloaded(sender, e);
+
+            ViewModel.UpdateCourseHandler -= JavaCourseUpdate;
+        }
+
+        private void JavaCourseUpdate(object sender, EventArgs e)
+        {
+            CoursesView coursesView = new CoursesView((CourseInfoModel)sender);
+            coursesView.ShowDialog();
         }
     }
 }

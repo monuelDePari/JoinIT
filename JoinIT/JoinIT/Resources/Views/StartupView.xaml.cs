@@ -1,7 +1,7 @@
 ﻿namespace JoinIT.Resources.Views
 {
-    using JoinIT.Resources.Utilities;
-    using JoinIT.Resources.ViewModels;
+    using Utilities;
+    using ViewModels;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;

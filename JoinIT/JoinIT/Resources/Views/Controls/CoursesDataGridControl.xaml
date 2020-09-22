@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:JoinIT.Resources.Views.Controls"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:localisation="clr-namespace:JoinIT.Properties"
+             xmlns:localization="clr-namespace:JoinIT.Properties"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -19,18 +19,20 @@
                       ItemsSource="{Binding Path=CourseInfoModels}"
                       AutoGenerateColumns="False"
                       CanUserDeleteRows="True"
-                      SelectionMode="Extended">
+                      SelectionMode="Extended"
+                      CanUserAddRows="False"
+                      SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCourseModel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{x:Static localisation:Resources.ID}"
+                    <DataGridTextColumn Header="{x:Static localization:Resources.ID}"
                                         Binding="{Binding Path=Id}" />
-                    <DataGridTextColumn Header="{x:Static localisation:Resources.CourseName}"
+                    <DataGridTextColumn Header="{x:Static localization:Resources.CourseName}"
                                         Binding="{Binding Path=CourseName}" />
-                    <DataGridTextColumn Header="{x:Static localisation:Resources.AuthorName}"
+                    <DataGridTextColumn Header="{x:Static localization:Resources.AuthorName}"
                                         Binding="{Binding Path=AuthorName}" />
-                    <DataGridTextColumn Header="{x:Static localisation:Resources.StartDate}"
+                    <DataGridTextColumn Header="{x:Static localization:Resources.StartDate}"
                                         Binding="{Binding Path=StartDate}" />
-                    <DataGridTextColumn Header="{x:Static localisation:Resources.EndDate}"
+                    <DataGridTextColumn Header="{x:Static localization:Resources.EndDate}"
                                         Binding="{Binding Path=EndDate}" />
                 </DataGrid.Columns>
 
@@ -46,7 +48,7 @@
                 </i:Interaction.Triggers>
             </DataGrid>
             <Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.DeleteSelectedCoursesCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Content="{x:Static localisation:Resources.Delete}" />
+                    Content="{x:Static localization:Resources.Delete}" />
         </StackPanel>
     </Grid>
 </UserControl>
