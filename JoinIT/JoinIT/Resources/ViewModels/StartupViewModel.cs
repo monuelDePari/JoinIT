@@ -13,7 +13,7 @@ namespace JoinIT.Resources.ViewModels
         private int _selectedTabIndex;
         private RelativeCommand _openLanguageWindowCommand;
         private RelativeCommand _openCoursesWindowCommand;
-        private static IApplicationCommands _applicationCommands;
+        private IApplicationCommands _applicationCommands;
         private static RelativeCommand _deleteFromDataGrid;
         private IEventAggregator _deleteFromUserControlDataGridEventAggregator;
 

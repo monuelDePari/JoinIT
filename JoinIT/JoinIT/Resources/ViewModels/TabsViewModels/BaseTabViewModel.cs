@@ -39,9 +39,36 @@
             _eventAggregator = eventAggregator;
 
             UpdateCommand = new RelativeCommand(OnEditExecute);
+        }
+
+        public BaseTabViewModel()
+        {
+            TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
+            SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
+            DeleteSelectedCoursesCommand = new AsyncCommand(OnDeletedCoursesChangedAsync, OnDeletedCoursesChangedAsync_CanExecute);
+            SelectedCourseChangedCommand = new RelativeCommand(OnSelectedCourseChanged);
+            SelectedCoursesChangedCommand = new RelativeCommand(OnSelectedCoursesChangedAsync);
+        }
+        #endregion
+
+        #region Methods
+
+        public override void OnLoaded()
+        {
+            base.OnLoaded();
+
             _applicationCommands.UpdateAllCommand.RegisterCommand(UpdateCommand);
 
             _eventAggregator.GetEvent<DeleteItemFromUserControlDataGridEvent>().Subscribe(OnDeletedCourses);
+        }
+
+        public override void OnUnloaded()
+        {
+            base.OnUnloaded();
+
+            _applicationCommands.UpdateAllCommand.UnregisterCommand(UpdateCommand);
+
+            _eventAggregator.GetEvent<DeleteItemFromUserControlDataGridEvent>().Unsubscribe(OnDeletedCourses);
         }
 
         private async void OnDeletedCourses()
@@ -57,18 +84,6 @@
                 handler(SelectedCourseModel, EventArgs.Empty);
             }
         }
-
-        public BaseTabViewModel()
-        {
-            TextChangedCommand = new AsyncCommand(OnTextChangedAsync);
-            SelectedDateChangedCommand = new AsyncCommand(OnSelectedDateChangedAsync);
-            DeleteSelectedCoursesCommand = new AsyncCommand(OnDeletedCoursesChangedAsync, OnDeletedCoursesChangedAsync_CanExecute);
-            SelectedCourseChangedCommand = new RelativeCommand(OnSelectedCourseChanged);
-            SelectedCoursesChangedCommand = new RelativeCommand(OnSelectedCoursesChangedAsync);
-        }
-        #endregion
-
-        #region Methods
 
         private void OnSelectedCoursesChangedAsync(object obj)
         {

@@ -20,7 +20,7 @@
             InitializeComponent();
 
             DataContext = ITUnityContainer.Instance.Resolve<ManageCoursesViewModel>(
-                new ResolverOverride[] { new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 2), courseInfoModel)});
+                new ResolverOverride[] { new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 1), courseInfoModel)});
         }
     }
 }

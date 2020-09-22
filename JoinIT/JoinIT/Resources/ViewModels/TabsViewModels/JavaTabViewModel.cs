@@ -20,6 +20,8 @@
 
         public override async void OnLoaded()
         {
+            base.OnLoaded();
+
             await LoadDataAsync(CourseNames.Java.ToString());
         }
 
