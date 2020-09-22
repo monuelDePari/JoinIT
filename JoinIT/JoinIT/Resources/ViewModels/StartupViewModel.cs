@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Windows;
-using Prism.Events;
-
-namespace JoinIT.Resources.ViewModels
+﻿namespace JoinIT.Resources.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Windows;
+    using Prism.Events;
     using Utilities;
     using System;
 
@@ -28,7 +26,21 @@ namespace JoinIT.Resources.ViewModels
 
         public StartupViewModel(IApplicationCommands applicationCommands, IEventAggregator eventAggregator)
         {
-            InitializeFontSize();
+            FontSizeDictionary = new Dictionary<int, string>
+            {
+                { 5, "5 pt" },
+                { 6, "6 pt" },
+                { 7, "7 pt" },
+                { 8, "8 pt" },
+                { 9, "9 pt" },
+                { 12, "12 pt" },
+                { 14, "14 pt" },
+                { 16, "16 pt" },
+                { 18, "18 pt" },
+                { 20, "20 pt" },
+                { 22, "22 pt" },
+                { 24, "24 pt" }
+            };
 
             ApplicationCommands = applicationCommands;
             OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
@@ -45,38 +57,12 @@ namespace JoinIT.Resources.ViewModels
 
         private void OnFontSizeSelectionChanged(object obj)
         {
-            try
-            {
-                Application.Current.MainWindow.FontSize = SelectedFontSize;
-            }
-            catch (NullReferenceException nullReferenceException)
-            {
-                MessageBox.Show(nullReferenceException.Message);
-            }
+            Application.Current.MainWindow.FontSize = SelectedFontSize;
         }
 
         private bool OnFontSizeSelectionChanged_CanExecute()
         {
             return SelectedFontSize >= 0 && !IsLoading;
-        }
-
-        private void InitializeFontSize()
-        {
-            FontSizeDictionary = new Dictionary<int, string>
-            {
-                { 5, "5 pt" },
-                { 6, "6 pt" },
-                { 7, "7 pt" },
-                { 8, "8 pt" },
-                { 9, "9 pt" },
-                { 12, "12 pt" },
-                { 14, "14 pt" },
-                { 16, "16 pt" },
-                { 18, "18 pt" },
-                { 20, "20 pt" },
-                { 22, "22 pt" },
-                { 24, "24 pt" }
-            };
         }
 
         private void OnDeleteCourses(object obj)
