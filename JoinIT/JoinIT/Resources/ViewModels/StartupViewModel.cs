@@ -14,7 +14,7 @@ namespace JoinIT.Resources.ViewModels
         private RelativeCommand _openLanguageWindowCommand;
         private RelativeCommand _openCoursesWindowCommand;
         private IApplicationCommands _applicationCommands;
-        private static RelativeCommand _deleteFromDataGrid;
+        private RelativeCommand _deleteFromDataGrid;
         private IEventAggregator _deleteFromUserControlDataGridEventAggregator;
 
         #endregion
