@@ -69,21 +69,6 @@ namespace JoinIT.Resources.ViewModels
         }
         #endregion
 
-        #region Properties
-        public int SelectedTabIndex
-        {
-            get
-            {
-                return _selectedTabIndex;
-            }
-            set
-            {
-                _selectedTabIndex = value;
-                OnPropertyChanged();
-            }
-        }
-        #endregion
-
         #region AttachedProperties
 
         public static readonly DependencyProperty ContentProperty =
