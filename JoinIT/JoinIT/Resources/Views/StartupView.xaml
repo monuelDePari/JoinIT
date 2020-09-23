@@ -1,18 +1,19 @@
-﻿<Window x:Class="JoinIT.Resources.Views.StartupView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:logic="clr-namespace:JoinIT.Resources.ViewModels"
-        xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:tabsview="clr-namespace:JoinIT.Resources.Views.TabsView"
-        xmlns:localization="clr-namespace:JoinIT.Properties"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        Title="{x:Static localization:Resources.Title}"
-        Height="720"
-        Width="1280"
-        mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance logic:StartupViewModel}">
+﻿<views:ITViewBase x:TypeArguments="logic:StartupViewModel"
+                  x:Class="JoinIT.Resources.Views.StartupView"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:logic="clr-namespace:JoinIT.Resources.ViewModels"
+                  xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:tabsview="clr-namespace:JoinIT.Resources.Views.TabsView"
+                  xmlns:localization="clr-namespace:JoinIT.Properties"
+                  xmlns:views="clr-namespace:JoinIT.Resources.Views"
+                  Title="{x:Static localization:Resources.Title}"
+                  Height="720"
+                  Width="1280"
+                  mc:Ignorable="d"
+                  d:DataContext="{d:DesignInstance logic:StartupViewModel}">
 
     <Window.Resources>
         <Style TargetType="TabItem">
@@ -80,17 +81,10 @@
                                            VerticalAlignment="Stretch">
                         <ribbon:RibbonGallery SelectedValuePath="Key"
                                               SelectedValue="{Binding SelectedFontSize}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding Path=FontSizeSelectionChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
                             <ribbon:RibbonGalleryCategory ItemsSource="{Binding FontSizeDictionary, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                          DisplayMemberPath="Value">
-
-                            </ribbon:RibbonGalleryCategory>
+                                                          DisplayMemberPath="Value" />
                         </ribbon:RibbonGallery>
-                    </ribbon:RibbonComboBox> >
+                    </ribbon:RibbonComboBox>
                 </ribbon:RibbonGroup>
             </ribbon:RibbonTab>
             <ribbon:RibbonTab x:Name="AdditionalTab"
@@ -130,4 +124,4 @@
         </TabControl>
 
     </Grid>
-</Window>
+</views:ITViewBase>

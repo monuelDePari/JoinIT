@@ -148,6 +148,7 @@
     <Compile Include="Resources\Views\Controls\SpinnerControl.xaml.cs">
       <DependentUpon>SpinnerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\ITViewBase.cs" />
     <Compile Include="Resources\Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>

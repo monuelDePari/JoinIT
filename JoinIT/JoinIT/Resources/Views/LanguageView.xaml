@@ -16,7 +16,6 @@
                   SelectedIndex="0"
                   SelectedItem="{Binding LanguagesKeyValuePair, UpdateSourceTrigger=PropertyChanged}"
                   SelectedValuePath="Value"
-                  DisplayMemberPath="Key">
-        </ComboBox>
+                  DisplayMemberPath="Key" />
     </Grid>
 </Window>

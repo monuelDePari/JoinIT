@@ -1,4 +1,6 @@
-﻿namespace JoinIT.Resources.ViewModels
+﻿using System.ComponentModel;
+
+namespace JoinIT.Resources.ViewModels
 {
     using System.Collections.Generic;
     using System.Windows;
@@ -15,16 +17,16 @@
         private RelativeCommand _openLanguageWindowCommand;
         private RelativeCommand _openCoursesWindowCommand;
         private RelativeCommand _deleteFromDataGrid;
-        private RelativeCommand _fontSizeSelectionChangedCommand;
 
         private IApplicationCommands _applicationCommands;
         private readonly IEventAggregator _deleteFromUserControlDataGridEventAggregator;
+        private readonly IITApplication _application;
 
         #endregion
 
         #region Constructors
 
-        public StartupViewModel(IApplicationCommands applicationCommands, IEventAggregator eventAggregator)
+        public StartupViewModel(IApplicationCommands applicationCommands, IEventAggregator eventAggregator, IITApplication application)
         {
             FontSizeDictionary = new Dictionary<int, string>
             {
@@ -46,23 +48,35 @@
             OpenLanguageWindowCommand = new RelativeCommand(OnOpenLanguageWindow, OpenLanguageWindowCommand_CanExecute);
             OpenCoursesWindowCommand = new RelativeCommand(OnOpenCoursesWindow, OpenCoursesWindowCommand_CanExecute);
             DeleteFromDataGrid = new RelativeCommand(OnDeleteCourses);
-            FontSizeSelectionChangedCommand = new RelativeCommand(OnFontSizeSelectionChanged, OnFontSizeSelectionChanged_CanExecute);
 
             _deleteFromUserControlDataGridEventAggregator = eventAggregator;
+            _application = application;
         }
 
         #endregion
 
         #region Methods
 
-        private void OnFontSizeSelectionChanged(object obj)
+        public override void OnLoaded()
         {
-            Application.Current.MainWindow.FontSize = SelectedFontSize;
+            base.OnLoaded();
+
+
         }
 
-        private bool OnFontSizeSelectionChanged_CanExecute()
+        public override void OnUnloaded()
         {
-            return SelectedFontSize >= 0 && !IsLoading;
+            base.OnUnloaded();
+
+
+        }
+
+        public override void OnCustomPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "SelectedFontSize")
+            {
+                _application.FontSize = SelectedFontSize;
+            }
         }
 
         private void OnDeleteCourses(object obj)
@@ -119,19 +133,6 @@
         #endregion
 
         #region Commands
-
-        public RelativeCommand FontSizeSelectionChangedCommand
-        {
-            get
-            {
-                return _fontSizeSelectionChangedCommand;
-            }
-            set
-            {
-                _fontSizeSelectionChangedCommand = value;
-                OnPropertyChanged();
-            }
-        }
 
         public IApplicationCommands ApplicationCommands
         {
@@ -223,5 +224,30 @@
         public event EventHandler OpenCoursesWindowEventHandler;
 
         #endregion
+    }
+
+    public interface IITApplication
+    {
+        double FontSize { get; set; }
+    }
+
+    public class ITApplicationWrapper : IITApplication
+    {
+        public double FontSize
+        {
+            get
+            {
+                return Application.Current != null
+                    ? Application.Current.MainWindow != null ? Application.Current.MainWindow.FontSize : default(double)
+                    : default(double);
+            }
+            set
+            {
+                if (Application.Current != null && Application.Current.MainWindow != null)
+                {
+                    Application.Current.MainWindow.FontSize = value;
+                }
+            }
+        }
     }
 }

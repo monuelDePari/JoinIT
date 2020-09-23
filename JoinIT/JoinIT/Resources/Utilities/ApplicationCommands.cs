@@ -1,7 +1,6 @@
 ﻿namespace JoinIT.Resources.Utilities
 {
     using Prism.Commands;
-    using System;
 
     public class ApplicationCommands : IApplicationCommands
     {

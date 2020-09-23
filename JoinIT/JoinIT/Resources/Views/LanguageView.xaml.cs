@@ -13,7 +13,7 @@
     /// Interaction logic for LanguageTabView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class LanguageView : Window
+    public partial class LanguageView
     {
         private readonly LanguageViewModel _languageViewModel;
         public LanguageView()

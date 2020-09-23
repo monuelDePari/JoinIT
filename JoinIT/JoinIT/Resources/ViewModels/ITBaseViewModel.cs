@@ -33,9 +33,18 @@
 
         #region Methods
 
-        public virtual void OnLoaded() { }
+        public virtual void OnLoaded()
+        {
+            PropertyChanged += OnCustomPropertyChanged;
+        }
 
-        public virtual void OnUnloaded() { }
+        public virtual void OnUnloaded()
+        {
+            PropertyChanged -= OnCustomPropertyChanged;
+        }
+
+        public virtual void OnCustomPropertyChanged(object sender, PropertyChangedEventArgs e) { }
+
 
         public async Task<T> RunTaskAsync<T>(Task<T> task)
         {

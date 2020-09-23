@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:tabs="clr-namespace:JoinIT.Resources.ViewModels.TabsViewModels"
         xmlns:localization="clr-namespace:JoinIT.Properties"
         xmlns:courses="clr-namespace:JoinIT.Resources.ViewModels"
-        xmlns:local="clr-namespace:JoinIT"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance courses:ManageCoursesViewModel}"
         Height="450"
@@ -54,13 +52,11 @@
                     <TextBlock Text="{x:Static localization:Resources.StartDate}" />
                     <DatePicker x:Name="StartDate"
                                 Margin="10"
-                                SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                    </DatePicker>
+                                SelectedDate="{Binding Path=CourseModel.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                     <TextBlock Text="{x:Static localization:Resources.EndDate}" />
                     <DatePicker x:Name="EndDate"
                                 Margin="10"
-                                SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                    </DatePicker>
+                                SelectedDate="{Binding Path=CourseModel.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="10"

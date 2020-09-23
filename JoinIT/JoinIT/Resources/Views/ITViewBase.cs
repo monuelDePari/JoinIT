@@ -1,18 +1,14 @@
-﻿namespace JoinIT.Resources.Views.Controls
+﻿namespace JoinIT.Resources.Views
 {
     using Utilities;
-    using ViewModels;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
-    using System.Windows.Controls;
     using Unity;
+    using System.Windows;
+    using ViewModels;
 
-    [ExcludeFromCodeCoverage]
-    public class ITUserControlBase<TViewModel> : UserControl where TViewModel : ITBaseViewModel
+    public class ITViewBase<TViewModel> : Window where TViewModel : ITBaseViewModel
     {
-
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
-            "ViewModel", typeof(TViewModel), typeof(ITUserControlBase<TViewModel>),
+            "ViewModel", typeof(TViewModel), typeof(ITViewBase<TViewModel>),
             new PropertyMetadata(default(TViewModel)));
 
         public TViewModel ViewModel
@@ -21,7 +17,7 @@
             set { SetValue(ViewModelProperty, value); }
         }
 
-        public ITUserControlBase()
+        public ITViewBase()
         {
             ViewModel = ITUnityContainer.Instance.Resolve<TViewModel>();
             DataContext = ViewModel;
