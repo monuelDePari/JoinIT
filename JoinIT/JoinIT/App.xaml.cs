@@ -1,4 +1,5 @@
-﻿using Prism.Events;
+﻿using JoinIT.Resources.ViewModels;
+using Prism.Events;
 
 namespace JoinIT
 {
@@ -19,7 +20,7 @@ namespace JoinIT
     /// Interaction logic for App.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class App : Application
+    public partial class App
     {
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -32,6 +33,8 @@ namespace JoinIT
             ITUnityContainer.Instance.RegisterInstance<IApplicationCommands>(new ApplicationCommands());
 
             ITUnityContainer.Instance.RegisterInstance<IEventAggregator>(new EventAggregator());
+
+            ITUnityContainer.Instance.RegisterInstance<IITApplication>(new ITApplicationWrapper());
 
             ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 

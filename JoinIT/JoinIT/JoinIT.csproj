@@ -128,6 +128,8 @@
     <Compile Include="Resources\Utilities\DeleteItemFromUserControlDataGridEvent.cs" />
     <Compile Include="Resources\Utilities\IApplicationCommands.cs" />
     <Compile Include="Resources\Utilities\IAsyncCommand.cs" />
+    <Compile Include="Resources\Utilities\IITApplication.cs" />
+    <Compile Include="Resources\Utilities\ITApplicationWrapper.cs" />
     <Compile Include="Resources\Utilities\ITUnityContainer.cs" />
     <Compile Include="Resources\Utilities\RelativeCommand.cs" />
     <Compile Include="Resources\ViewModels\StartupViewModel.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Resources\Views\Controls\SpinnerControl.xaml.cs">
       <DependentUpon>SpinnerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\ITViewBase.cs" />
     <Compile Include="Resources\Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>

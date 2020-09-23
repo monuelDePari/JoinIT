@@ -4,16 +4,14 @@
     using ViewModels;
     using Models;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
     using Unity;
-    using Unity.Injection;
     using Unity.Resolution;
 
     /// <summary>
     /// Interaction logic for CoursesView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class CoursesView : Window
+    public partial class CoursesView
     {
         public CoursesView(CourseInfoModel courseInfoModel = null)
         {

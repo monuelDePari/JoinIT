@@ -1,40 +1,34 @@
 ﻿namespace JoinIT.Resources.Views
 {
-    using Utilities;
-    using ViewModels;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
-    using Unity;
 
     /// <summary>
     /// Interaction logic for StartupView.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class StartupView : Window
+    public partial class StartupView
     {
-        private readonly StartupViewModel _startupViewModel;
         public StartupView()
         {
             InitializeComponent();
-
-            DataContext = ITUnityContainer.Instance.Resolve<StartupViewModel>();
-
-            _startupViewModel = (StartupViewModel)DataContext;
-            Loaded += StartupView_Loaded;
-            Closed += StartupView_Closed;
         }
 
-        private void StartupView_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnLoaded(object sender, RoutedEventArgs e)
         {
-            _startupViewModel.OpenLanguageWindowEventHandler += OnLanguageWindowOpen;
-            _startupViewModel.OpenCoursesWindowEventHandler += OnCoursesWindowOpen;
+            base.OnLoaded(sender, e);
+
+            ViewModel.OpenLanguageWindowEventHandler += OnLanguageWindowOpen;
+            ViewModel.OpenCoursesWindowEventHandler += OnCoursesWindowOpen;
         }
 
-        public void StartupView_Closed(object sender, EventArgs e)
+        protected override void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            _startupViewModel.OpenLanguageWindowEventHandler -= OnLanguageWindowOpen;
-            _startupViewModel.OpenCoursesWindowEventHandler -= OnCoursesWindowOpen;
+            base.OnUnloaded(sender, e);
+
+            ViewModel.OpenLanguageWindowEventHandler -= OnLanguageWindowOpen;
+            ViewModel.OpenCoursesWindowEventHandler -= OnCoursesWindowOpen;
         }
 
         public void OnLanguageWindowOpen(object sender, EventArgs e)

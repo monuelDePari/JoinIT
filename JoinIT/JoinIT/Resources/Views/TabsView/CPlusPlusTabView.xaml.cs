@@ -1,9 +1,5 @@
-﻿using JoinIT.Resources.Enums;
-
-namespace JoinIT.Resources.Views.TabsView
+﻿namespace JoinIT.Resources.Views.TabsView
 {
-    using Controls;
-    using ViewModels.TabsViewModels;
     using Models;
     using System;
     using System.Diagnostics.CodeAnalysis;

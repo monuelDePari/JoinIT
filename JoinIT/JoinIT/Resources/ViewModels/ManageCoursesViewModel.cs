@@ -1,6 +1,4 @@
-﻿using Prism.Events;
-
-namespace JoinIT.Resources.ViewModels
+﻿namespace JoinIT.Resources.ViewModels
 {
     using Utilities;
     using TabsViewModels;
