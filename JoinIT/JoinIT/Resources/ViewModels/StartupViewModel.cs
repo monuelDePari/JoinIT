@@ -57,20 +57,6 @@ namespace JoinIT.Resources.ViewModels
 
         #region Methods
 
-        public override void OnLoaded()
-        {
-            base.OnLoaded();
-
-
-        }
-
-        public override void OnUnloaded()
-        {
-            base.OnUnloaded();
-
-
-        }
-
         public override void OnCustomPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "SelectedFontSize")
@@ -224,30 +210,5 @@ namespace JoinIT.Resources.ViewModels
         public event EventHandler OpenCoursesWindowEventHandler;
 
         #endregion
-    }
-
-    public interface IITApplication
-    {
-        double FontSize { get; set; }
-    }
-
-    public class ITApplicationWrapper : IITApplication
-    {
-        public double FontSize
-        {
-            get
-            {
-                return Application.Current != null
-                    ? Application.Current.MainWindow != null ? Application.Current.MainWindow.FontSize : default(double)
-                    : default(double);
-            }
-            set
-            {
-                if (Application.Current != null && Application.Current.MainWindow != null)
-                {
-                    Application.Current.MainWindow.FontSize = value;
-                }
-            }
-        }
     }
 }
