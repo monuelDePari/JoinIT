@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace JoinIT.Resources.ViewModels
+﻿namespace JoinIT.Resources.ViewModels
 {
+    using System.ComponentModel;
     using System.Collections.Generic;
     using System.Windows;
     using Prism.Events;
@@ -59,7 +58,7 @@ namespace JoinIT.Resources.ViewModels
 
         public override void OnCustomPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "SelectedFontSize")
+            if (e.PropertyName == this.GetPropertyName(t => SelectedFontSize) && SelectedFontSize != _application.FontSize)
             {
                 _application.FontSize = SelectedFontSize;
             }
