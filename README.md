@@ -38,3 +38,6 @@ Application must use MVVM architecture pattern.
 13. Added Update with datagrid click
 14. Added Add with Create new Course Tab click
 15. Added Delete with Ctrl+Left Mouse Click Selection and Button Click
+16. Added Base UserControl and Base Window
+17. Added Font Size changing across all Application
+18. Implemented Prism CompositeCommands and Prism EventAggregator
