@@ -1,8 +1,8 @@
-﻿using Models;
-using System.Data.Entity;
-
-namespace Repositories.Repository
+﻿namespace Repositories
 {
+    using System.Data.Entity;
+    using Models;
+
     public class ITContext : DbContext
     {
         #region constructors

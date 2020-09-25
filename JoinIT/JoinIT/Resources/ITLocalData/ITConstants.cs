@@ -1,7 +1,7 @@
-﻿namespace JoinIT.Resources.ITConstants
-{
-    using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace JoinIT.Resources.ITLocalData
+{
     [ExcludeFromCodeCoverage]
     public class ITConstants
     {

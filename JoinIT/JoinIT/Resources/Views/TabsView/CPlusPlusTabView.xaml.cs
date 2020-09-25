@@ -20,17 +20,17 @@
         {
             base.OnLoaded(sender, e);
 
-            ViewModel.UpdateCourseHandler += CSharpCourseUpdate;
+            ViewModel.UpdateCourseHandler += CPlusPlusCourseUpdate;
         }
 
         protected override void OnUnloaded(object sender, RoutedEventArgs e)
         {
             base.OnUnloaded(sender, e);
 
-            ViewModel.UpdateCourseHandler -= CSharpCourseUpdate;
+            ViewModel.UpdateCourseHandler -= CPlusPlusCourseUpdate;
         }
 
-        private void CSharpCourseUpdate(object sender, EventArgs e)
+        private void CPlusPlusCourseUpdate(object sender, EventArgs e)
         {
             CoursesView coursesView = new CoursesView((CourseInfoModel)sender);
             coursesView.ShowDialog();

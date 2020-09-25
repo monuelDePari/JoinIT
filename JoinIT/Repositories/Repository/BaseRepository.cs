@@ -1,5 +1,7 @@
 ﻿namespace Repositories
 {
+    using Instructions;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -7,7 +9,7 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
 
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : ITBaseModel
     {
         #region fields
         public DbContext DbContext;
@@ -18,7 +20,7 @@
         public BaseRepository(DbContext context)
         {
             DbContext = context;
-            DbSet = DbContext.Set<TEntity>();
+            DbSet = context.Set<TEntity>();
         }
         #endregion
 

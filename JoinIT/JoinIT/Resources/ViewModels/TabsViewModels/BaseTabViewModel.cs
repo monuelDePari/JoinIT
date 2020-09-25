@@ -14,7 +14,7 @@
     {
         #region Fields
         private string _tabName;
-        protected CourseInfoModel Course;
+        public CourseInfoModel Course;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private RelativeCommand _updateCommand;
         private Dictionary<string, string> _courseInfoModelsDictionary;
@@ -104,7 +104,7 @@
             await RunTaskAsync(CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels));
         }
 
-        private bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
+        public bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
         {
             return SelectedCoursesInfoModels != null && !IsLoading;
         }
@@ -128,7 +128,7 @@
             }
         }
 
-        private async Task OnSelectedDateChangedAsync(object arg)
+        public async Task OnSelectedDateChangedAsync(object arg)
         {
             DateTime date;
             if (arg != null && DateTime.TryParse(arg.ToString(), out date))
@@ -165,7 +165,7 @@
                     continue;
                 }
                 System.Reflection.PropertyInfo item = courseInfoModelsProperties[i];
-                keyValuePairs.Add(item.Name.ToString(), Regex.Replace(item.Name.ToString(), "([a-z])([A-Z])", "$1 $2"));
+                keyValuePairs.Add(item.Name, Regex.Replace(item.Name, "([a-z])([A-Z])", "$1 $2"));
             }
 
             return keyValuePairs;
@@ -174,7 +174,7 @@
         public async Task LoadDataAsync(string tabName)
         {
             _tabName = tabName;
-
+            
             if (CourseInfoModels == null)
             {
                 CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(t => t.CourseName == tabName));

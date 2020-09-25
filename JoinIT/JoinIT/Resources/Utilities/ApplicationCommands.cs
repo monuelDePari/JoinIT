@@ -1,7 +1,9 @@
 ﻿namespace JoinIT.Resources.Utilities
 {
+    using System.Diagnostics.CodeAnalysis;
     using Prism.Commands;
 
+    [ExcludeFromCodeCoverage]
     public class ApplicationCommands : IApplicationCommands
     {
         private CompositeCommand _updateAllCommand;

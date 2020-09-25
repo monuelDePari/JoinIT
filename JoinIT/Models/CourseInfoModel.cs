@@ -1,13 +1,11 @@
 ﻿namespace Models
 {
-    using ServiceStack.DataAnnotations;
     using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Runtime.CompilerServices;
     using System.Text;
 
-    public class CourseInfoModel : IDataErrorInfo, INotifyPropertyChanged
+    public class CourseInfoModel : ITBaseModel, IDataErrorInfo
     {
         private string _courseName;
         private string _authorName;
@@ -36,7 +34,7 @@
                         }
                         else if (StartDate < DateTime.Now)
                         {
-                            errorMessage = "Start Date Can not start earlier of Todays date";
+                            errorMessage = "Start Date Can not start earlier of End days date";
                         }
                         break;
                     case "EndDate":
@@ -56,9 +54,6 @@
                 return errorMessage;
             }
         }
-
-        [Unique]
-        public int Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(30, MinimumLength = 2)]
@@ -149,16 +144,6 @@
                 AuthorName = courseInfoModel.AuthorName;
                 StartDate = courseInfoModel.StartDate;
                 EndDate = courseInfoModel.EndDate;
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using JoinIT.Resources.ViewModels;
-using Prism.Events;
+﻿using Prism.Events;
 
 namespace JoinIT
 {
@@ -8,11 +7,9 @@ namespace JoinIT
     using Resources.Views;
     using Repositories;
     using Repositories.Instructions;
-    using Repositories.Repository;
     using System.Data.Entity;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
-    using Unity.Injection;
     using Unity.Lifetime;
     using Unity;
 
@@ -38,7 +35,7 @@ namespace JoinIT
 
             ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
-            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
+            ITUnityContainer.Instance.RegisterInstance<ICoursesRepository>(new CoursesRepository(new ITContext()));
 
             var window = new StartupView();
             window.Show();

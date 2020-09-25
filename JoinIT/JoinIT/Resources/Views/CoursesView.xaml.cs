@@ -17,8 +17,7 @@
         {
             InitializeComponent();
 
-            DataContext = ITUnityContainer.Instance.Resolve<ManageCoursesViewModel>(
-                new ResolverOverride[] { new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 1), courseInfoModel)});
+            DataContext = ITUnityContainer.Instance.Resolve<ManageCoursesViewModel>(new ParameterOverride(courseInfoModel.GetConstructorParameterName(typeof(ManageCoursesViewModel), 0, 1), courseInfoModel));
         }
     }
 }

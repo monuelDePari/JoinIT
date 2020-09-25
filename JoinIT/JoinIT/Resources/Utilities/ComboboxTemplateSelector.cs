@@ -1,11 +1,12 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿using JoinIT.Resources.ITLocalData;
+
+namespace JoinIT.Resources.Utilities
 {
     using System.Diagnostics.CodeAnalysis;
     using Models;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Controls;
-    using ITConstants;
     using System.Reflection;
 
     [ExcludeFromCodeCoverage]
