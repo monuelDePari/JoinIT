@@ -101,7 +101,6 @@
   <ItemGroup>
     <Compile Include="BaseTestsClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Utilities\ComboboxTemplateSelectorTests.cs" />
     <Compile Include="Resources\Utilities\CourseInfoModelExtensionTests.cs" />
     <Compile Include="Resources\ViewModels\TabsViewModels\BaseTabViewModelTests.cs" />
     <Compile Include="Resources\ViewModels\ManageCoursesViewModelTests.cs" />

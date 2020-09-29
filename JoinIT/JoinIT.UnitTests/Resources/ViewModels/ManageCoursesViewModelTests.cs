@@ -19,7 +19,6 @@ namespace JoinIT.UnitTests.Resources.ViewModels
                 : new CourseInfoModel());
         }
 
-
         [TestMethod]
         public async Task SaveCourseAsync_IsAdding_AddEntityToDatabase()
         {
@@ -29,6 +28,25 @@ namespace JoinIT.UnitTests.Resources.ViewModels
             repositoryMock.Setup(t => t.AddAsync(It.IsAny<CourseInfoModel>()));
 
             ManageCoursesViewModel manageCoursesViewModel = GetViewModel(repositoryMock);
+
+            //Act
+
+            await manageCoursesViewModel.SaveCommand.ExecuteAsync(null);
+
+            //Assert
+
+            repositoryMock.Verify(t => t.AddAsync(It.IsAny<CourseInfoModel>()));
+        }
+
+        [TestMethod]
+        public async Task SaveCourseAsync_Isupdating_UpdateEntityInDatabase()
+        {
+            //Arrange
+
+            Mock<ICoursesRepository> repositoryMock = GetCoursesRepository();
+            repositoryMock.Setup(t => t.UpdateAsync(It.IsAny<CourseInfoModel>()));
+
+            ManageCoursesViewModel manageCoursesViewModel = GetViewModel(repositoryMock, new CourseInfoModel());
 
             //Act
 
