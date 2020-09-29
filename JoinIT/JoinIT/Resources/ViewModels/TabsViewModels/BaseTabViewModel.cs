@@ -93,7 +93,7 @@
             }
         }
 
-        public async Task OnDeletedCoursesChangedAsync(object arg)
+        private async Task OnDeletedCoursesChangedAsync(object arg)
         {
             List<CourseInfoModel> selectedCourseInfoModels = new List<CourseInfoModel>();
             foreach (var course in SelectedCoursesInfoModels)
@@ -104,7 +104,7 @@
             await RunTaskAsync(CoursesRepository.RemoveRangeAsync(selectedCourseInfoModels));
         }
 
-        public bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
+        private bool OnDeletedCoursesChangedAsync_CanExecute(object obj)
         {
             return SelectedCoursesInfoModels != null && !IsLoading;
         }
@@ -128,7 +128,7 @@
             }
         }
 
-        public async Task OnSelectedDateChangedAsync(object arg)
+        private async Task OnSelectedDateChangedAsync(object arg)
         {
             DateTime date;
             if (arg != null && DateTime.TryParse(arg.ToString(), out date))
@@ -144,7 +144,7 @@
             }
         }
 
-        public void OnSelectedCourseChanged(object arg)
+        private void OnSelectedCourseChanged(object arg)
         {
             var handler = UpdateCourseHandler;
             if (handler != null)

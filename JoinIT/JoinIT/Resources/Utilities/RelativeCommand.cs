@@ -34,11 +34,9 @@
             {
                 return true;
             }
-            else
-            {
-                bool result = _canExecuteCommand.Invoke();
-                return result;
-            }
+
+            bool result = _canExecuteCommand.Invoke();
+            return result;
         }
 
         public void Execute(object parameter)

@@ -25,8 +25,6 @@ namespace JoinIT
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Default.LanguageSetting);
 
-            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>();
-
             ITUnityContainer.Instance.RegisterInstance<IApplicationCommands>(new ApplicationCommands());
 
             ITUnityContainer.Instance.RegisterInstance<IEventAggregator>(new EventAggregator());

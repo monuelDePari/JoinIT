@@ -10,7 +10,7 @@
     public class ManageCoursesViewModel : BaseTabViewModel
     {
         #region Methods
-        public async Task SaveCourseAsync(object obj)
+        private async Task SaveCourseAsync(object obj)
         {
             if (IsUpdating)
             {

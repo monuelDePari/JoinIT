@@ -24,7 +24,8 @@ namespace JoinIT.Resources.Utilities
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
+
+                if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }
