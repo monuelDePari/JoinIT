@@ -29,7 +29,7 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
         }
 
         [TestMethod]
-        public void CourseInfoModelsListOfPropertiesToDictionary_ListToDictionary_ReturnsCourseInfoModelCollection()
+        public void ConvertPropertiesListToDictionary_Always_ReturnsCourseInfoModelsDictionary()
         {
             //Arrange
 
@@ -37,7 +37,7 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
 
             //Act
 
-            var result = baseTabViewModel.CourseInfoModelsListOfPropertiesToDictionary();
+            var result = baseTabViewModel.ConvertPropertiesListToDictionary();
 
             //Assert
 
@@ -64,11 +64,11 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
 
             //Assert
             repositoryMock.Verify(s => s.FindAsync(It.IsAny<Expression<Func<CourseInfoModel, bool>>>()));
-            Assert.AreEqual(baseTabViewModel.CourseInfoModels, courseInfoModels);
+            Assert.AreSame(baseTabViewModel.CourseInfoModels, courseInfoModels);
         }
 
         [TestMethod]
-        public void OnDeletedCoursesChangedAsync_CanExecute_WhenAdding_ReturnsTrue()
+        public void DeleteSelectedCoursesCommand_CanExecute_WhenAdding_ReturnsTrue()
         {
             //Arrange
 
@@ -90,8 +90,9 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
 
         [DataTestMethod]
         [DataRow("StartDate", "Start Date")]
+        [DataRow("EndDate", "End Date")]
         public async Task
-            OnSelectedDateChangedAsync_StartDateChanged_ReturnsCourses(string startDate, string startDateWithWhitespace)
+            SelectedDateChangedCommand_WhenDateChanged_ReturnsCourses(string date, string dateWithWhitespace)
         {
             //Arrange
 
@@ -102,9 +103,8 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
                 .ReturnsAsync(courseInfoModels);
 
             var baseTabViewModel = GetViewModel(repositoryMock);
-            baseTabViewModel.CourseInfoModels = courseInfoModels;
-            baseTabViewModel.CourseInfoModelKeyValuePair = new KeyValuePair<string, string>(startDate, startDateWithWhitespace);
-            DateTime startDateTime = new DateTime(2020, 1, 1);
+            baseTabViewModel.CourseInfoModelKeyValuePair = new KeyValuePair<string, string>(date, dateWithWhitespace);
+            var startDateTime = new DateTime(2020, 1, 1);
 
             //Act
 
@@ -113,11 +113,13 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
             //Assert
 
             repositoryMock.Verify(t => t.FindAsync(It.IsAny<Expression<Func<CourseInfoModel, bool>>>()));
+            
+            Assert.AreSame(courseInfoModels, baseTabViewModel.CourseInfoModels);
         }
 
         [TestMethod]
         public async Task
-            OnDeletedCoursesChangedAsync_DeleteSelectedCourses_ReturnsCourses()
+            DeleteSelectedCoursesCommand_WhenNoParameterPassed_StorageWasCalled()
         {
             //Arrange
 

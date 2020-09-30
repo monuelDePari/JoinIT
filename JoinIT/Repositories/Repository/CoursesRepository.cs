@@ -1,15 +1,17 @@
 ﻿namespace Repositories
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Threading.Tasks;
     using Models;
     using Instructions;
 
+    [ExcludeFromCodeCoverage]
     public class CoursesRepository : BaseRepository<CourseInfoModel>, ICoursesRepository
     {
         private readonly ITContext _context;
-        public new Task UpdateAsync(CourseInfoModel entity)
+        public override Task UpdateAsync(CourseInfoModel entity)
         {
             var local = _context.CourseInfoModels.FirstOrDefault(t => t.Id == entity.Id);
             local.CourseName = entity.CourseName;
@@ -18,8 +20,6 @@
             local.EndDate = entity.EndDate;
 
             _context.Set<CourseInfoModel>().AddOrUpdate(local);
-
-            //_context.Entry(local).State = EntityState.Modified;
             return _context.SaveChangesAsync();
         }
 

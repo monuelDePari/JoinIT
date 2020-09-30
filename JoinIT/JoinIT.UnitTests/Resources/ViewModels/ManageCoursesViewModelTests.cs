@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using JoinIT.Resources.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
@@ -20,14 +21,15 @@ namespace JoinIT.UnitTests.Resources.ViewModels
         }
 
         [TestMethod]
-        public async Task SaveCourseAsync_IsAdding_AddEntityToDatabase()
+        public async Task SaveCourseAsync_WhenAdding_StorageWasCalled()
         {
             //Arrange
 
-            Mock<ICoursesRepository> repositoryMock = GetCoursesRepository();
-            repositoryMock.Setup(t => t.AddAsync(It.IsAny<CourseInfoModel>()));
+            var repositoryMock = GetCoursesRepository();
+            var courseInfoModels = new List<CourseInfoModel>();
+            repositoryMock.Setup(t => t.AddAsync(It.IsAny<CourseInfoModel>())).Returns(Task.FromResult(courseInfoModels));
 
-            ManageCoursesViewModel manageCoursesViewModel = GetViewModel(repositoryMock);
+            var manageCoursesViewModel = GetViewModel(repositoryMock);
 
             //Act
 
@@ -39,14 +41,15 @@ namespace JoinIT.UnitTests.Resources.ViewModels
         }
 
         [TestMethod]
-        public async Task SaveCourseAsync_Isupdating_UpdateEntityInDatabase()
+        public async Task SaveCourseAsync_WhenUpdating_StorageWasCalled()
         {
             //Arrange
 
-            Mock<ICoursesRepository> repositoryMock = GetCoursesRepository();
-            repositoryMock.Setup(t => t.UpdateAsync(It.IsAny<CourseInfoModel>()));
+            var repositoryMock = GetCoursesRepository();
+            var courseInfoModel = new CourseInfoModel();
+            repositoryMock.Setup(t => t.UpdateAsync(It.IsAny<CourseInfoModel>())).Returns(Task.FromResult(courseInfoModel));
 
-            ManageCoursesViewModel manageCoursesViewModel = GetViewModel(repositoryMock, new CourseInfoModel());
+            var manageCoursesViewModel = GetViewModel(repositoryMock, new CourseInfoModel());
 
             //Act
 

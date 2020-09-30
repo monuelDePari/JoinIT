@@ -1,6 +1,7 @@
 ﻿using JoinIT.Resources.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
+using Moq;
 
 namespace JoinIT.UnitTests.Resources.Utilities
 {
@@ -15,11 +16,18 @@ namespace JoinIT.UnitTests.Resources.Utilities
             _courseInfoModel = new CourseInfoModel();
         }
 
-        [DataTestMethod]
-        [DataRow("CourseName")]
-        public void GetPropertyName_WhenNameGiven_ReturnsPropertyName(string propertyName)
+        [TestCleanup]
+        public void CourseInfoModelExtensionTestsCleanUp()
+        {
+            _courseInfoModel = null;
+        }
+
+        [TestMethod]
+        public void GetPropertyName_WhenNameGiven_ReturnsPropertyName()
         {
             //Arrange
+
+            var propertyName = nameof(CourseInfoModel.CourseName);
 
             //Act
 
@@ -31,13 +39,16 @@ namespace JoinIT.UnitTests.Resources.Utilities
         }
 
         [TestMethod]
-        public void GetPropertyName_WhenNoPropertyNameGiven_ReturnsNull()
+        public void GetPropertyName_WhenWrongExpressionGiven_ReturnsNull()
         {
             //Arrange
+            
+            var propertyName = "CourseName";
+            var propertyNameToCompare = It.IsAny<string>();
 
             //Act
 
-            var result = _courseInfoModel.GetPropertyName(t => t.ToString());
+            var result = _courseInfoModel.GetPropertyName(t => propertyName == propertyNameToCompare);
 
             //Assert
 

@@ -2,7 +2,9 @@
 {
     using System.Data.Entity;
     using Models;
+    using System.Diagnostics.CodeAnalysis;
 
+    [ExcludeFromCodeCoverage]
     public class ITContext : DbContext
     {
         #region constructors

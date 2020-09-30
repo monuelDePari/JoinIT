@@ -1,5 +1,6 @@
 ﻿namespace Repositories
 {
+    using System.Diagnostics.CodeAnalysis;
     using Instructions;
     using Models;
     using System;
@@ -9,6 +10,7 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
 
+    [ExcludeFromCodeCoverage]
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : ITBaseModel
     {
         #region fields
@@ -63,7 +65,7 @@
             return DbContext.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(TEntity entity)
+        public virtual Task UpdateAsync(TEntity entity)
         {
             DbContext.Entry(entity).State = EntityState.Modified;
             return DbContext.SaveChangesAsync();

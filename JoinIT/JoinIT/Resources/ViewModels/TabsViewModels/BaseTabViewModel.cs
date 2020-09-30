@@ -153,7 +153,7 @@
             }
         }
 
-        public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
+        public Dictionary<string, string> ConvertPropertiesListToDictionary()
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
             var courseInfoModelsProperties = typeof(CourseInfoModel).GetProperties();
@@ -182,7 +182,7 @@
 
             if (CourseInfoModelsDictionary == null)
             {
-                CourseInfoModelsDictionary = CourseInfoModelsListOfPropertiesToDictionary();
+                CourseInfoModelsDictionary = ConvertPropertiesListToDictionary();
             }
         }
         #endregion

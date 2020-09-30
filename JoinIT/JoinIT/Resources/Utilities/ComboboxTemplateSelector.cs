@@ -1,7 +1,6 @@
-﻿using JoinIT.Resources.ITLocalData;
-
-namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities
 {
+    using ITLocalData;
     using System.Diagnostics.CodeAnalysis;
     using Models;
     using System.Collections.Generic;
