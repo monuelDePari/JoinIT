@@ -1,5 +1,6 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Commands
 {
+    using Instructions;
     using System.Diagnostics.CodeAnalysis;
     using Prism.Commands;
 

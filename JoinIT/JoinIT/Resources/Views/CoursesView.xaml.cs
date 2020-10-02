@@ -1,5 +1,7 @@
 ﻿namespace JoinIT.Resources.Views
 {
+    using Utilities.Extensions;
+    using Utilities.Services;
     using Utilities;
     using ViewModels;
     using Models;

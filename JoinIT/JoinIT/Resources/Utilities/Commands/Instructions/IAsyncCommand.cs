@@ -1,4 +1,4 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Commands.Instructions
 {
     using System.Threading.Tasks;
     using System.Windows.Input;

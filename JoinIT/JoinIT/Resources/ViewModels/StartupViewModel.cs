@@ -6,6 +6,10 @@
     using Prism.Events;
     using Utilities;
     using System;
+    using Utilities.Commands;
+    using Utilities.Commands.Instructions;
+    using Utilities.Extensions;
+    using Utilities.Wrappers;
 
     public class StartupViewModel : ITBaseViewModel
     {

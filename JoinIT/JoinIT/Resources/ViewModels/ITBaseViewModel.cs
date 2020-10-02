@@ -1,5 +1,6 @@
 ﻿namespace JoinIT.Resources.ViewModels
 {
+    using Utilities.Services.Instructions;
     using System;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
@@ -10,6 +11,8 @@
     {
         #region Fields
         private bool _isLoading;
+
+        private ICustomMessageService _customMessageService;
         #endregion
 
         #region Properties
@@ -28,6 +31,11 @@
         #endregion
 
         #region Constructors
+
+        public ITBaseViewModel(ICustomMessageService customMessageService)
+        {
+            _customMessageService = customMessageService;
+        }
         public ITBaseViewModel() { }
         #endregion
 
@@ -57,7 +65,7 @@
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                _customMessageService.Show(e.Message);
             }
             finally
             {

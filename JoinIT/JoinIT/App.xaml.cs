@@ -1,4 +1,4 @@
-﻿using Prism.Events;
+﻿using JoinIT.Resources.Utilities.Services;
 
 namespace JoinIT
 {
@@ -12,6 +12,11 @@ namespace JoinIT
     using System.Windows;
     using Unity.Lifetime;
     using Unity;
+    using Resources.Utilities.Commands;
+    using Resources.Utilities.Commands.Instructions;
+    using Resources.Utilities.Services.Instructions;
+    using Resources.Utilities.Wrappers;
+    using Prism.Events;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -30,6 +35,8 @@ namespace JoinIT
             ITUnityContainer.Instance.RegisterInstance<IEventAggregator>(new EventAggregator());
 
             ITUnityContainer.Instance.RegisterInstance<IITApplication>(new ITApplicationWrapper());
+
+            ITUnityContainer.Instance.RegisterInstance<ICustomMessageService>(new CustomMessageService());
 
             ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 

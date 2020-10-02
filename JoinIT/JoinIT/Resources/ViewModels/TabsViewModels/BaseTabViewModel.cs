@@ -1,5 +1,8 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
+    using Utilities.Commands;
+    using Utilities.Commands.Instructions;
+    using Utilities.Extensions;
     using Prism.Events;
     using Utilities;
     using Models;

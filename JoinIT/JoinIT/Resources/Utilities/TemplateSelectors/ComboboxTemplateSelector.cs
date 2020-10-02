@@ -1,12 +1,13 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.TemplateSelectors
 {
-    using ITLocalData;
-    using System.Diagnostics.CodeAnalysis;
-    using Models;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Reflection;
+    using ITLocalData;
+    using Extensions;
+    using Models;
 
     [ExcludeFromCodeCoverage]
     public class ComboboxTemplateSelector : DataTemplateSelector

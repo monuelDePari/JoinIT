@@ -1,9 +1,9 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Commands
 {
+    using Instructions;
     using System;
     using System.Threading.Tasks;
     using System.Windows.Input;
-
 
     public class AsyncCommand : IAsyncCommand
     {

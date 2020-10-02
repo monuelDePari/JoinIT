@@ -1,8 +1,8 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
+    using Utilities.Commands.Instructions;
     using Enums;
     using Prism.Events;
-    using Utilities;
     using Repositories;
 
     public class CSharpTabViewModel : BaseTabViewModel

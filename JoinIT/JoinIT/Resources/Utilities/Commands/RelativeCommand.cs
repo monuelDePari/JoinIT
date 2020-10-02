@@ -1,4 +1,4 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Commands
 {
     using System;
     using System.Windows.Input;
