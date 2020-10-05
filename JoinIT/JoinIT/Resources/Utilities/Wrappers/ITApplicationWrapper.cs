@@ -1,8 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-
-namespace JoinIT.Resources.Utilities.Wrappers
+﻿namespace JoinIT.Resources.Utilities.Wrappers
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+
     [ExcludeFromCodeCoverage]
     public class ITApplicationWrapper : IITApplication
     {

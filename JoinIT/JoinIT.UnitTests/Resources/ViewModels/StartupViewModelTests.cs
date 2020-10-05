@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using JoinIT.Resources.Utilities.Commands.Instructions;
 using JoinIT.Resources.Utilities.Wrappers;
 using JoinIT.Resources.ViewModels;
@@ -22,41 +23,69 @@ namespace JoinIT.UnitTests.Resources.ViewModels
         }
 
         [TestMethod]
+        public void OnCustomPropertyChanged_Always_FontSizeChanged()
+        {
+            //Arrange
+            var startupViewModel = GetViewModel();
+            var fontSizePropertyChangedEventArgs = new PropertyChangedEventArgs("SelectedFontSize");
+            var application = (IITApplication)new PrivateObject(startupViewModel).GetField("_application");
+
+            //Act
+            startupViewModel.OnCustomPropertyChanged(null, fontSizePropertyChangedEventArgs);
+            var result = (int)application.FontSize;
+
+            //Assert
+            Assert.AreEqual(result, startupViewModel.SelectedFontSize);
+        }
+
+        [TestMethod]
         public void OpenLanguageWindowCommand_WhenNoParameterPassed_RaisedEvent()
         {
             //Arrange
-            string toTest = null;
+            EventArgs actual = null;
             var startupViewModel = GetViewModel();
             startupViewModel.OpenLanguageWindowEventHandler += delegate (object sender, EventArgs e)
             {
-                toTest = e.ToString();
+                actual = e;
             };
 
             //Act
             startupViewModel.OpenLanguageWindowCommand.Execute(null);
 
             //Assert
-            Assert.IsNotNull(toTest);
+            Assert.IsNotNull(actual);
         }
 
         [TestMethod]
         public void OpenCoursesWindowCommand_WhenNoParameterPassed_RaisedEvent()
         {
             //Arrange
-            string toTest = null;
+            EventArgs actual = null;
             var startupViewModel = GetViewModel();
             startupViewModel.OpenCoursesWindowEventHandler += delegate (object sender, EventArgs e)
             {
-                toTest = e.ToString();
+                actual = e;
             };
 
             //Act
             startupViewModel.OpenCoursesWindowCommand.Execute(null);
 
             //Assert
-            Assert.IsNotNull(toTest);
+            Assert.IsNotNull(actual);
         }
 
+        [TestMethod]
+        public void OpenCoursesWindowCommand_CanExecute_Always_ReturnsTrue()
+        {
+            //Arrange
+            var startupViewModel = GetViewModel();
+            startupViewModel.OpenCoursesWindowEventHandler += (o, e) => { };
 
+            //Act
+            var result = startupViewModel.OpenCoursesWindowCommand_CanExecute();
+
+            //Assert
+            Assert.IsTrue(result);
+        }
     }
 }

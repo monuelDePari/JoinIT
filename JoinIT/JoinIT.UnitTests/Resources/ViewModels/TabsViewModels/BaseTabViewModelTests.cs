@@ -90,10 +90,8 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
         public void DeleteSelectedCoursesCommand_CanExecute_WhenAdding_ReturnsTrue()
         {
             //Arrange
-            var baseTabViewModel = new BaseTabViewModel
-            {
-                SelectedCoursesInfoModels = new List<object>()
-            };
+            var baseTabViewModel = GetViewModel();
+            baseTabViewModel.SelectedCoursesInfoModels = new List<object>();
 
             //Act
             var result = baseTabViewModel.DeleteSelectedCoursesCommand.CanExecute(It.IsAny<object>());
@@ -223,18 +221,40 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
         public void SelectedCourseChangedCommand_WhenUpdating_RaisedEvent()
         {
             //Arrange
-            string toTest = null;
+            EventArgs actual = null;
             var baseTabViewModel = GetViewModel();
             baseTabViewModel.UpdateCourseHandler += delegate(object sender, EventArgs e)
             {
-                toTest = e.ToString();
+                actual = e;
             };
 
             //Act
             baseTabViewModel.SelectedCourseChangedCommand.Execute(null);
 
             //Assert
-            Assert.IsNotNull(toTest);
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void UpdateCommand_WhenNoParameterPassed_RaisedEvent()
+        {
+            //Arrange
+
+            var actual = new CourseInfoModel();
+            var baseTabViewModel = GetViewModel();
+            baseTabViewModel.SelectedCourseModel = new CourseInfoModel();
+            baseTabViewModel.UpdateCourseHandler += delegate (object sender, EventArgs e)
+            {
+                actual = (CourseInfoModel)sender;
+            };
+
+            //Act
+
+            baseTabViewModel.UpdateCommand.Execute(null);
+
+            //Assert
+
+            Assert.AreSame(actual, baseTabViewModel.SelectedCourseModel);
         }
 
         [TestMethod]
@@ -242,13 +262,13 @@ namespace JoinIT.UnitTests.Resources.ViewModels.TabsViewModels
         {
             //Arrange
             var baseTabViewModel = GetViewModel();
-            var testCollection = new Collection<object>()
+            var actualCollection = new Collection<object>()
             {
                 new CourseInfoModel()
             };
 
             //Act
-            baseTabViewModel.SelectedCoursesChangedCommand.Execute(testCollection);
+            baseTabViewModel.SelectedCoursesChangedCommand.Execute(actualCollection);
 
             //Assert
             Assert.AreNotEqual(0, baseTabViewModel.SelectedCoursesInfoModels);

@@ -1,8 +1,5 @@
-﻿using Unity;
-
-namespace JoinIT.Resources.Utilities.Extensions
+﻿namespace JoinIT.Resources.Utilities.Extensions
 {
-    using Services.Instructions;
     using System;
     using System.Linq.Expressions;
     using System.Reflection;
