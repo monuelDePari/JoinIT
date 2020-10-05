@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using JoinIT.Resources.Utilities.Commands.Instructions;
+using JoinIT.Resources.Utilities.Extensions;
 using JoinIT.Resources.Utilities.Wrappers;
 using JoinIT.Resources.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -27,7 +28,7 @@ namespace JoinIT.UnitTests.Resources.ViewModels
         {
             //Arrange
             var startupViewModel = GetViewModel();
-            var fontSizePropertyChangedEventArgs = new PropertyChangedEventArgs("SelectedFontSize");
+            var fontSizePropertyChangedEventArgs = new PropertyChangedEventArgs(startupViewModel.GetPropertyName(t => t.SelectedFontSize));
             var application = (IITApplication)new PrivateObject(startupViewModel).GetField("_application");
 
             //Act

@@ -1,5 +1,4 @@
 ﻿using JoinIT.Resources.Utilities.Commands.Instructions;
-using JoinIT.Resources.Utilities.Services.Instructions;
 using JoinIT.Resources.Utilities.Wrappers;
 using Moq;
 using Prism.Events;
@@ -27,11 +26,6 @@ namespace JoinIT.UnitTests
         protected Mock<IITApplication> GetIITApplication()
         {
             return new Mock<IITApplication>();
-        }
-
-        protected Mock<ICustomMessageService> GetMessageService()
-        {
-            return new Mock<ICustomMessageService>();
         }
     }
 }
