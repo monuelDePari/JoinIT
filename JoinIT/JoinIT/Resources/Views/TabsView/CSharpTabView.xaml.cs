@@ -1,10 +1,10 @@
-﻿using Models;
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-
-namespace JoinIT.Resources.Views.TabsView
+﻿namespace JoinIT.Resources.Views.TabsView
 {
+    using Models;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for CSharpTabView.xaml
     /// </summary>

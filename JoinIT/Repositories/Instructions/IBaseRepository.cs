@@ -1,9 +1,10 @@
-﻿namespace Repositories
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+
+namespace Repositories.Instructions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq.Expressions;
-    using System.Threading.Tasks;
     public interface IBaseRepository<TEntity> where TEntity : class
     {
         #region methods

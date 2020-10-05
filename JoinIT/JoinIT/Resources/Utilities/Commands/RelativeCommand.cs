@@ -1,7 +1,8 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Commands
 {
     using System;
     using System.Windows.Input;
+
     public class RelativeCommand : ICommand
     {
         #region Fields
@@ -34,11 +35,9 @@
             {
                 return true;
             }
-            else
-            {
-                bool result = _canExecuteCommand.Invoke();
-                return result;
-            }
+
+            bool result = _canExecuteCommand.Invoke();
+            return result;
         }
 
         public void Execute(object parameter)

@@ -1,12 +1,13 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.TemplateSelectors
 {
-    using System.Diagnostics.CodeAnalysis;
-    using Models;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
     using System.Windows;
     using System.Windows.Controls;
-    using ITConstants;
-    using System.Reflection;
+    using ITLocalData;
+    using Extensions;
+    using Models;
 
     [ExcludeFromCodeCoverage]
     public class ComboboxTemplateSelector : DataTemplateSelector
@@ -23,7 +24,8 @@
                 {
                     return ITConstants.NamesTemplate;
                 }
-                else if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
+
+                if (keyProperty == propertyInfo.Name && (keyProperty == courseInfoModel.GetPropertyName(t => t.StartDate) || keyProperty == courseInfoModel.GetPropertyName(t => t.EndDate)))
                 {
                     return ITConstants.DatesTemplate;
                 }

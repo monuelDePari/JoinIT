@@ -1,7 +1,9 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Wrappers
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Windows;
 
+    [ExcludeFromCodeCoverage]
     public class ITApplicationWrapper : IITApplication
     {
         public double FontSize

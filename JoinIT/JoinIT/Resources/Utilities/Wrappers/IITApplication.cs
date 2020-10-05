@@ -1,4 +1,4 @@
-﻿namespace JoinIT.Resources.Utilities
+﻿namespace JoinIT.Resources.Utilities.Wrappers
 {
     public interface IITApplication
     {

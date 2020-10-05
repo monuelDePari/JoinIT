@@ -1,5 +1,8 @@
 ﻿namespace JoinIT.Resources.ViewModels.TabsViewModels
 {
+    using Utilities.Commands;
+    using Utilities.Commands.Instructions;
+    using Utilities.Extensions;
     using Prism.Events;
     using Utilities;
     using Models;
@@ -14,7 +17,7 @@
     {
         #region Fields
         private string _tabName;
-        protected CourseInfoModel Course;
+        public CourseInfoModel Course;
         private KeyValuePair<string, string> _courseInfoModelKeyValuePair;
         private RelativeCommand _updateCommand;
         private Dictionary<string, string> _courseInfoModelsDictionary;
@@ -93,7 +96,7 @@
             }
         }
 
-        public async Task OnDeletedCoursesChangedAsync(object arg)
+        private async Task OnDeletedCoursesChangedAsync(object arg)
         {
             List<CourseInfoModel> selectedCourseInfoModels = new List<CourseInfoModel>();
             foreach (var course in SelectedCoursesInfoModels)
@@ -144,7 +147,7 @@
             }
         }
 
-        public void OnSelectedCourseChanged(object arg)
+        private void OnSelectedCourseChanged(object arg)
         {
             var handler = UpdateCourseHandler;
             if (handler != null)
@@ -153,7 +156,7 @@
             }
         }
 
-        public Dictionary<string, string> CourseInfoModelsListOfPropertiesToDictionary()
+        public Dictionary<string, string> ConvertPropertiesListToDictionary()
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
             var courseInfoModelsProperties = typeof(CourseInfoModel).GetProperties();
@@ -165,7 +168,7 @@
                     continue;
                 }
                 System.Reflection.PropertyInfo item = courseInfoModelsProperties[i];
-                keyValuePairs.Add(item.Name.ToString(), Regex.Replace(item.Name.ToString(), "([a-z])([A-Z])", "$1 $2"));
+                keyValuePairs.Add(item.Name, Regex.Replace(item.Name, "([a-z])([A-Z])", "$1 $2"));
             }
 
             return keyValuePairs;
@@ -174,7 +177,7 @@
         public async Task LoadDataAsync(string tabName)
         {
             _tabName = tabName;
-
+            
             if (CourseInfoModels == null)
             {
                 CourseInfoModels = await RunTaskAsync(CoursesRepository.FindAsync(t => t.CourseName == tabName));
@@ -182,7 +185,7 @@
 
             if (CourseInfoModelsDictionary == null)
             {
-                CourseInfoModelsDictionary = CourseInfoModelsListOfPropertiesToDictionary();
+                CourseInfoModelsDictionary = ConvertPropertiesListToDictionary();
             }
         }
         #endregion

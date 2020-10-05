@@ -12,6 +12,15 @@
                   Title="{x:Static localization:Resources.Title}"
                   Height="720"
                   Width="1280"
+                  WindowStyle="SingleBorderWindow"
+                  WindowStartupLocation="CenterScreen"
+                  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                  TextElement.FontFamily="Regular"
+                  TextElement.FontSize="12"
+                  TextOptions.TextFormattingMode="Ideal"
+                  TextOptions.TextRenderingMode="Auto"
+                  Background="{DynamicResource MaterialDesignPaper}"
+                  FontFamily="{DynamicResource MaterialDesignFont}"
                   mc:Ignorable="d"
                   d:DataContext="{d:DesignInstance logic:StartupViewModel}">
 

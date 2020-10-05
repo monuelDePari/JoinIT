@@ -1,5 +1,4 @@
-﻿using JoinIT.Resources.ViewModels;
-using Prism.Events;
+﻿using JoinIT.Resources.Utilities.Services;
 
 namespace JoinIT
 {
@@ -8,13 +7,16 @@ namespace JoinIT
     using Resources.Views;
     using Repositories;
     using Repositories.Instructions;
-    using Repositories.Repository;
     using System.Data.Entity;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
-    using Unity.Injection;
     using Unity.Lifetime;
     using Unity;
+    using Resources.Utilities.Commands;
+    using Resources.Utilities.Commands.Instructions;
+    using Resources.Utilities.Services.Instructions;
+    using Resources.Utilities.Wrappers;
+    using Prism.Events;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -28,17 +30,17 @@ namespace JoinIT
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Default.LanguageSetting);
 
-            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>();
-
             ITUnityContainer.Instance.RegisterInstance<IApplicationCommands>(new ApplicationCommands());
 
             ITUnityContainer.Instance.RegisterInstance<IEventAggregator>(new EventAggregator());
 
             ITUnityContainer.Instance.RegisterInstance<IITApplication>(new ITApplicationWrapper());
 
+            ITUnityContainer.Instance.RegisterInstance<ICustomMessageService>(new CustomMessageService());
+
             ITUnityContainer.Instance.RegisterType<DbContext, ITContext>(new PerThreadLifetimeManager());
 
-            ITUnityContainer.Instance.RegisterType<ICoursesRepository, CoursesRepository>(new InjectionConstructor(new ITContext()));
+            ITUnityContainer.Instance.RegisterInstance<ICoursesRepository>(new CoursesRepository(new ITContext()));
 
             var window = new StartupView();
             window.Show();

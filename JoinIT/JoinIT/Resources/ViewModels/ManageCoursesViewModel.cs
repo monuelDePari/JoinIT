@@ -1,11 +1,11 @@
 ﻿namespace JoinIT.Resources.ViewModels
 {
-    using Utilities;
     using TabsViewModels;
     using Models;
     using Repositories.Instructions;
     using System;
     using System.Threading.Tasks;
+    using Utilities.Commands;
 
     public class ManageCoursesViewModel : BaseTabViewModel
     {

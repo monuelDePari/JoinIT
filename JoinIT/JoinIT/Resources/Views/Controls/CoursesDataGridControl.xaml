@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel>
             <local:SpinnerControl IsLoading="{Binding Path=IsLoading, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <DataGrid x:Name="CPlusPlusDataGrid"
+            <DataGrid x:Name="DataGrid"
                       HorizontalGridLinesBrush="DarkGray"
                       RowBackground="LightGray"
                       AlternatingRowBackground="White"
@@ -38,11 +38,11 @@
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=CPlusPlusDataGrid, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                                                Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCourseChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                     </i:EventTrigger>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=CPlusPlusDataGrid, Path=SelectedItems, UpdateSourceTrigger=PropertyChanged}"
+                        <i:InvokeCommandAction CommandParameter="{Binding ElementName=DataGrid, Path=SelectedItems, UpdateSourceTrigger=PropertyChanged}"
                                                Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SelectedCoursesChangedCommand, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

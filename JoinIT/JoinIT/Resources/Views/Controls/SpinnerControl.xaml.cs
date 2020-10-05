@@ -1,14 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace JoinIT.Resources.Views.Controls
+﻿namespace JoinIT.Resources.Views.Controls
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for SpinnerControl.xaml
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public partial class SpinnerControl : UserControl
+    public partial class SpinnerControl
     {
         #region DependencyProperties
         public static readonly DependencyProperty IsLoadingProperty =  

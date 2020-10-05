@@ -15,7 +15,7 @@
           HorizontalAlignment="Center"
           Background="White">
         <StackPanel Orientation="Vertical"
-                    Background="Cornsilk"
+                    Background="White"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Center"
                     MinWidth="400">
