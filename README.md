@@ -8,11 +8,9 @@ models - окремо, repository - окремо, Unity Container, привіт�
 Non-Functional Requirements:
 
 Create private project on Github with git repo and do all the development here
-Add as a collaborator Viktor Shyshka
 It should be possible to compile application right after cloning the repo
 The solution must include unit tests and loggers. All test should pass. Make sure that test have any sense. All tests must be written in another solution.
 Detailed instructions on how to set up a solution including dependencies and how to make it running must be provided as a markdown read.me file in the root of repo.
-Xaml code should be written without any designer code and using extension “Kill the WPF designer”
 Application must use MVVM architecture pattern.
 
 
