@@ -1,11 +1,5 @@
 # JoinIT
 
-Goal: To write a pet project and get acquainted with what i will have to work on to join sprints and complete tasks/fix bugs. Also Pet Project must include CRUD operations.
-
-Ideas: 
-
-Create an application of IT-courses that will include payment system of courses itself, joining teams of students, assign tasks on a platform, group students by courses and etc.
-
 Functional Requirements:
 
 models - окремо, repository - окремо, Unity Container, привітальне анімоване вікно, яке ховається і появляється головне вікно, на головному скрині зверху ribbon, окремою табою або знизу справа вікно з настройками, щоб можна було міняти мову і щоб можна було змінити розмір тексту, який буде оновлюватися в real-time, буде скрін, щоб додати і едіти інформацію про студента, який заходить і це буде те саме вікно для додавання і едіта, тут робим валідацію через через інтерфейс IDataErrorInfo. Головний скрін - під риббоном буде таб контрол (по курсах (декілька фільтрів - комбобокс) і під ними буде датагрид який матиме пару колонок вік, спеціальність і тд). В Рібоні має бути створити новий курс, оновити курс і тд. Додаткова опція - прикріпити список студентів. Репозиторій обов'язково асинхронний. Всюди де виконується асинхронний виклик треба буде взаємодіяти з UI (преролл - анімація). Обов'язково MVVM і окремий солушин юніт тести. Юзати 5 версію шарпів
